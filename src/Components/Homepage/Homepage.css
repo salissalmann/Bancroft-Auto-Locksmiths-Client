@@ -1,0 +1,292 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+#Cover-Holder
+{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    background-color: white;
+    border-radius: 1rem;
+    padding: 3rem;
+    font-weight: bold;
+
+}
+#Cover-Holder h3
+{
+    margin-bottom: 1rem;
+}
+
+#Cover-Inner
+{
+    background-color:#EC8E22;
+    border-radius: 5px;
+    padding: 0.5rem;
+    font-size: 0.5px;
+    font-weight: bold;
+    color: white;
+    font-family: 'Nunito';
+}
+
+#Create-Plate-Div
+{
+    background-color: white;
+    border: 1px solid gray;
+    border-radius: 5px;
+    display: grid;
+    grid-template-columns: 50% 50%;    
+}
+
+@media (max-width: 480px) 
+{
+    #Create-Plate-Div
+    {
+        background-color: white;
+        border: 1px solid gray;
+        border-radius: 5px;
+        display: grid;
+        grid-template-columns: 100%;    
+    }
+}
+@media (max-width: 1500px) 
+{
+    #Create-Plate-Div
+    {
+        background-color: white;
+        border: 1px solid gray;
+        border-radius: 5px;
+        display: grid;
+        grid-template-columns: 100%;    
+    }
+
+}
+
+#PlateDisplay
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 1rem;
+}
+#PlateFront4D {
+    display: flex;
+    font-family: 'Montserrat', sans-serif;
+    justify-content: center;
+    background-color: #E7E7E7;
+    color: rgb(61, 61, 61);
+    padding: 0.5rem;
+    font-size: 5rem;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-bottom: 1rem;    
+    position: relative;
+  }
+  
+#PlateFront4D::after {
+    content: 'ATU-777'; /* Use the pseudo-element ::after to add the 'g' character */
+    color: black;
+    width:100%;
+    padding: 0.5rem;
+    font-size: 5rem;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-bottom: 1rem;    
+    position: absolute; /* Position the 'g' character relative to #PlateFront */
+    top: 49%; /* Vertically center the 'g' character */
+    left: 70.8%; /* Adjust the horizontal position of the 'g' character */
+    transform: translate(-50%, -50%); /* Center the 'g' character precisely */
+}
+#PlateRear4D
+{
+    display: flex;
+    font-family: 'Montserrat', sans-serif;
+    justify-content: center;
+    background-color: #F1B317;
+    color: rgb(61, 61, 61);
+    padding: 0.5rem;
+    font-size: 5rem;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-bottom: 1rem;    
+    position: relative;
+}
+#PlateRear4D::after {
+    content: 'ATU-777'; /* Use the pseudo-element ::after to add the 'g' character */
+    color: black;
+    width:100%;
+    padding: 0.5rem;
+    font-size: 5rem;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-bottom: 1rem;    
+    position: absolute; /* Position the 'g' character relative to #PlateFront */
+    top: 49%; /* Vertically center the 'g' character */
+    left: 70.8%; /* Adjust the horizontal position of the 'g' character */
+    transform: translate(-50%, -50%); /* Center the 'g' character precisely */
+}
+
+.BadgeImage
+{
+    width: 50%;
+    height: 50%;
+    margin-bottom: 1rem;
+}
+.BadgeImageText
+{
+    text-align:center;
+    font-size: 0.7rem;
+    justify-content: center;
+    text-overflow: none;
+}
+.BadgePlateNumber
+{
+    margin: 0.1rem;
+    margin-top: -2rem;
+    
+}
+.BadgeContainer
+{
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+    align-items: center;
+    border-radius: 0.2rem;
+    color: white;
+    margin-top: -2rem;
+    margin-left: 3rem;
+    background-color: red;
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
+}
+#PlateFront
+{
+    display: grid;
+    grid-template-columns: 30% 70%;
+    font-family: 'Montserrat', sans-serif;
+    align-items: center;
+    justify-content: center;
+    border-radius: 7px;
+    background-color:#EC8E22;
+    color: black;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    padding: 0.3rem;
+    font-size: 15rem;
+    border-bottom-right-radius: 100%;
+    border-bottom-left-radius: 100%;
+
+    height: 12rem;
+    text-overflow: none;
+    line-height: 1.2;
+    font-size: 4rem;
+    text-align: center;
+}
+#PlateRear
+{
+    display: flex;
+    font-family: 'Montserrat', sans-serif;
+    justify-content: center;
+    background-color: #F1B317;
+    color: black;
+    font-size: 5rem;
+    font-weight: bold;
+}
+
+
+#PlateFront3D {
+    display: flex;
+    font-family: 'Montserrat', sans-serif;
+    justify-content: center;
+    background-color: #E7E7E7;
+    color: black;
+    padding: 0.5rem;
+    font-size: 5rem;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    transform:matrix3d();
+}
+  
+#PlateText
+{
+    display: flex;
+    font-family: 'Montserrat', sans-serif;
+    justify-content: center;
+    background-color: #E7E7E7;
+    color: black;
+    padding: 1.8rem;
+    font-size: 3rem;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    text-align: center;
+    
+}
+
+.radio-inputs {
+    margin-top: 1rem;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 0.5rem;
+    background-color: #EEE;
+    box-sizing: border-box;
+    box-shadow: 0 0 0px 1px rgba(0, 0, 0, 0.06);
+    padding: 0.25rem;
+    width: 300px;
+    font-size: 14px;
+  }
+  
+  .radio-inputs .radio {
+    flex: 1 1 auto;
+    text-align: center;
+  }
+  
+  .radio-inputs .radio input {
+    display: none;
+  }
+  
+  .radio-inputs .radio .name {
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.5rem;
+    border: none;
+    padding: .5rem 0;
+    color: rgba(51, 65, 85, 1);
+    transition: all .15s ease-in-out;
+  }
+  
+  .radio-inputs .radio input:checked + .name {
+    background-color: #fff;
+    font-weight: 600;
+  }
+
+
+#Selection-Options
+{
+    display: flex;
+    justify-content:space-evenly;
+}
+.Selection-Texts
+{
+    display: flex;
+    justify-content:space-evenly;
+}
+
+#Dropdown
+{
+    padding: 0.5rem;
+    padding-left: 1.3rem;
+    padding-right: 1.3rem;
+    margin-right: 0.4rem;
+}
+#Dropdown-Large
+{
+    margin-left: -0.5rem;
+    width: 101%;
+    padding: 0.5rem;
+
+}
