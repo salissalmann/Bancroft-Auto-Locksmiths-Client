@@ -7,17 +7,21 @@ body
     display: grid ;
     grid-template-columns: 50% 50%;
     align-items: center;
-    background-color: white;
-    border-bottom: 1px solid #F3C236;
+    color:white;
+    padding: 1.5rem;
+    background-color: #2A4C99;
+    border-bottom: 1px solid white;
 }
 #Component-1
 {
     display: flex;
+    align-items: center;
     margin-left: 10%;
 }
 #Component-2
 {
     display: flex;
+    align-items: center;
     justify-content:flex-end;
     margin-right: 10%;
 }
@@ -27,6 +31,37 @@ body
     font-family: 'Nunito';
     font-weight: 300;
 }
+#Component-2 h3
+{
+    margin-top: -1rem;
+}
+#Cover-Holder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #Cover-Inner {
+    max-width: 1000px;
+    text-align: center;
+  }
+
+  #Cover-Inner h6 {
+    margin-bottom: 20px;
+  }
+
+  #Cover-Inner img {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    max-height: 200px;
+  }
+
+  @media (max-width: 768px) {
+    #Cover-Inner {
+      padding: 10px;
+    }
+  }
 
 
 

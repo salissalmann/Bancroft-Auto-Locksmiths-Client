@@ -1,33 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
-#Cover-Holder
+#fOOTER
 {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    text-align: center;
-    background-color: white;
-    border-radius: 1rem;
-    padding: 3rem;
-    font-weight: bold;
-
-}
-#Cover-Holder h3
-{
-    margin-bottom: 1rem;
-}
-
-#Cover-Inner
-{
-    background-color:#EC8E22;
-    border-radius: 5px;
     padding: 0.5rem;
-    font-size: 0.5px;
-    font-weight: bold;
-    color: white;
-    font-family: 'Nunito';
+    width: 100%;
+    border: 1px solid gray;
+    color: #000000;
+} 
+#fOOTER::placeholder
+{
+    color: black;
 }
-
 #Create-Plate-Div
 {
     background-color: white;
@@ -61,70 +44,109 @@
 
 }
 
-#PlateDisplay
+.PlateDisplay
 {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     padding: 1rem;
+    margin-bottom: -2rem;
 }
-#PlateFront4D {
-    display: flex;
-    font-family: 'Montserrat', sans-serif;
-    justify-content: center;
-    background-color: #E7E7E7;
-    color: rgb(61, 61, 61);
-    padding: 0.5rem;
-    font-size: 5rem;
-    border-radius: 5px;
-    font-weight: bold;
-    margin-bottom: 1rem;    
-    position: relative;
-  }
-  
-#PlateFront4D::after {
-    content: 'ATU-777'; /* Use the pseudo-element ::after to add the 'g' character */
-    color: black;
-    width:100%;
-    padding: 0.5rem;
-    font-size: 5rem;
-    border-radius: 5px;
-    font-weight: bold;
-    margin-bottom: 1rem;    
-    position: absolute; /* Position the 'g' character relative to #PlateFront */
-    top: 49%; /* Vertically center the 'g' character */
-    left: 70.8%; /* Adjust the horizontal position of the 'g' character */
-    transform: translate(-50%, -50%); /* Center the 'g' character precisely */
-}
-#PlateRear4D
+#PlateFront4D,#PlateFront4D2,#PlateFront4D3,#PlateFront4D4,#PlateFront4D5,
+#PlateFront4D6,#PlateFront4D7,#PlateFront4D8 
 {
     display: flex;
     font-family: 'Montserrat', sans-serif;
     justify-content: center;
-    background-color: #F1B317;
-    color: rgb(61, 61, 61);
+    color: #828282;
     padding: 0.5rem;
-    font-size: 5rem;
     border-radius: 5px;
     font-weight: bold;
-    margin-bottom: 1rem;    
+    margin-bottom: 1rem;
     position: relative;
+    overflow: hidden;
 }
-#PlateRear4D::after {
-    content: 'ATU-777'; /* Use the pseudo-element ::after to add the 'g' character */
-    color: black;
-    width:100%;
-    padding: 0.5rem;
+#PlateFront4D {
     font-size: 5rem;
+}
+#PlateFront4D2 {
+    font-size: 4.5rem;
+}
+
+#PlateFront4D3 {
+    font-size: 4.2rem;
+}
+
+#PlateFront4D4 {
+    font-size: 1rem;
+}
+
+#PlateFront4D5 {
+    font-size: 5rem;
+}
+
+#PlateFront4D6 {
+    font-size: 2rem;
+}
+
+#PlateFront4D7 {
+    font-size: 6rem;
+}
+
+#PlateFront4D8 {
+    font-size: 4rem;
+}
+#PlateFront4D::after,#PlateFront4D2::after,#PlateFront4D3::after,
+#PlateFront4D4::after,#PlateFront4D5::after,#PlateFront4D6::after,
+#PlateFront4D7::after,#PlateFront4D8::after {
+    content: attr(data-content);
+    color: black;
+    width: 100%;
+    overflow: hidden;
+    padding: 0.5rem;
     border-radius: 5px;
     font-weight: bold;
-    margin-bottom: 1rem;    
-    position: absolute; /* Position the 'g' character relative to #PlateFront */
-    top: 49%; /* Vertically center the 'g' character */
-    left: 70.8%; /* Adjust the horizontal position of the 'g' character */
-    transform: translate(-50%, -50%); /* Center the 'g' character precisely */
+    margin-bottom: 1rem;
+    position: absolute;
+    top: 49%;
+    left: 49%;
+    transform: translate(-50%, -50%);
+    text-align: center;
 }
+
+#PlateFront4D::after {
+    font-size: 5rem;
+}
+
+#PlateFront4D2::after {
+    font-size: 4.5rem;
+}
+
+#PlateFront4D3::after {
+    font-size: 4.2rem;
+}
+
+#PlateFront4D4::after {
+    font-size: 1rem;
+}
+
+#PlateFront4D5::after {
+    font-size: 5rem;
+}
+
+#PlateFront4D6::after {
+    font-size: 2rem;
+}
+
+#PlateFront4D7::after {
+    font-size: 6rem;
+}
+
+#PlateFront4D8::after {
+    font-size: 4rem;
+}
+
 
 .BadgeImage
 {
@@ -208,21 +230,6 @@
     transform:matrix3d();
 }
   
-#PlateText
-{
-    display: flex;
-    font-family: 'Montserrat', sans-serif;
-    justify-content: center;
-    background-color: #E7E7E7;
-    color: black;
-    padding: 1.8rem;
-    font-size: 3rem;
-    border-radius: 5px;
-    font-weight: bold;
-    margin-bottom: 1rem;
-    text-align: center;
-    
-}
 
 .radio-inputs {
     margin-top: 1rem;
@@ -270,23 +277,1312 @@
     display: flex;
     justify-content:space-evenly;
 }
+#Selection-Options2
+{
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+}
 .Selection-Texts
 {
     display: flex;
     justify-content:space-evenly;
 }
+#ColorPickerdiv
+{
+    border: 1px solid gray;
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    width: 50%;
+    padding: 0.5rem;
+    margin-right: 0.4rem;
+}
+#ColorPicker
+{
+    margin-left: 1rem;
+}
+#ResetButton
+{
+    background-color:#F4CA29;
+    width:max-content;
+    padding: 0.5rem;
+    width: 100%;
+
+    border: none;
+    transition-duration: 1s;
+    border-radius: 7px;
+}
+#ResetButton:hover
+{
+    background-color:#f0d97e;
+}
 
 #Dropdown
 {
     padding: 0.5rem;
-    padding-left: 1.3rem;
-    padding-right: 1.3rem;
+    width: 100%;
+    margin-right: 0.4rem;
+    border: 1px solid gray;
+
+}
+#Dropdown-Medium
+{
+    border: 1px solid gray;
+    padding: 0.5rem;
+    width: 100%;
     margin-right: 0.4rem;
 }
 #Dropdown-Large
 {
-    margin-left: -0.5rem;
-    width: 101%;
+    border: 1px solid gray;
+    width: 100%;
     padding: 0.5rem;
+    margin-right: 0.4rem;
+}
 
+.PlateText
+{
+    width: 100%;
+    height: 7rem;
+    display: flex;
+    font-family: 'Montserrat', sans-serif;
+    justify-content: center;
+    background-color: #E7E7E7;
+    color: black;
+    font-size: 3rem;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    text-align: center;   
+}
+    @media (max-width: 480px) 
+    {
+        .PlateText
+        {
+            font-size: 3rem;
+        }
+    }
+#StandardFrame
+{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background-color:#E7E7E7;
+    color: black;
+    font-weight:bold;
+    margin-bottom: 1rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    font-size: 5rem;
+    border-radius: 7px;
+}
+
+#StandardFrame-Badge
+{
+    display: grid;
+    grid-template-columns: 20% 80%;
+    justify-content: center;
+    align-items: center;
+    background-color: #E7E7E7;
+    width: 100%;
+    height: 10rem;
+    margin-bottom: 1rem;
+    border-radius: 7px;
+    padding-right: 1rem;
+    padding-left: 1rem;
+}
+#StandardFrame-BC
+{
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+    align-items: center;
+    background-color: transparent;
+    color: black;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    border-radius: 7px;
+}
+#StandardFrame-BI
+{
+    width: 60%;
+    height: 60%;
+    margin-bottom: 2rem;
+}
+#StandardFrame-BIT
+{
+    font-size: 90%;
+    text-align: center;
+}
+#StandardFrame-BPN
+{
+    margin-left: 1rem;
+    text-align: center;
+    font-size: 500%;
+    color: black;
+    font-weight: bold;
+    border: 3px solid transparent;
+    border-radius: 7px;
+    padding-top: 0.8rem;
+    padding-bottom: 0.8rem;
+}   
+    @media (max-width: 480px) 
+    {
+        #StandardFrame-BIT
+        {
+            font-size: 70%;
+        }
+        #StandardFrame-BPN
+        {
+            font-size: 3rem;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+    }
+    @media (max-width: 400px) 
+    {
+        #StandardFrame-BIT
+        {
+            font-size: 70%;
+        }
+        #StandardFrame-BPN
+        {
+            font-size: 2rem;
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+        }
+    }
+    @media (max-width: 760px)
+    {
+        #StandardFrame-BPN
+        {
+            font-size: 2rem;
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+        }
+    }
+
+/*  -------------------------------------------Standard2  ----------------------------------- */
+#StandardFrame2
+{
+    display:flex;
+    width: 45%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    background-color:#E7E7E7;
+    color: black;
+    font-weight:bold;
+    margin-bottom: 1rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    font-size: 5rem;
+    border-radius: 7px;
+    line-height: 1.2;
+}
+
+#StandardFrame-Badge2
+{
+    display:flex;
+    width: 45%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    background-color:#E7E7E7;
+    color: black;
+    font-weight:bold;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    border-radius: 7px;
+    line-height: 1.2;
+}
+#StandardFrame-BC2
+{
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+    align-items: center;
+    background-color: transparent;
+    color: black;
+    padding-top:2.5rem;
+    padding-bottom: 2.5rem;
+    border-radius: 7px;
+}
+#StandardFrame-BI2
+{
+    width: 60%;
+    height: 100%;
+    margin-bottom: 4rem;
+}
+#StandardFrame-BIT2
+{
+    font-size: 70%;
+    text-align: center;
+}
+#StandardFrame-BPN2
+{
+    margin-left: 1rem;
+    text-align: center;
+    font-size: 400%;
+    color: black;
+    font-weight: bold;
+    border: 3px solid transparent;
+    border-radius: 7px;
+    padding-top: 0.8rem;
+    padding-bottom: 0.8rem;
+}   
+    @media (max-width: 480px) 
+    {
+        #StandardFrame-Badge2
+        {
+            width: 80%;
+        }
+        #StandardFrame-BIT
+        {
+            font-size: 50%;
+        }
+        #StandardFrame-BPN
+        {
+            font-size: 1rem;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+    }
+    @media (max-width: 400px) 
+    {
+        #StandardFrame-Badge2
+        {
+            width: 95%;
+        }
+        #StandardFrame-BIT
+        {
+            font-size: 50%;
+        }
+        #StandardFrame-BPN
+        {
+            font-size: 0.5rem;
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+        }
+    }
+    @media (max-width: 760px)
+    {
+        #StandardFrame2
+        {
+            font-size: 4.5rem;
+        }
+        #StandardFrame-Badge2
+        {
+            width: 65%;
+        }
+        #StandardFrame-BPN
+        {
+            font-size: 4rem;
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+        }
+    }
+
+/*  -------------------------------------------Standard3  ----------------------------------- */
+#StandardFrame3
+{
+    display:flex;
+    width: 55%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    background-color:#E7E7E7;
+    color: black;
+    font-weight:bold;
+    margin-bottom: 1rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    font-size: 4.6rem;
+    border-radius: 7px;
+    line-height: 1.2;
+    height: 10rem;
+}
+
+#StandardFrame-Badge3
+{
+    display:grid;
+    grid-template-columns: 20% 80%;
+    width: 55%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    font-weight:bold;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    border-radius: 7px;
+    line-height: 1.2;
+}
+#StandardFrame-BC3
+{
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+    align-items: center;
+    background-color:transparent;
+    color: black;
+    padding-top:2.5rem;
+    padding-bottom: 2.5rem;
+    border-radius: 7px;
+}
+#StandardFrame-BI3
+{
+    width: 60%;
+    height: 100%;
+    margin-bottom: 4rem;
+}
+#StandardFrame-BIT3
+{
+    font-size: 70%;
+    text-align: center;
+}
+#StandardFrame-BPN3
+{
+    margin-left: 1rem;
+    text-align: center;
+    font-size: 400%;
+    color: black;
+    font-weight: bold;
+    border: 3px solid transparent;
+    border-radius: 7px;
+    padding-top: 0.8rem;
+    padding-bottom: 0.8rem;
+}   
+    @media (max-width: 480px) 
+    {
+        #StandardFrame-Badge3
+        {
+            width: 80%;
+        }
+        #StandardFrame-BPN3
+        {
+            font-size: 1rem;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+    }
+    @media (max-width: 400px) 
+    {
+        #StandardFrame-Badge3
+        {
+            width: 95%;
+        }
+        #StandardFrame-BIT3
+        {
+            font-size: 30%;
+        }
+        #StandardFrame-BPN3
+        {
+            font-size: 0.2rem;
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+        }
+    }
+    @media (max-width: 760px)
+    {
+        #StandardFrame-Badge3
+        {
+            width: 65%;
+        }
+        #StandardFrame-BPN3
+        {
+            font-size: 3rem;
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+        }
+    }
+
+    /*  -------------------------------------------Standard4  ----------------------------------- */
+#StandardFrame4
+{
+    display:flex;
+    width: 60%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    background-color:#E7E7E7;
+    color: black;
+    font-weight:bold;
+    margin-bottom: 1rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    font-size: 1rem;
+    border-radius: 7px;
+    line-height: 1.2;
+    height: 8rem;
+}
+
+#StandardFrame-Badge4
+{
+    display:grid;
+    grid-template-columns: 20% 80%;
+    width: 55%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    font-weight:bold;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    border-radius: 7px;
+    line-height: 1.2;
+}
+#StandardFrame-BC4
+{
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+    align-items: center;
+    background-color: transparent;
+    color: black;
+    padding-top:1rem;
+    padding-bottom: 1rem;
+    border-radius: 7px;
+}
+#StandardFrame-BI4
+{
+    width: 40%;
+    height: 100%;
+    margin-bottom: 2rem;
+}
+#StandardFrame-BIT4
+{
+    font-size: 50%;
+    text-align: center;
+}
+#StandardFrame-BPN4
+{
+    margin-left: 1rem;
+    text-align: center;
+    font-size: 100%;
+    color: black;
+    font-weight: bold;
+    border: 3px solid transparent;
+    border-radius: 7px;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}   
+    @media (max-width: 480px) 
+    {
+        #StandardFrame-Badge4
+        {
+            width: 80%;
+        }
+        #StandardFrame-BIT4
+        {
+            font-size: 60%;
+        }
+        #StandardFrame-BPN4
+        {
+            font-size: 1rem;
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+        }
+    }
+    @media (max-width: 400px) 
+    {
+        #StandardFrame-BC4
+        {
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+        }
+
+        #StandardFrame-Badge4
+        {
+            width: 95%;
+        }
+        #StandardFrame-BIT4
+        {
+            font-size: 20%;
+        }
+        #StandardFrame-BPN4
+        {
+            font-size: 0.7rem;
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+        }
+    }
+    @media (max-width: 760px)
+    {
+        #StandardFrame-BC4
+        {
+            padding-top: 0.8rem;
+            padding-bottom: 0.8rem;
+        }
+        #StandardFrame-Badge4
+        {
+            width: 60%;
+        }
+        #StandardFrame-BIT4
+        {
+            font-size: 60%;
+        }
+        #StandardFrame-BPN4
+        {
+            font-size: 1.5rem;
+            padding-top: 2rem;
+            padding-bottom:2rem;
+        }
+    }
+
+
+        /*  -------------------------------------------Standard5  ----------------------------------- */
+#StandardFrame5
+{
+    display:flex;
+    width: 60%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    background-color:#E7E7E7;
+    color: black;
+    font-weight:bold;
+    margin-bottom: 1rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    font-size: 5rem;
+    border-radius: 7px;
+    line-height: 1.2;
+    height: 12rem;
+}
+
+#StandardFrame-Badge5
+{
+    display:grid;
+    grid-template-columns: 20% 80%;
+    width: 65%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    background-color:#E7E7E7;
+    color: black;
+    font-weight:bold;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    border-radius: 7px;
+    line-height: 1.2;
+    height: 14rem;
+}
+#StandardFrame-BC5
+{
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+    align-items: center;
+    color: black;
+    padding-top:3.5rem;
+    padding-bottom: 3.5rem;
+    border-radius: 7px;
+}
+#StandardFrame-BI5
+{
+    width: 60%;
+    height: 100%;
+    margin-bottom: 2rem;
+}
+#StandardFrame-BIT5
+{
+    font-size: 60%;
+    text-align: center;
+}
+#StandardFrame-BPN5
+{
+    margin-left: 1rem;
+    text-align: center;
+    font-size: 500%;
+    color: black;
+    font-weight: bold;
+    border-radius: 7px;
+
+}   
+    @media (max-width: 480px) 
+    {
+        #StandardFrame-Badge5
+        {
+            width: 80%;
+        }
+        #StandardFrame-BIT5
+        {
+            font-size: 60%;
+        }
+        #StandardFrame-BPN5
+        {
+            font-size: 1rem;
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+        }
+    }
+    @media (max-width: 760px)
+    {
+        #StandardFrame-BC5
+        {
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+        }
+        #StandardFrame-Badge5
+        {
+            width: 60%;
+        }
+        #StandardFrame-BIT5
+        {
+            font-size: 60%;
+        }
+        #StandardFrame-BPN5
+        {
+            font-size: 3.5rem;
+            padding-top: 2rem;
+            padding-bottom:2rem;
+        }
+    }
+
+
+/*  -------------------------------------------Standard6  ----------------------------------- */
+#StandardFrame6
+{
+    display:flex;
+    width: 80%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    background-color:#E7E7E7;
+    color: black;
+    font-weight:bold;
+    margin-bottom: 1rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    font-size: 2rem;
+    border-radius: 7px;
+    line-height: 1.2;
+    height: 6rem;
+}
+
+#StandardFrame-Badge6
+{
+    display:grid;
+    grid-template-columns: 20% 80%;
+    width: 80%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    background-color:#E7E7E7;
+    color: black;
+    font-weight:bold;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    border-radius: 7px;
+    line-height: 1.2;
+    height: 6rem;
+}
+#StandardFrame-BC6
+{
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+    align-items: center;
+    color: black;
+    padding-top:1rem;
+    padding-bottom: 1rem;
+    border-radius: 7px;
+}
+#StandardFrame-BI6
+{
+    width: 40%;
+    height: 80%;
+    margin-bottom: 1rem;
+}
+#StandardFrame-BIT6
+{
+    font-size: 60%;
+    text-align: center;
+}
+#StandardFrame-BPN6
+{
+    margin-left: 1rem;
+    text-align: center;
+    font-size: 100%;
+    color: black;
+    font-weight: bold;
+    border-radius: 7px;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;    
+}   
+    @media (max-width: 390px) 
+    {
+        #StandardFrame6
+        {
+            width: 120%;
+            font-size: 50%;
+        }
+    }
+    @media (max-width: 440px) 
+    {
+        #StandardFrame6
+        {
+            font-size: 1rem !important;
+            width: 90%;
+        }
+
+        #StandardFrame-Badge6
+        {
+            width: 80%;
+        }
+        #StandardFrame-BIT6
+        {
+            font-size: 40%;
+        }
+        #StandardFrame-BPN6
+        {
+            font-size: 1rem;
+            padding-top: 1.5rem;
+            padding-bottom: 1.5rem;
+        }
+    }
+    @media (max-width: 760px)
+    {
+        #StandardFrame6
+        {
+            font-size: 4rem;
+        }
+        
+    }
+
+
+
+/*  -------------------------------------------Standard7  ----------------------------------- */
+#StandardFrame7
+{
+    display:flex;
+    width: 90%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    background-color:#E7E7E7;
+    color: black;
+    font-weight:bold;
+    margin-bottom: 1rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    font-size: 6.5rem;
+    border-radius: 8px;
+    line-height: 1.2;
+    height: 8rem;
+}
+
+#StandardFrame-Badge7
+{
+    display:grid;
+    grid-template-columns: 20% 80%;
+    width: 80%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    background-color:#E7E7E7;
+    color: black;
+    font-weight:bold;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    border-radius: 7px;
+    line-height: 1.2;
+    height: 7rem;
+}
+#StandardFrame-BC7
+{
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+    align-items: center;
+    background-color: #EC8E22;
+    color: black;
+    padding-top:0.5rem;
+    padding-bottom: 0.5rem;
+    border-radius: 7px;
+    margin-top: -1rem;
+}
+#StandardFrame-BI7
+{
+    width: 50%;
+    height: 80%;
+    margin-bottom: 0.5rem;
+}
+#StandardFrame-BIT7
+{
+    font-size: 60%;
+    text-align: center;
+}
+#StandardFrame-BPN7
+{
+    margin-left: 1rem;
+    text-align: center;
+    font-size: 450%;
+    color: black;
+    font-weight: bold;
+    border-radius: 7px;
+    margin-bottom: 1rem;
+}   
+    @media (min-width: 1300px) 
+    {
+        #StandardFrame-BC7
+        {
+            padding-top:1.2rem;
+            padding-bottom: 1.2rem;
+        }       
+    }
+    @media (max-width:490px) 
+    {
+        #StandardFrame-Badge7
+        {
+            width: 80%;
+        }
+        #StandardFrame-BIT7
+        {
+            font-size: 40%;
+        }
+        #StandardFrame-BPN7
+        {
+            font-size: 1rem !important;
+        }
+    }
+    @media (max-width:760px) 
+    {
+        #StandardFrame7
+        {
+            width: 90%;
+            font-size: 3rem !important;
+        }
+
+        #StandardFrame-Badge7
+        {
+            width: 80%;
+        }
+        #StandardFrame-BIT7
+        {
+            font-size: 40%;
+        }
+        #StandardFrame-BPN7
+        {
+            font-size: 3.5rem !important;
+        }
+        #StandardFrame-BC7
+        {
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+        }        
+
+    }
+    @media (max-width: 780px)
+    {
+        #StandardFrame7
+        {
+            font-size: 5rem;
+        }
+        #StandardFrame-BPN7
+        {
+            font-size: 4rem;
+        }
+
+        #StandardFrame-BC7
+        {
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }        
+    }
+
+    /*  -------------------------------------------Standard8  ----------------------------------- */
+#StandardFrame8
+{
+    display:flex;
+    width: 90%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    background-color:#E7E7E7;
+    color: black;
+    font-weight:bold;
+    margin-bottom: 1rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    font-size:4rem;
+    border-radius: 8px;
+    line-height: 1.2;
+    height: 7rem;
+    border-bottom-left-radius: 150%;
+    border-bottom-right-radius: 150%;
+}
+
+#StandardFrame-Badge8
+{
+    display:grid;
+    grid-template-columns: 20% 80%;
+    width: 80%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    background-color:#E7E7E7;
+    color: black;
+    font-weight:bold;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    border-radius: 7px;
+    line-height: 1.2;
+    height: 7rem;
+    border-bottom-left-radius: 150%;
+    border-bottom-right-radius: 150%;
+
+}
+#StandardFrame-BC8
+{
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+    align-items: center;
+    color: black;
+    padding-top:0.5rem;
+    padding-bottom: 0.5rem;
+    border-radius: 7px;
+    margin-top: -1rem;
+    margin-left: 2rem;
+}
+#StandardFrame-BI8
+{
+    width: 50%;
+    height: 80%;
+    margin-bottom: 0.5rem;
+}
+#StandardFrame-BIT8
+{
+    font-size: 60%;
+    text-align: center;
+}
+#StandardFrame-BPN8
+{
+    margin-left: 1rem;
+    text-align: center;
+    font-size: 350%;
+    color: black;
+    font-weight: bold;
+    border-radius: 7px;
+    margin-left: -1rem;
+}   
+    @media (max-width:530px) 
+    {
+        #StandardFrame8
+        {
+            font-size: 3rem !important;
+        }
+        #StandardFrame-BIT8
+        {
+            font-size: 40%;
+        }
+        #StandardFrame-BPN8
+        {
+            font-size: 2.5rem !important;
+        }
+    }
+
+
+
+
+
+    #PlateFront4DR, #PlateFront4D2R, #PlateFront4D3R, #PlateFront4D4R, #PlateFront4D5R,
+    #PlateFront4D6R, #PlateFront4D7R, #PlateFront4D8R {
+        display: flex;
+        font-family: 'Montserrat', sans-serif;
+        justify-content: center;
+        color: #828282;
+        padding: 0.5rem;
+        border-radius: 5px;
+        font-weight: bold;
+        margin-bottom: 1rem;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    #PlateFront4DR {
+        font-size: 5rem;
+    }
+    
+    #PlateFront4D2R {
+        font-size: 4.5rem;
+    }
+    
+    #PlateFront4D3R {
+        font-size: 4.2rem;
+    }
+    
+    #PlateFront4D4R {
+        font-size: 1rem;
+    }
+    
+    #PlateFront4D5R {
+        font-size: 5rem;
+    }
+    
+    #PlateFront4D6R {
+        font-size: 2rem;
+    }
+    
+    #PlateFront4D7R {
+        font-size: 6rem;
+    }
+    
+    #PlateFront4D8R {
+        font-size: 4rem;
+    }
+    
+    #PlateFront4DR::after, #PlateFront4D2R::after, #PlateFront4D3R::after,
+    #PlateFront4D4R::after, #PlateFront4D5R::after, #PlateFront4D6R::after,
+    #PlateFront4D7R::after, #PlateFront4D8R::after {
+        content: attr(data-content);
+        color: black;
+        width: 100%;
+        overflow: hidden;
+        padding: 0.5rem;
+        border-radius: 5px;
+        font-weight: bold;
+        margin-bottom: 1rem;
+        position: absolute;
+        top: 49%;
+        left: 49%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
+    
+    #PlateFront4DR::after {
+        font-size: 5rem;
+    }
+    
+    #PlateFront4D2R::after {
+        font-size: 4.5rem;
+    }
+    
+    #PlateFront4D3R::after {
+        font-size: 4.2rem;
+    }
+    
+    #PlateFront4D4R::after {
+        font-size: 1rem;
+    }
+    
+    #PlateFront4D5R::after {
+        font-size: 5rem;
+    }
+    
+    #PlateFront4D6R::after {
+        font-size: 2rem;
+    }
+    
+    #PlateFront4D7R::after {
+        font-size: 6rem;
+    }
+    
+    #PlateFront4D8R::after {
+        font-size: 4rem;
+    }
+    
+    .BG_Plate1 {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 10% 88%;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 1rem;
+        padding: 0.3rem;
+        border-radius: 10px;  
+      }
+      
+      .BG_Container1 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        text-align: center;
+        height: 100%;
+        margin-right: 4%;
+        padding-top: 0.3rem;
+        padding-bottom: 0.3rem;
+        border-radius: 5px;
+        color: #E7E7E7;
+      }
+      
+      .BG_Image1 {
+        width: 50px;
+        height: 30px;
+      }
+      .BG_Image2
+      {
+        width: 35px;
+        height: 50px;
+      }
+      
+      #BG_Text {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 10px;
+        font-weight: 600;
+        color: white;
+      }
+      #BG_Text1 {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 25px;
+        font-weight:bolder;
+        color: white;
+      }
+
+      .BG_Container2 {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .BG_Number1 {
+        border-radius: 8px;
+        text-align: center;
+        font-size: 80px;
+        font-weight: bolder;
+        color: black;
+        box-sizing: border-box;
+        padding: 0;
+      }
+      
+      .BG_Footer {
+        width:fit-content;
+        height: fit-content;
+        margin-bottom: -0.1rem;
+        margin-top: -1rem;
+        font-size: 12px;
+        color: #000000;
+        text-align: center;
+        margin-left:40%;
+      }
+      
+      @media (max-width: 768px) {
+        .BG_Plate1 {
+          grid-template-columns: 10% 88%;
+          padding: 0.5rem;
+          border-radius: 8px;
+          margin-bottom: 0.5rem;
+        }
+      
+        .BG_Container1 {
+          margin-right: 3%;
+          padding-top: 0.2rem;
+          padding-bottom: 0.2rem;
+          border-radius: 4px;
+          font-size: 8px;
+        }
+      
+        .BG_Image1 {
+          width: 40px;
+          height: 25px;
+        }
+        .BG_Image2
+        {
+          width: 30px;
+          height: 40px;
+        }
+        #BG_Text {
+          font-size: 8px;
+        }
+      
+        .BG_Number1 {
+          font-size: 50px;
+          border-radius: 6px;
+        }
+    
+    }
+
+    @media (max-width: 520px) {
+        .BG_Image1 {
+            width: 30px;
+            height: 20px;  
+        }
+        #BG_Text {
+            font-size: 6px;
+        }
+        .BG_Container1 {
+            padding: 0.5rem;
+        }
+        .BG_Number1 {
+            font-size: 40px;
+          }
+    }
+
+/****************************************************************************************************************************/
+.S2_Wrapper
+{
+    width: 60%;
+    height:fit-content;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    padding: 0.3rem;
+}
+.S2_Container
+{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border-radius: 8px;
+    padding: 0.3rem;
+}
+.S2_Top
+{
+    margin-top: -1.5rem;
+    border-radius: 8px;
+    border-bottom: 0;
+    font-size: 7rem;
+    color: black;
+    font-weight: bolder;
+}
+.S2_Bottom
+{
+    margin-top: -3rem;
+    margin-bottom: -1.5rem;
+    border-radius: 8px;
+    border-bottom: 0;
+    font-size: 7rem;
+    color: black;
+    font-weight: bolder;
+}
+@media (max-width: 520px) {
+    .S2_Top
+    {
+        margin-top: -1rem;
+        font-size: 4rem;
+    }
+    .S2_Bottom
+    {
+        margin-top: -2rem;
+        font-size: 4rem;
+    }
+}
+
+.S2_Footer {
+    font-family:Arial, Helvetica, sans-serif;
+    width:fit-content;
+    height: fit-content;
+    margin-bottom: -0.5rem;
+    font-size: 12px;
+    color: #000000;
+    text-align: center;
 }

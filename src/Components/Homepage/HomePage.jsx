@@ -1,89 +1,206 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Navigation from '../Navigation/Navigation';
 import './Homepage.css'
 
 export default function HomePage() {
-  const [selectedState, setSelectedState] = useState('');
+  const [selectedState, setSelectedState] = useState("standard");
   const [PlateChoice, SetPlateChoice] = useState("Front and Rear");
   const [PlateText, SetPlateText] = useState("");
-  const [Layout, SetLayout] = useState("");
+  const [Layout, SetLayout] = useState("standard");
   const [Font, SetFont] = useState("'Montserrat', sans-serif");
   const [FrontSize, SetFrontSize] = useState("Option1");
   const [RearSize , SetRearSize] = useState("Option1");
   const [Badge , SetBadge ] = useState()
   const [BadgeCity , SetBadgeCity ] = useState("")
   const [BadgeFlag , SetBadgeFlag ] = useState("")
-  
-  function extractFlagAndCity(badge) {
-    const [flag, city] = badge.split('-');
-    return { flag, city };
-  }
+  const [BadgeBackground , SetBadgeBackground ] = useState("#366CB7")
+  const [Border , SetBorder] = useState("transparent")
+  const [FooterText,SetFooterText] = useState("FOOTER")
+  const [Vertical , SetVertical] = useState(false)
+  const [ShortHand, setShortHand] = useState(false);
+  const [FooterColor , SetFooterColor] = useState("black")
+
+  const HandleFooterColor= (e) => { SetFooterColor(e.target.value); };
+
   const HandlePlates = (e) => { SetPlateChoice(e.target.value); };
-  const HandlePlateText = (e) => { SetPlateText(e.target.value); };
-  const handleRadioChange = (e) => { setSelectedState(e.target.value); };
-  const HandleLayout = (e) => { SetLayout(e.target.value); };
-  const HandleFont = (e) => { SetFont(e.target.value); };
-  const HandleFrontSize = (e) => { SetFrontSize(e.target.value); };
-  const HandleRearSize = (e) => { SetRearSize(e.target.value); };
+  const HandlePlateText = (e) => { 
+    const plateText = e.target.value;
+    SetPlateText(plateText);
+  };
+    const handleRadioChange = (e) => { setSelectedState(e.target.value); };
+  const HandleLayout = (e) => { 
+    SetLayout(e.target.value);
+    SetFooterColor("black")
+   };
+  const HandleFont = (e) => { 
+    SetFont(e.target.value); 
+  };
+  const HandleFrontSize = (e) => { 
+    SetFrontSize(e.target.value); 
+    const styleOptions = {
+      Option1: "PlateFront4D",
+      Option2: "PlateFront4D2",
+      Option3: "PlateFront4D3",
+      Option4: "PlateFront4D4",
+      Option5: "PlateFront4D5",
+      Option6: "PlateFront4D6",
+      Option7: "PlateFront4D7",
+      Option8: "PlateFront4D8",
+    };
+    setAttribute(styleOptions[e.target.value]);
+    const plateFront4D = document.getElementById(Attribute);
+    if (plateFront4D) {
+      plateFront4D.setAttribute("data-content", PlateText);
+    }
+  };
+  const HandleRearSize = (e) => { 
+    SetRearSize(e.target.value); 
+    const styleOptions = {
+      Option1: "PlateFront4DR",
+      Option2: "PlateFront4D2R",
+      Option3: "PlateFront4D3R",
+      Option4: "PlateFront4D4R",
+      Option5: "PlateFront4D5R",
+      Option6: "PlateFront4D6R",
+      Option7: "PlateFront4D7R",
+      Option8: "PlateFront4D8R",
+    };
+    setAttribute2(styleOptions[e.target.value]);
+    const plateFront4D = document.getElementById(Attribute2);
+    if (plateFront4D) {
+      plateFront4D.setAttribute("data-content", PlateText);
+    }
+  };
+  const HandleBadgeBg = (e) => { SetBadgeBackground(e.target.value) };
+  const HandleBorder = (e) => { SetBorder(e.target.value) };
   const HandleBadge = (e) => { 
     SetBadge(e.target.value); 
-    const [flag, city] = e.target.value.split('-');
-    SetBadgeCity(city);
-    SetBadgeFlag(flag);
-};
+    if (e.target.value!=="")
+    {
+      const [flag, city] = e.target.value.split('-');
+      if (flag.endsWith('P')) {
+        SetVertical(true)
+      }
+      else{
+        SetVertical(false)
+      }
+      if(city.length>4)
+      {
+        setShortHand(true)
+      }else
+      {
+        setShortHand(false)
+      }
+      SetBadgeCity(city);
+      SetBadgeFlag(flag.replace("P", ""));  
+    }
+    if (e.target.value==="")
+    {
+      SetBadge("")
+      SetBadgeCity("");
+      SetBadgeFlag("");
+    }
+  };
+  const HandleFooter = (e) => { SetFooterText(e.target.value)}
+  const ResetBc = ()=> {SetBorder("transparent")}
+  const ResetBg = ()=> {SetBadgeBackground("#366CB7")}
+  const [Attribute, setAttribute] = useState("PlateFront4D");
+  const [Attribute2, setAttribute2] = useState("PlateFront4DR");
+
+  useEffect( ()=>{
+    const plateFront4D = document.getElementById(Attribute);
+    if (plateFront4D) {
+      plateFront4D.setAttribute("data-content", PlateText);
+    }
+    const plateFront4D2 = document.getElementById(Attribute2);
+    if (plateFront4D2) {
+      plateFront4D2.setAttribute("data-content", PlateText);
+    }
+
+  })
 
   return (
     <>
       <Navigation />
 
-      <div className="container my-3" id="Cover-Holder">
-        <h3>Number Plate Builder - Make your own Number Plates {BadgeCity}{BadgeFlag}</h3>
-        <div className="container" id="Cover-Inner">
-          <h6>
-            ALL PLATES WILL BE MADE WITH ROAD LEGAL SPACING UNLESS A NOTE IS LEFT ON THE PAYMENTS PAGE TO STATE OTHERWISE. PLATES CANNOT BE CHANGED AFTER PAYMENT IS MADE. (ONLY LEGALLY SPACED PLATES WILL CONTAIN THE MAKERS NAME AND POSTCODE)
-          </h6>
-        </div>
-      </div>
-
       <div className="container" id="Create-Plate-Div">
+
         <div id="PlateDisplay">
-            {PlateChoice === "Front and Rear" && !Badge ? (
+            <img src="/Logo.png" alt="Logo"></img>
+            { (PlateChoice === "Front and Rear" || PlateChoice === "Front Only")  && Badge && selectedState === 'standard' && FrontSize ==="Option1" &&
                 <>
-                <div className="container" style={{ ...GetStyles(FrontSize, 'Front'), fontFamily: Font }}>
-                    {PlateText}
-                </div>
-                <div className="container" style={{ ...GetStyles(RearSize, 'Rear'), fontFamily: Font }}>
-                    {PlateText}
-                </div>
+                    <div className="BG_Plate1" style={{backgroundColor: "#E7E7E7"}}>
+                      <div className="BG_Container1" style={{ backgroundColor: BadgeBackground}}>
+                            <img src={`/Badges/${BadgeFlag}.png`}  className={Vertical?"BG_Image2":"BG_Image1"} alt='Badge'></img>
+                            <div id={ShortHand?"BG_Text":"BG_Text1"}>{BadgeCity}</div>
+                      </div>
+                      <div className='BG_Container2'>
+                      {PlateText && <div className="BG_Number1" style={{ fontFamily: Font, border: `3px solid ${Border}`}}>{PlateText}</div>}
+                      {!PlateText && <div className="BG_Number1" style={{ fontFamily: Font, border: `3px solid ${Border}`}}>YOUR REG</div>}
+                      {Layout==="Legal Plates" && <p className="BG_Footer" style={{backgroundColor: "#E7E7E7"}}>CPD JE2 4UE</p>}
+                      {Layout==="Custom Plates" && <p className="BG_Footer" style={{backgroundColor: "#E7E7E7" , color: FooterColor}}>{FooterText}</p>}
+                      </div>
+                    </div>
                 </>
-            ) : PlateChoice === "Front and Rear" && Badge ? (
+            }
+            { (PlateChoice === "Front and Rear" || PlateChoice === "Rear Only")  && Badge && selectedState === 'standard' && FrontSize ==="Option1" &&
                 <>
-                    <div className="container" style={GetOptionStyles(FrontSize, 'Front').PlateFront}>
-                        <div style={GetOptionStyles(FrontSize, 'Front').BadgeContainer}>
-                            <img src='/Badges/Scotland.png' style={GetOptionStyles(FrontSize, 'Front').BadgeImage} alt='Badge'></img>
-                            <div style={GetOptionStyles(FrontSize, 'Front').BadgeImageText}>{BadgeCity}</div>
+                    <div className="BG_Plate1" style={{backgroundColor: "#EC8E22"}}>
+                      <div className="BG_Container1" style={{ backgroundColor: BadgeBackground}}>
+                            <img src={`/Badges/${BadgeFlag}.png`}  className={Vertical?"BG_Image2":"BG_Image1"} alt='Badge'></img>
+                            <div id={ShortHand?"BG_Text":"BG_Text1"}>{BadgeCity}</div>
+                      </div>
+                      <div className='BG_Container2'>
+                      {PlateText && <div className="BG_Number1" style={{ fontFamily: Font, border: `3px solid ${Border}`}}>{PlateText}</div>}
+                      {Layout==="Legal Plates" && <p className="BG_Footer" style={{backgroundColor: "#EC8E22"}}>CPD JE2 4UE</p>}
+                      {Layout==="Custom Plates" && <p className="BG_Footer" style={{backgroundColor: "#EC8E22" , color: FooterColor}}>{FooterText}</p>}
+                      </div>
+                    </div>
+                </>
+            }
+            { (PlateChoice === "Front and Rear" || PlateChoice === "Front Only")  && !Badge && selectedState === 'standard' && FrontSize ==="Option2" &&
+                <>
+                    
+                    <div className='S2_Wrapper' style={{backgroundColor: "#E7E7E7"}}>
+                      <div className='S2_Container' style={{ fontFamily: Font, border: `3px solid ${Border}`}}>
+                          <div className='S2_Top'>
+                            {PlateText.substring(0, 3)}
+                          </div>
+                          <div className='S2_Bottom'>
+                            <p className='S2_Para'>{PlateText.substring(3)}</p> 
+                          </div>
+                          {Layout==="Legal Plates" && <p className="S2_Footer" style={{backgroundColor: "#E7E7E7"}}>CPD JE2 4UE</p>}
+                          {Layout==="Custom Plates" && <p className="S2_Footer" style={{backgroundColor: "#E7E7E7" , color: FooterColor}}>{FooterText}</p>}
+
                         </div>
-                        <div style={{ ...GetOptionStyles(FrontSize, 'Front').BadgePlateNumber, fontFamily: Font }}>{PlateText}</div>
                     </div>
 
-                    <div className="container" style={GetOptionStyles(RearSize, 'Rear').PlateFront}>
-                        <div style={GetOptionStyles(RearSize, 'Rear').BadgeContainer}>
-                            <img src='/Badges/Scotland.png' style={GetOptionStyles(RearSize, 'Rear').BadgeImage} alt='Badge'></img>
-                            <div style={GetOptionStyles(RearSize, 'Rear').BadgeImageText}>{BadgeCity}</div>
-                        </div>
-                        <div style={{ ...GetOptionStyles(RearSize, 'Rear').BadgePlateNumber, fontFamily: Font }}>{PlateText}</div>
-                    </div>
+    
 
+                    <div className="BG_Plate1" style={{backgroundColor: "#E7E7E7"}}>
+                      <div className="BG_Container1" style={{ backgroundColor: BadgeBackground}}>
+                            <img src={`/Badges/${BadgeFlag}.png`}  className={Vertical?"BG_Image2":"BG_Image1"} alt='Badge'></img>
+                            <div id={ShortHand?"BG_Text":"BG_Text1"}>{BadgeCity}</div>
+                      </div>
+                      <div className='BG_Container2'>
+                      {PlateText && <div className="BG_Number1" style={{ fontFamily: Font, border: `3px solid ${Border}`}}>{PlateText}</div>}
+                      {!PlateText && <div className="BG_Number1" style={{ fontFamily: Font, border: `3px solid ${Border}`}}>YOUR REG</div>}
+                      {Layout==="Legal Plates" && <p className="BG_Footer" style={{backgroundColor: "#E7E7E7"}}>CPD JE2 4UE</p>}
+                      {Layout==="Custom Plates" && <p className="BG_Footer" style={{backgroundColor: "#E7E7E7" , color: FooterColor}}>{FooterText}</p>}
+                      </div>
+                    </div>
                 </>
-            ) : PlateChoice === "Front Only" ? (
-                <div className="container" id="PlateFront">
-                {PlateText}
-                </div>
-            ) : PlateChoice === "Rear Only" ? (
-                <div className="container" id="PlateRear">
-                {PlateText}
-                </div>
-            ) : null}
+          }
+
+
+
+
+
+
+
+
+
+
             </div>
         <div id="Plate-div-2">
           <>
@@ -111,9 +228,10 @@ export default function HomePage() {
             </div>
           </>
 
-          <div id="PlateDisplay">
-            <input required type="text" placeholder="Registration Number" name="PlateText" id="PlateText" label="PlateText" onChange={HandlePlateText} />
-          </div>
+            <div className="PlateDisplay">
+              <input required type="text" placeholder="Registration Number" name="PlateText" className="PlateText" label="PlateText" onChange={HandlePlateText} />
+            </div>
+
 
           {selectedState === 'standard' ? (
             <>
@@ -160,20 +278,64 @@ export default function HomePage() {
                   <option value="Option5">330mm X 165mm (13in X 6.5in)</option>
                   <option value="Option6">16in X 4.5in (16in X 4.5in)</option>
                   <option value="Option7">520mm X 127mm (20.5in X 5in)</option>
-                  <option value="Option8">520mm x 140mm (20.5in x 5.5in)</option>
-                  <option value="Option9">Rover 75 (635x175mm)</option>                  
+                  <option value="Option8">Rover 75 (635x175mm)</option>
                 </select>
               </div>
 
-              <div className="container my-2" id='Selection-Options'>
-                <select id='Dropdown-Medium' required onChange={HandleBadge}>
+              <div className="container my-2" id='Selection-Options2'>
+                <select id='Dropdown-Large' required onChange={HandleBadge}>
                     <option value="">-- Select Badge --</option>
                 {Badges.map((badge, index) => (
                     <option key={index} value={badge}>{badge}</option>
                   ))}
                 </select>
+              </div>
 
-                <select id='Dropdown' required onChange={HandleFont}>
+              <div className="container my-2" id='Selection-Options2'>
+                  <div id='ColorPickerdiv'>
+                    <label htmlFor="ColorPicker" >Select Badge Background:</label>
+                    <input type="color" id='ColorPicker' onChange={HandleBadgeBg} />
+                  </div>
+                  <div>
+                    <button type="button" onClick={ResetBg} id="ResetButton">Set Default</button>                  
+                  </div>
+              </div>
+
+              <div className="container my-2" id='Selection-Options2'>
+                  <div id='ColorPickerdiv'>
+                    <label htmlFor="ColorPicker" >Select Plate Border Color:</label>
+                    <input type="color" style={{ marginLeft:"1.3rem"}}id='ColorPicker' onChange={HandleBorder} />
+                  </div>
+                  <div>
+                    <button type="button" onClick={ResetBc} id="ResetButton">Set Default</button>                  
+                  </div>
+              </div>
+
+              {Layout==="Custom Plates" &&
+                <div className="container my-2" id='Selection-Options'>
+
+                    <input required type="text" placeholder={FooterText} name="PlateText" id="fOOTER" label="PlateText" onChange={HandleFooter} />
+                    <div id='ColorPickerdiv'>
+                      <label htmlFor="ColorPicker" >Footer Color:</label>
+                      <input type="color" id='ColorPicker' onChange={HandleFooterColor} />
+                  </div>
+
+                </div>
+
+            }
+
+            </>
+          ) :
+            (
+              <>
+                <div className="container my-2" id='Selection-Options'>
+                <select id='Dropdown-Medium' required onChange={HandlePlates}>
+                  <option value="Front and Rear">Front and Rear</option>
+                  <option value="Front Only">Front Only</option>
+                  <option value="Rear Only">Rear Only</option>
+                </select>
+
+                <select id='Dropdown-Medium' required onChange={HandleFont}>
                   <option value="">-- Select Plate Font--</option>
                   {Fonts.map((font, index) => (
                     <option key={index} value={FontFamily[index]}>{font}</option>
@@ -181,12 +343,42 @@ export default function HomePage() {
                 </select>
               </div>
 
+              <div className="container my-2" id='Selection-Options'>
+                <select id='Dropdown-Large' required onChange={HandleFrontSize}>
+                  <option value="">-- Select Front Plate Size--</option>
+                  <option value="Option1">Standard Size (20.5x4.4in)</option>
+                  <option value="Option2">Standard 4x4 279mm X 203mm (11in X 8in)</option>
+                  <option value="Option3">305mm X 152mm (12in X 6in)</option>
+                  <option value="Option4">330mm x 111mm (13in X 4.4in)</option>
+                  <option value="Option5">330mm X 165mm (13in X 6.5in)</option>
+                  <option value="Option6">16in X 4.5in (16in X 4.5in)</option>
+                </select>
+              </div>
 
+              <div className="container my-2" id='Selection-Options'>
+                <select id='Dropdown-Large' required onChange={HandleRearSize}>
+                  <option value="">-- Select Rear Plate Size--</option>
+                  <option value="Option1">Standard Size (20.5x4.4in)</option>
+                  <option value="Option2">Standard 4x4 279mm X 203mm (11in X 8in)</option>
+                  <option value="Option3">305mm X 152mm (12in X 6in)</option>
+                  <option value="Option4">330mm x 111mm (13in X 4.4in)</option>
+                  <option value="Option5">330mm X 165mm (13in X 6.5in)</option>
+                  <option value="Option6">16in X 4.5in (16in X 4.5in)</option>
+                  <option value="Option7">520mm X 127mm (20.5in X 5in)</option>
+                  <option value="Option8">Rover 75 (635x175mm)</option>
+                </select>
+              </div>
 
-            </>
-          ) :
-            (
-              <>
+              <div className="container my-2" id='Selection-Options2'>
+                  <div id='ColorPickerdiv'>
+                    <label htmlFor="ColorPicker" >Select Plate Border Color:</label>
+                    <input type="color" id='ColorPicker' onChange={HandleBorder} />
+                  </div>
+                  <div>
+                    <button type="button" onClick={ResetBc} id="ResetButton">Reset Border Color</button>                  
+                  </div>
+              </div>
+
               </>
             )}
         </div>
@@ -243,632 +435,86 @@ const FontFamily = [
   "'Nunito', sans-serif"
 ];
 
-const GetStyles = (Option , StyleType) =>
-{
-    let baseStyle = {}
-    if (StyleType==='Front')
-    {
-        baseStyle = {
-            display: 'flex',
-            justifyContent: "center",
-            alignItems: "center",
-            backgroundColor: "#E7E7E7",
-            color: "black",
-            fontWeight: "bold",
-            marginBottom: "1rem",
-          };
-    }
-    else if (StyleType==='Rear')
-    {
-        baseStyle = {
-            display: 'flex',
-            justifyContent: "center",
-            alignItems: "center",
-            backgroundColor: "#F1B317",
-            color: "black",
-            fontWeight: "bold",
-            borderRadius: "7px",
-            marginBottom: "1rem",
-        };
-    }
-    const PlateStyles = {
-        Option1: {
-          ...baseStyle,
-          paddingLeft: "0.5rem",
-          paddingRight: "0.5rem",
-          fontSize: "5rem",
-          borderRadius: "7px",
-        },
-        Option2: {
-          ...baseStyle,
-          width: "45%",
-          height: "14rem",
-          textOverflow: "none",
-          lineHeight: "1.2",
-          fontSize: "5rem",
-          textAlign: "center",
-          borderRadius: "7px",
-        },
-        Option3: {
-          ...baseStyle,
-          width: "55%",
-          lineHeight: "1",
-          height: "10rem",
-          textOverflow: "none",
-          fontSize: "5rem",
-          textAlign: "center",
-        },
-        Option4: {
-          ...baseStyle,
-          width: "60%",
-          height: "8rem",
-          paddingLeft: "0.5rem",
-          paddingRight: "0.5rem",
-          fontSize: "1rem",
-          borderRadius: "7px",
-        },
-        Option5: {
-          ...baseStyle,
-          width: "60%",
-          height: "10rem",
-          fontSize: "5.4rem",
-          padding: "6rem",
-          borderRadius: "7px",
-          textAlign: "center",
-          lineHeight: "1",
-        },
-        Option6: {
-          ...baseStyle,
-          width: "80%",
-          height: "8rem",
-          fontSize: "5rem",
-          borderRadius: "7px",
-        },
-        Option7:
-        {
-            ...baseStyle,
-            padding: "0.3rem",
-            fontSize: "6rem",
-        },
-        Option8:
-        {
-            ...baseStyle,
-            padding: "0.6rem",
-            fontSize: "6rem",
-        },
-        Option9:
-        {
-            ...baseStyle,
-            padding: "0.5rem",
-            paddingTop: "0.1rem",
-            borderRadius: "1rem",
-            borderBottomRightRadius: "100%",
-            borderBottomLeftRadius: "100%",
-            fontSize: "5rem",
-        
-        }
-      };
-      
-    return PlateStyles[Option]
-} 
+const GetStyles = (Option) => {
+  const styleOptions = {
+    Option1: "StandardFrame",
+    Option2: "StandardFrame2",
+    Option3: "StandardFrame3",
+    Option4: "StandardFrame4",
+    Option5: "StandardFrame5",
+    Option6: "StandardFrame6",
+    Option7: "StandardFrame7",
+    Option8: "StandardFrame8",
+  };
 
-const GetOptionStyles = (Option, StyleType) => {
-    let baseStyle = {};
-  
-    if (StyleType === 'Front') {
-      baseStyle = {
-        display: 'grid',
-        gridTemplateColumns: '10% 90%',
-        fontFamily: 'Montserrat, sans-serif',
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderRadius: '7px',
-        backgroundColor: '#E7E7E7',
-        color: 'black',
-        fontWeight: 'bold',
-        marginBottom: '1rem',
-      };
-    }    
-    if (StyleType === 'Rear') {
-        baseStyle = {
-          display: 'grid',
-          gridTemplateColumns: '10% 90%',
-          fontFamily: 'Montserrat, sans-serif',
-          alignItems: 'center',
-          justifyContent: 'center',
-          borderRadius: '7px',
-          backgroundColor:"#EC8E22",
-          color: 'black',
-          fontWeight: 'bold',
-          marginBottom: '1rem',
-        };
-      }    
-      
-  
-    const OptionStyles = {
-      Option1: {
-        BadgeImage: {
-          width: '70%',
-          height: '50%',
-          objectFit: 'cover',
-          marginBottom: '4rem',
-        },
-        BadgeImageText: {
-          textAlign: 'center',
-          fontSize: '0.5rem',
-          justifyContent: 'center',
-          textOverflow: 'none',
-        },
-        BadgePlateNumber: {
-          margin: '0.5rem',
-          marginLeft: '0.5rem',
-          border: '3px solid red',
-          borderRadius: '7px',
-        },
-        BadgeContainer: {
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          borderRadius: '0.2rem',
-          backgroundColor: '#EC8E22',
-          color: 'white',
-          paddingTop: '0.5rem',
-          paddingBottom: '0.5rem',
-        },
-        PlateFront: {
-          ...baseStyle,
-          fontSize: '5rem',
-          textAlign: 'center',
-        },
-      },
-      Option2: {
-        BadgeImage: {
-          width: '70%',
-          height: '50%',
-          objectFit: 'cover',
-          marginBottom: '4rem',
-        },
-        BadgeImageText: {
-          textAlign: 'center',
-          fontSize: '0.3rem',
-          justifyContent: 'center',
-          textOverflow: 'none',
-        },
-        BadgePlateNumber: {
-          margin: '0.5rem',
-          marginLeft: '0.5rem',
-          border: '3px solid red',
-          borderRadius: '7px',
-        },
-        BadgeContainer: {
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          borderRadius: '0.2rem',
-          backgroundColor: '#EC8E22',
-          color: 'white',
-          paddingTop: '0.5rem',
-          paddingBottom: '0.5rem',
-        },
-        PlateFront: {
-          ...baseStyle,
-          width: '45%',
-          height: '14rem',
-          textOverflow: 'none',
-          lineHeight: '1.2',
-          fontSize: '4rem',
-          textAlign: 'center',
-        },
-      },
-      Option3: {
-        BadgeImage: {
-          width: '70%',
-          height: '50%',
-          objectFit: 'cover',
-          marginBottom: '4rem',
-        },
-        BadgeImageText: {
-          textAlign: 'center',
-          fontSize: '0.5rem',
-          justifyContent: 'center',
-          textOverflow: 'none',
-        },
-        BadgePlateNumber: {
-          margin: '0.5rem',
-          marginLeft: '0.5rem',
-          border: '3px solid red',
-          borderRadius: '7px',
-        },
-        BadgeContainer: {
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          borderRadius: '0.2rem',
-          backgroundColor: '#EC8E22',
-          color: 'white',
-          paddingTop: '0.5rem',
-          paddingBottom: '0.5rem',
-        },
-        PlateFront: {
-          ...baseStyle,
-          width: '55%',
-          height: '12rem',
-          textOverflow: 'none',
-          lineHeight: '1.2',
-          fontSize: '4rem',
-          textAlign: 'center',
-        },
-      },
-      Option4: {
-        BadgeImage: {
-          width: '80%',
-          height: '50%',
-          objectFit: 'cover',
-          marginBottom: '4rem',
-        },
-        BadgeImageText: {
-          textAlign: 'center',
-          fontSize: '0.3rem',
-          justifyContent: 'center',
-          textOverflow: 'none',
-        },
-        BadgePlateNumber: {
-          margin: '0.5rem',
-          marginLeft: '0.5rem',
-        },
-        BadgeContainer: {
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          borderRadius: '0.2rem',
-          backgroundColor: '#EC8E22',
-          color: 'white',
-          paddingTop: '0.5rem',
-          paddingBottom: '0.5rem',
-        },
-        PlateFront: {
-          ...baseStyle,
-          width: '55%',
-          height: '8rem',
-          textOverflow: 'none',
-          lineHeight: '1.2',
-          fontSize: '2rem',
-          textAlign: 'center',
-        },
-      },
-      Option5: {
-        BadgeImage: {
-          width: '70%',
-          height: '50%',
-          marginBottom: '4rem',
-        },
-        BadgeImageText: {
-          textAlign: 'center',
-          fontSize: '0.3rem',
-          justifyContent: 'center',
-          textOverflow: 'none',
-        },
-        BadgePlateNumber: {
-          margin: '0.5rem',
-        },
-        BadgeContainer: {
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          borderRadius: '0.2rem',
-          backgroundColor: '#EC8E22',
-          color: 'white',
-          paddingTop: '0.5rem',
-          paddingBottom: '0.5rem',
-        },
-        PlateFront: {
-          ...baseStyle,
-          width: '65%',
-          height: '15rem',
-          textOverflow: 'none',
-          lineHeight: '1.2',
-          fontSize: '5rem',
-          textAlign: 'center',
-        },
-      },
-      Option6: {
-        BadgeImage: {
-          width: '70%',
-          height: '50%',
-          marginBottom: '4rem',
-        },
-        BadgeImageText: {
-          textAlign: 'center',
-          fontSize: '0.3rem',
-          justifyContent: 'center',
-          textOverflow: 'none',
-        },
-        BadgePlateNumber: {
-          margin: '0.5rem',
-        },
-        BadgeContainer: {
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          borderRadius: '0.2rem',
-          backgroundColor: '#EC8E22',
-          color: 'white',
-          paddingTop: '0.5rem',
-          paddingBottom: '0.5rem',
-        },
-        PlateFront: {
-          ...baseStyle,
-          width: '70%',
-          height: '10rem',
-          textOverflow: 'none',
-          lineHeight: '1.2',
-          fontSize: '4rem',
-          textAlign: 'center',
-        },
-      },
-      Option7: {
-        BadgeImage: {
-          width: '70%',
-          height: '50%',
-          marginBottom: '4rem',
-        },
-        BadgeImageText: {
-          textAlign: 'center',
-          fontSize: '0.8rem',
-          justifyContent: 'center',
-          textOverflow: 'none',
-        },
-        BadgePlateNumber: {
-          margin: '0.5rem',
-        },
-        BadgeContainer: {
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          borderRadius: '0.2rem',
-          color: 'white',
-          paddingTop: '0.5rem',
-          paddingBottom: '0.5rem',
-        },
-        PlateFront: {
-          display: 'grid',
-          gridTemplateColumns: '10% 90%',
-          fontFamily: 'Montserrat, sans-serif',
-          alignItems: 'center',
-          justifyContent: 'center',
-          borderRadius: '7px',
-          backgroundColor: '#EC8E22',
-          color: 'black',
-          fontWeight: 'bold',
-          marginBottom: '1rem',
-          padding: '0.3rem',
-          fontSize: '4rem',
-          height: '10rem',
-          textOverflow: 'none',
-          lineHeight: '1.2',
-          fontSize: '4rem',
-          textAlign: 'center',
-        },
-      },
-      Option8 : {
-        BadgeImage: {
-          width: '70%',
-          height: '50%',
-          marginBottom: '4rem',
-        },
-        BadgeImageText: {
-          textAlign: 'center',
-          fontSize: '0.8rem',
-          justifyContent: 'center',
-          textOverflow: 'none',
-        },
-        BadgePlateNumber: {
-          margin: '0.5rem',
-        },
-        BadgeContainer: {
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          borderRadius: '0.2rem',
-          color: 'white',
-          paddingTop: '0.5rem',
-          paddingBottom: '0.5rem',
-        },
-        PlateFront: {
-          display: 'grid',
-          gridTemplateColumns: '10% 90%',
-          fontFamily: 'Montserrat, sans-serif',
-          alignItems: 'center',
-          justifyContent: 'center',
-          borderRadius: '7px',
-          backgroundColor: '#EC8E22',
-          color: 'black',
-          fontWeight: 'bold',
-          marginBottom: '1rem',
-          padding: '0.3rem',
-          fontSize: '15rem',
-          height: '12rem',
-          textOverflow: 'none',
-          lineHeight: '1.2',
-          fontSize: '4rem',
-          textAlign: 'center',
-        },
-      },
-      Option9: {
-        BadgeImage: {
-          width: '50%',
-          height: '50%',
-          marginBottom: '1rem',
-        },
-        BadgeImageText: {
-          textAlign: 'center',
-          fontSize: '0.7rem',
-          justifyContent: 'center',
-          textOverflow: 'none',
-        },
-        BadgePlateNumber: {
-          margin: '0.1rem',
-          marginTop: '-2rem',
-        },
-        BadgeContainer: {
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          borderRadius: '0.2rem',
-          color: 'white',
-          marginTop: '-2rem',
-          marginLeft: '3rem',
-          backgroundColor: 'red',
-          paddingTop: '0.2rem',
-          paddingBottom: '0.2rem',
-        },
-        PlateFront: {
-          display: 'grid',
-          gridTemplateColumns: '30% 70%',
-          fontFamily: 'Montserrat, sans-serif',
-          alignItems: 'center',
-          justifyContent: 'center',
-          borderRadius: '7px',
-          backgroundColor: '#EC8E22',
-          color: 'black',
-          fontWeight: 'bold',
-          marginBottom: '1rem',
-          padding: '0.3rem',
-          fontSize: '15rem',
-          borderBottomRightRadius: '100%',
-          borderBottomLeftRadius: '100%',
-          height: '12rem',
-          textOverflow: 'none',
-          lineHeight: '1.2',
-          fontSize: '4rem',
-          textAlign: 'center',
-        },
-      }
-      
-    };
+  return styleOptions[Option] || ""; // Return the corresponding style option or an empty string if not found
+};
 
-    return OptionStyles[Option]
-}  
-  
+const GetOptionStyles = (Option) =>{
+  const styleOptions = {
+    Option1: {
+      1: "StandardFrame-Badge",
+      2: "StandardFrame-BC",
+      3: "StandardFrame-BI",
+      4: "StandardFrame-BIT",
+      5: "StandardFrame-BPN",
+    },
+    Option2: {
+      1: "StandardFrame-Badge2",
+      2: "StandardFrame-BC2",
+      3: "StandardFrame-BI2",
+      4: "StandardFrame-BIT2",
+      5: "StandardFrame-BPN2",
+    },
+    Option3: {
+      1: "StandardFrame-Badge3",
+      2: "StandardFrame-BC3",
+      3: "StandardFrame-BI3",
+      4: "StandardFrame-BIT3",
+      5: "StandardFrame-BPN3",
+    },
+    Option4: {
+      1: "StandardFrame-Badge4",
+      2: "StandardFrame-BC4",
+      3: "StandardFrame-BI4",
+      4: "StandardFrame-BIT4",
+      5: "StandardFrame-BPN4",
+    },
+    Option5: {
+      1: "StandardFrame-Badge5",
+      2: "StandardFrame-BC5",
+      3: "StandardFrame-BI5",
+      4: "StandardFrame-BIT5",
+      5: "StandardFrame-BPN5",
+    },
+    Option6: {
+      1: "StandardFrame-Badge6",
+      2: "StandardFrame-BC6",
+      3: "StandardFrame-BI6",
+      4: "StandardFrame-BIT6",
+      5: "StandardFrame-BPN6",
+    },
+    Option7: {
+      1: "StandardFrame-Badge7",
+      2: "StandardFrame-BC7",
+      3: "StandardFrame-BI7",
+      4: "StandardFrame-BIT7",
+      5: "StandardFrame-BPN7",
+    },
+    Option8: {
+      1: "StandardFrame-Badge8",
+      2: "StandardFrame-BC8",
+      3: "StandardFrame-BI8",
+      4: "StandardFrame-BIT8",
+      5: "StandardFrame-BPN8",
+    },
+
+  };
+
+  return styleOptions[Option] || ""; // Return the corresponding style option or an empty string if not found
+}
   
     
-const GetBadgeStyles = (Option , StyleType) =>
-{
-    let baseStyle = {}
-    if (StyleType==='Front')
-    {
-        baseStyle = {
-            display: 'flex',
-            justifyContent: "center",
-            alignItems: "center",
-            backgroundColor: "#E7E7E7",
-            color: "black",
-            fontWeight: "bold",
-            marginBottom: "1rem",
-          };
-    }
-    else if (StyleType==='Rear')
-    {
-        baseStyle = {
-            display: 'flex',
-            justifyContent: "center",
-            alignItems: "center",
-            backgroundColor: "#F1B317",
-            color: "black",
-            fontWeight: "bold",
-            borderRadius: "7px",
-            marginBottom: "1rem",
-        };
-    }
-    const PlateStyles = {
-        Option1: {
-          ...baseStyle,
-          paddingLeft: "0.5rem",
-          paddingRight: "0.5rem",
-          fontSize: "5rem",
-          borderRadius: "7px",
-        },
-        Option2: {
-          ...baseStyle,
-          width: "45%",
-          height: "14rem",
-          textOverflow: "none",
-          lineHeight: "1.2",
-          fontSize: "5rem",
-          textAlign: "center",
-          borderRadius: "7px",
-        },
-        Option3: {
-          ...baseStyle,
-          width: "55%",
-          lineHeight: "1",
-          height: "10rem",
-          textOverflow: "none",
-          fontSize: "5rem",
-          textAlign: "center",
-        },
-        Option4: {
-          ...baseStyle,
-          width: "60%",
-          height: "8rem",
-          paddingLeft: "0.5rem",
-          paddingRight: "0.5rem",
-          fontSize: "1rem",
-          borderRadius: "7px",
-        },
-        Option5: {
-          ...baseStyle,
-          width: "60%",
-          height: "10rem",
-          fontSize: "5.4rem",
-          padding: "6rem",
-          borderRadius: "7px",
-          textAlign: "center",
-          lineHeight: "1",
-        },
-        Option6: {
-          ...baseStyle,
-          width: "80%",
-          height: "8rem",
-          fontSize: "5rem",
-          borderRadius: "7px",
-        },
-        Option7:
-        {
-            ...baseStyle,
-            padding: "0.3rem",
-            fontSize: "6rem",
-        },
-        Option8:
-        {
-            ...baseStyle,
-            padding: "0.6rem",
-            fontSize: "6rem",
-        },
-        Option9:
-        {
-            ...baseStyle,
-            padding: "0.5rem",
-            paddingTop: "0.1rem",
-            borderRadius: "1rem",
-            borderBottomRightRadius: "100%",
-            borderBottomLeftRadius: "100%",
-            fontSize: "5rem",
-        
-        }
-      };
-      
-    return PlateStyles[Option]
-} 
 
 const Badges = [
     "ST_GEORGE-ENG",
