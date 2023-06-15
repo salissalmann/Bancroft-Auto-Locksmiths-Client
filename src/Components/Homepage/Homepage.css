@@ -242,10 +242,11 @@
     display: flex;
     flex-wrap: wrap;
     border-radius: 0.5rem;
-    background-color: #EEE;
+    background-color: black;
+    color: white;
     box-sizing: border-box;
     box-shadow: 0 0 0px 1px rgba(0, 0, 0, 0.06);
-    border: 1px solid #51a3da77;
+    border: 1px solid red;
     padding: 0.25rem;
     width: 300px;
     font-size: 14px;
@@ -268,12 +269,13 @@
     border-radius: 0.5rem;
     border: none;
     padding: .5rem 0;
-    color: rgba(51, 65, 85, 1);
+    color: white;
     transition: all .15s ease-in-out;
   }
   
   .radio-inputs .radio input:checked + .name {
-    background-color: #fff;
+    background-color: red;
+    color: white;
     font-weight: 600;
   }
 
@@ -294,58 +296,23 @@
     display: flex;
     justify-content:space-evenly;
 }
-#ColorPickerdiv
-{
-    border: 1px solid gray;
-    display: flex;
-    align-items: center;
-    padding: 0.5rem;
-    width: 50%;
-    padding: 0.5rem;
-    margin-right: 0.4rem;
-}
-#ColorPicker
-{
-    margin-left: 1rem;
-}
 #ResetButton
 {
-    background-color:#F4CA29;
+    background-color:red;
     width:max-content;
     padding: 0.5rem;
     width: 100%;
-
+    border-radius: 5px;
     border: none;
+    color: white;
     transition-duration: 1s;
     border-radius: 7px;
 }
 #ResetButton:hover
 {
-    background-color:#f0d97e;
+    background-color:rgb(233, 112, 112);
 }
 
-#Dropdown
-{
-    padding: 0.5rem;
-    width: 100%;
-    margin-right: 0.4rem;
-    border: 1px solid gray;
-
-}
-#Dropdown-Medium
-{
-    border: 1px solid gray;
-    padding: 0.5rem;
-    width: 100%;
-    margin-right: 0.4rem;
-}
-#Dropdown-Large
-{
-    border: 1px solid gray;
-    width: 100%;
-    padding: 0.5rem;
-    margin-right: 0.4rem;
-}
 
 
 #StandardFrame

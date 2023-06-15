@@ -1,6 +1,6 @@
 body
 {
-    background-color: #F4F6FA;
+    background-color: black;
 }
 #Navbar
 {
@@ -9,8 +9,8 @@ body
     align-items: center;
     color:white;
     padding: 1.5rem;
-    background-color:#51A3DA;
-    border-bottom: 1px solid white;
+    background-color:black;
+    border-bottom: 1px solid  red;
 }
 #Component-1
 {
@@ -18,6 +18,15 @@ body
     align-items: center;
     margin-left: 10%;
 }
+#Component-1 h3 span
+{
+    color: red;
+}
+.Component-Red
+{
+    color: red;
+}
+ 
 #Component-2
 {
     display: flex;
