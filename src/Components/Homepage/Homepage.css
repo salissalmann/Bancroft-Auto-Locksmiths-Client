@@ -1407,7 +1407,7 @@
       .BG_Number1 {
         border-radius: 5px;
         text-align: center;
-        font-size: 80px;
+        font-size: 60px;
         font-weight: bolder;
         color: black;
         box-sizing: border-box;
@@ -2170,7 +2170,7 @@
 .Option6_Number {
     border-radius: 5px;
     text-align: center;
-    font-size: 65px;
+    font-size: 55px !important;
     font-weight: bolder;
     color: black;
     box-sizing: border-box;
@@ -2379,13 +2379,7 @@
 
 
 /******************************************** SIZE 3 ***********************************************/
-.SIZE3
-{
-    padding: 0.3rem;
-    border-radius: 4px;
-    margin-bottom: 1rem;
-    width: 40%;
-}
+
 .SIZE4
 {
     padding: 0.3rem;
@@ -2875,127 +2869,3 @@
 
 
 
-.Rover
-{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color:#000000;
-    font-weight:bolder;
-    width: 90%;
-    height: 120px;
-    background-color:#E5C119;
-    border-radius: 10px 10px 100px 100px;
-    padding: 0.3rem;
-
-}
-.Rover-Inner
-{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-size: 50px;
-    color:#000000;
-    font-weight:bolder;
-    width: 100%;
-    height: 115px;
-    background-color:#E5C119;
-    border-radius: 10px 10px 100px 100px;
-    margin-top: 0.5rem;
-}
-.Rover-1
-{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color:#000000;
-    font-weight:bolder;
-    width: 90%;
-    height: 120px;
-    background-color:#E5C119;
-    border-radius: 5px 5px 70px 70px;
-    padding: 0.3rem;
-
-}
-.Rover-Inner-1
-{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-size: 50px;
-    color:#000000;
-    font-weight:bolder;
-    width: 100%;
-    height: 115px;
-    background-color:#E5C119;
-    border-radius: 5px 5px 70px 70px;
-    margin-top: 0.5rem;
-}
-.Rover-2
-{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color:#000000;
-    font-weight:bolder;
-    width: 90%;
-    height: 120px;
-    background-color:#E5C119;
-    border-radius: 10px 10px 90px 90px;
-    padding: 0.3rem;
-
-}
-.Rover-Inner-2
-{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-size: 50px;
-    color:#000000;
-    font-weight:bolder;
-    width: 100%;
-    height: 115px;
-    background-color:#E5C119;
-    border-radius: 10px 10px 90px 90px;
-    margin-top: 0.5rem;
-}  
-.Rover_Footer
-{
-    font-size: 0.5rem;
-}
-
-@media (max-width: 420px) {
-    .Rover
-    {
-        height: 90px;
-    }
-    .Rover-Inner
-    {
-        font-size: 30px;
-        height: 90px;
-        margin-top: 0rem;
-
-    }
-    .Rover-1
-    {
-        height: 90px;
-    }
-    .Rover-Inner-1
-    {
-        margin-top: 0rem;
-        font-size: 30px;
-        height: 90px;
-    }
-}
-.Rover-Badge
-{
-    display: grid;
-    grid-template-columns: 15% 85%;
-    margin-top: 1rem;
-}

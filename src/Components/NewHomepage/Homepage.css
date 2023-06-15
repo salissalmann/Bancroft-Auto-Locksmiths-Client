@@ -29,7 +29,7 @@
     font-family: "Nunito";
     border: 2px solid red;
     background-color: black;
-    color: red;
+    color: white;
     font-size: 2rem;
     padding: 0.5rem;
     border-radius: 5px;
@@ -258,17 +258,17 @@
     text-align: center;
     margin-left: 40%;
 }
+
 /****************************************************************************************************************************/
-.Option2_Wrapper
-{
+.Option2_Wrapper {
     width: 65%;
-    height:fit-content;
+    height: fit-content;
     border-radius: 5px;
     margin-bottom: 1rem;
     padding: 0.4rem;
 }
-.Option2_Container
-{
+
+.Option2_Container {
     width: 100%;
     height: 100%;
     display: flex;
@@ -278,8 +278,8 @@
     border-radius: 5px;
     padding: 0.3rem;
 }
-.Option2_Top
-{
+
+.Option2_Top {
     margin-top: -1.5rem;
     border-radius: 5px;
     border-bottom: 0;
@@ -287,8 +287,8 @@
     color: black;
     font-weight: bolder;
 }
-.Option2_Bottom
-{
+
+.Option2_Bottom {
     margin-top: -3rem;
     margin-bottom: -1.5rem;
     border-radius: 5px;
@@ -297,38 +297,38 @@
     color: black;
     font-weight: bolder;
 }
+
 @media (max-width: 520px) {
-    .Option2_Top
-    {
+    .Option2_Top {
         margin-top: -1rem;
         font-size: 4rem;
     }
-    .Option2_Bottom
-    {
+
+    .Option2_Bottom {
         margin-top: -2rem;
         font-size: 4rem;
     }
 }
 
 .Option2_Footer {
-    font-family:Arial, Helvetica, sans-serif;
-    width:fit-content;
+    font-family: Arial, Helvetica, sans-serif;
+    width: fit-content;
     height: fit-content;
     margin-bottom: -0.5rem;
     font-size: 12px;
     color: #000000;
     text-align: center;
 }
+
 /*************************************************************************************************************/
-.Option2B_Wrapper
-{
+.Option2B_Wrapper {
     width: 50%;
     padding: 0.3rem;
     border-radius: 5px;
     margin-bottom: 1rem;
 }
-.Option2B_Container
-{
+
+.Option2B_Container {
     width: 100%;
     height: 100%;
     display: flex;
@@ -338,45 +338,46 @@
     border-radius: 5px;
     padding: 0.3rem;
 }
-.Option2B_Top
-{
+
+.Option2B_Top {
     margin-bottom: -1.5rem;
     margin-top: -1rem;
     height: 100%;
     width: 100%;
-    color:black;
+    color: black;
     font-size: 5rem;
     font-weight: bolder;
 }
-.Option2B_Bottom
-{
-    color:black;
+
+.Option2B_Bottom {
+    color: black;
     height: 100%;
     width: 100%;
     display: grid;
     grid-template-columns: 20% 80%;
 }
-.Option2B_Container2
-{
+
+.Option2B_Container2 {
     display: flex;
     flex-direction: column;
-    justify-content:space-between;
+    justify-content: space-between;
     align-items: center;
     padding: 0.5rem;
     text-align: center;
     border-radius: 5px;
 }
-.Option2B_Plate
-{
+
+.Option2B_Plate {
     height: 100%;
     width: 100%;
     font-size: 5rem;
     font-weight: bolder;
     margin-bottom: -1.3rem;
 }
+
 .Option2B_Footer {
-    font-family:Arial, Helvetica, sans-serif;
-    width:fit-content;
+    font-family: Arial, Helvetica, sans-serif;
+    width: fit-content;
     height: fit-content;
     margin-bottom: -0.8rem;
     font-size: 12px;
@@ -434,23 +435,26 @@
         margin-top: -1rem;
         margin-left: 40%;
     }
+
     .Option2_Footer {
         margin-bottom: -0.7rem;
     }
-    .Option2B_Top
-    {
+
+    .Option2B_Top {
         font-size: 4rem;
     }
-    .Option2B_Plate
-    {
+
+    .Option2B_Plate {
         font-size: 4rem;
     }
+
     .BG_Footer {
         font-size: 12px;
-      }
+    }
+
     .S3_Footer {
         font-size: 10px !important;
-        margin-left:35%;
+        margin-left: 35%;
         margin-top: -1rem;
     }
 
@@ -496,30 +500,33 @@
         margin-left: 42%;
 
     }
+
     .Option2_Footer {
         font-size: 10px;
         margin-bottom: -0.7rem;
     }
-    .Option2B_Top
-    {
+
+    .Option2B_Top {
         font-size: 3rem;
     }
-    .Option2B_Plate
-    {
+
+    .Option2B_Plate {
         font-size: 3rem;
         margin-bottom: -1rem;
     }
-    .Option2B_Top
-    {
+
+    .Option2B_Top {
         margin-bottom: -2rem;
     }
-    .Option2B_Container2
-    {
+
+    .Option2B_Container2 {
         padding: 0.8rem;
     }
+
     .Option2B_Footer {
         font-size: 10px;
     }
+
     .S3_Footer {
         font-size: 12px;
     }
@@ -534,6 +541,7 @@
         width: 20px;
         height: 12px;
     }
+
     .Option2_Footer {
         font-size: 9px;
     }
@@ -557,39 +565,374 @@
         margin-left: 35%;
         margin-bottom: -0.3rem;
         margin-top: -0.7rem;
-        
+
     }
-    .Option2B_Top
-    {
+
+    .Option2B_Top {
         margin-top: 0rem;
         font-size: 2.5rem;
     }
-    .Option2B_Plate
-    {
+
+    .Option2B_Plate {
         font-size: 2.5rem;
     }
-    .Option2B_Top
-    {
+
+    .Option2B_Top {
         margin-left: 2.5rem;
     }
+
     .Option2B_Footer {
         font-size: 9px;
         margin-bottom: -0.7rem;
 
     }
+
     .S3_Footer {
         font-size: 8px;
-        margin-left:30%;
-        margin-top: -0.5rem;  
+        margin-left: 30%;
+        margin-top: -0.5rem;
     }
 
 
 }
 
 @media (max-width: 400px) {
-    .Option2B_Top
-    {
+    .Option2B_Top {
         margin-left: 2rem;
     }
 
+}
+
+
+
+
+.Option3 {
+    padding: 0.3rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    width: 50%;
+}
+
+.Option3_Container {
+    display: flex;
+    flex-direction: column;
+}
+
+.Option3_Number {
+    border-radius: 4px;
+    text-align: center;
+    font-size: 40px;
+    font-weight: bolder;
+    color: black;
+    box-sizing: border-box;
+    padding: 0;
+}
+
+.Option3_Footer {
+    width: fit-content;
+    height: fit-content;
+    margin-bottom: -0.1rem;
+    margin-top: -0.5rem;
+    font-size: 8px;
+    color: #000000;
+    text-align: center !important;
+    margin-left: 40%;
+}
+
+.Option3B {
+    width: 40%;
+    display: grid;
+    grid-template-columns: 15% 85%;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding: 0.3rem;
+    border-radius: 10px;
+}
+
+.Option3B_Container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    height: 100%;
+    margin-right: 4%;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+    border-radius: 5px;
+    color: #E7E7E7;
+}
+
+
+
+@media (max-width: 760px) {
+    .SIZE1_Footer {
+        margin-left: 40%;
+        font-size: 10px;
+        margin-top: -0.7rem;
+    }
+
+    .Option3_Number {
+        font-size: 30px;
+    }
+
+    .Option3B_Container {
+        margin-right: 3%;
+        padding-top: 0.2rem;
+        padding-bottom: 0.2rem;
+        border-radius: 4px;
+        font-size: 8px;
+    }
+
+    .SIZE4_Footer {
+        font-size: 10px;
+    }
+
+    .SIZE6_Footer {
+        margin-top: 0.5rem;
+        margin-left: 10%;
+    }
+}
+
+@media (max-width: 520px) {
+    .Option3B_Container {
+        padding: 0.5rem;
+    }
+}
+
+@media (max-width: 490px) {
+    .Option3_Number {
+        font-size: 25px;
+    }
+
+    .Option3B_Container {
+        padding: 0.5rem;
+    }
+
+    .SIZE4_Number {
+        font-size: 20px;
+    }
+
+    .SIZE5_Number {
+        font-size: 25px;
+    }
+
+    .SIZE10_Number {
+        font-size: 25px;
+    }
+
+    .SIZE11_Number {
+        font-size: 25px;
+    }
+
+    .SIZE4_Footer {
+        font-size: 8px;
+        margin-left: 34%;
+    }
+
+}
+
+@media (max-width: 420px) {
+    .Option3_Number {
+        font-size: 20px !important;
+    }
+
+    .SIZE5_Number {
+        font-size: 20px !important;
+    }
+
+    .Option3_Footer {
+        font-size: 7px;
+        margin-left: 38%;
+    }
+
+    .SIZE4_Footer {
+        margin-left: 40%;
+    }
+
+    .SIZE6_Footer {
+        margin-top: 0.5rem;
+        margin-left: 5%;
+    }
+
+}
+
+@media (max-width: 400px) {
+    .SIZE4_Footer {
+        margin-left: 35% !important;
+    }
+}
+
+
+.RoverImage {
+    display: block;
+    width: 100%;
+    height: 100%;
+    margin-left: 2rem;
+}
+
+#Range-Cont {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.Rover {
+    margin-top: -10rem;
+    margin-left: 2rem;
+    font-size: 400%;
+    font-weight: bolder;
+    text-align: center;
+    color: #000000;
+    font-family: "Nunito";
+    /* Set the desired font family for the text */
+}
+
+.Rover-Inner {
+    padding: 10px;
+    /* Adjust the padding as needed */
+}
+
+.Rover_Footer {
+    margin-top: 10px;
+    font-size: 14px;
+    color: black;
+}
+
+.Rover-Badge {
+    display: grid;
+    grid-template-columns: 10% 90%;
+}
+
+.Badger {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 15% 85%;
+    align-items: center;
+    font-weight: bolder;
+    margin-top: -10rem;
+    margin-left: 2rem;
+    font-size: 400%;
+}
+.Badger1 {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 15% 85%;
+    align-items: center;
+    font-weight: bolder;
+    margin-top: -9rem;
+    margin-bottom: -1rem ;
+    margin-left: 2rem;
+    font-size: 400%;
+}
+
+.Rover-Inner2 {
+    padding: 10px;
+    color: white;
+    text-align: center;
+}
+.Image1
+{
+    width: 40px;
+
+}
+.Image2
+{
+    width: 35px;
+    height: 50px;
+}
+
+@media (max-width: 760px) {
+
+    .Badger {
+        margin-top: -8rem;
+        margin-left: 0rem;
+        font-size: 200%;
+        width: 120%;
+        grid-template-columns: 20% 80%;
+    }
+    .Badger1 {
+        margin-top: -7rem;
+        margin-left: 0rem;
+        font-size: 200%;
+        width: 120%;
+        grid-template-columns: 20% 80%;
+    }
+    
+    .Rover-Inner2 {
+        padding: 10px;
+        color: white;
+        text-align: center;
+        margin-top: -1rem;
+        font-weight: 600;
+    }
+    .Image1
+    {
+        width: 35px;
+    
+    }
+    .Image2
+    {
+        width: 25px;
+        height: 40px;
+    }
+}
+@media (max-width: 500px) {
+    .Rover {
+        margin-top: -6rem;
+        margin-left: 0rem;
+        font-size: 200%;
+    }
+
+    .Rover_Footer {
+
+        font-size: 10px;
+        color: black;
+    }
+
+    .RoverImage {
+        margin-left: 0rem;
+    }
+    .Badger {
+        margin-top: -5rem;
+        margin-left: 0rem;
+        font-size: 200%;
+
+    }
+ 
+    .Badger1 {
+        margin-top: -5rem;
+        margin-left: 0rem;
+        font-size: 200%;
+    }
+   .Image1
+    {
+        width: 35px;
+    
+    }
+    .Image2
+    {
+        width: 15px;
+        height: 25px;
+    }
+    
+    .Rover-Inner2 {
+        padding: 10px;
+        color: white;
+        text-align: center;
+        margin-top: -1rem;
+        font-weight: 600;
+    }
+    
+}
+@media (max-width: 400px) {
+    .Badger1 {
+        margin-top: -4.5rem;
+        margin-left: 0rem;
+        font-size: 200%;
+        margin-bottom: -1.6rem;
+        grid-template-columns: 15% 85%;
+
+    }
 }

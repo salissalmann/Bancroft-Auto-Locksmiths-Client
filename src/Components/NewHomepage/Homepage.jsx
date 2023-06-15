@@ -443,7 +443,716 @@ export default function HomePage() {
                             </div>
                         </div>
                     }
+                    {(PlateChoice === "Front and Rear" || PlateChoice === "Rear Only") && Badge && selectedState === 'standard' && RearSize === "Option2" &&
+                        <div className="Centeralize">
+                            <div className='Option2B_Wrapper' style={{ backgroundColor: "#F1B317" }}>
+                                <div className='Option2B_Container' style={{ fontFamily: Font, border: `3px solid ${Border}` }}>
+                                    <div className='Option2B_Top'>
+                                        {PlateText && <p>{PlateText.substring(0, 4)}</p>}
+                                        {!PlateText && <p>REG</p>}
+                                    </div>
+                                    <div className='Option2B_Bottom'>
+                                        <div className='Option2B_Container2' style={{ backgroundColor: BadgeBackground }}>
+                                            <img src={`/Badges/${BadgeFlag}.png`} className={Vertical ? "BG_Image2" : "BG_Image1"} alt='Badge'></img>
+                                            <div id={ShortHand ? "BG_Text" : "BG_Text1"}>{BadgeCity}</div>
+                                        </div>
+                                        <div className='Option2B_Plate'>
+                                            {PlateText && <p>{PlateText.substring(4)}</p>}
+                                            {!PlateText && <p>NO#</p>}
+                                        </div>
+                                    </div>
+                                    {Layout === "Legal Plates" && <p className="Option2B_Footer" style={{ backgroundColor: "#F1B317" }}>CPD JE2 4UE</p>}
+                                    {Layout === "Custom Plates" && <p className="Option2B_Footer" style={{ backgroundColor: "#F1B317", color: FooterColor }}>{FooterText}</p>}
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    {(PlateChoice === "Front and Rear" || PlateChoice === "Front Only") && !Badge && selectedState === 'standard' && FrontSize === "Option3" &&
+                        <div className="Centeralize">
+                            <div className="Option3" style={{ backgroundColor: "#E7E7E7" }}>
+                                <div className='Option3_Container'>
+                                    {PlateText && <div className="Option3_Number" style={{ fontFamily: Font, border: `3px solid ${Border}` }}>{PlateText}</div>}
+                                    {!PlateText && <div className="Option3_Number" style={{ fontFamily: Font, border: `3px solid ${Border}` }}>YOUR REG</div>}
+                                    {Layout === "Legal Plates" && <p className="Option3_Footer" style={{ backgroundColor: "#E7E7E7" }}>CPD JE2 4UE</p>}
+                                    {Layout === "Custom Plates" && <p className="Option3_Footer" style={{ backgroundColor: "#E7E7E7", color: FooterColor }}>{FooterText}</p>}
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    {(PlateChoice === "Front and Rear" || PlateChoice === "Rear Only") && !Badge && selectedState === 'standard' && RearSize === "Option3" &&
+                        <div className="Centeralize">
+                            <div className="Option3" style={{ backgroundColor: "#F1B317" }}>
+                                <div className='Option3_Container'>
+                                    {PlateText && <div className="Option3_Number" style={{ fontFamily: Font, border: `3px solid ${Border}` }}>{PlateText}</div>}
+                                    {!PlateText && <div className="Option3_Number" style={{ fontFamily: Font, border: `3px solid ${Border}` }}>YOUR REG</div>}
+                                    {Layout === "Legal Plates" && <p className="Option3_Footer" style={{ backgroundColor: "#F1B317" }}>CPD JE2 4UE</p>}
+                                    {Layout === "Custom Plates" && <p className="Option3_Footer" style={{ backgroundColor: "#F1B317", color: FooterColor }}>{FooterText}</p>}
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    {(PlateChoice === "Front and Rear" || PlateChoice === "Front Only") && Badge && selectedState === 'standard' && FrontSize === "Option3" &&
+                        <div className="Centeralize">
+                            <div className="Option3B" style={{ backgroundColor: "#E7E7E7" }}>
+                                <div className="Option3B_Container" style={{ backgroundColor: BadgeBackground }}>
+                                    <img src={`/Badges/${BadgeFlag}.png`} className={Vertical ? "SIZE3_Image2" : "SIZE3_Image1"} alt='Badge'></img>
+                                    <div id={ShortHand ? "SIZE3_Text1" : "SIZE3_Text2"}>{BadgeCity}</div>
+                                </div>
+                                <div className='BG_Container2'>
+                                    {PlateText && <div className="SIZE3_Number" style={{ fontFamily: Font, border: `3px solid ${Border}` }}>{PlateText}</div>}
+                                    {Layout === "Legal Plates" && <p className="SIZE3_Footer" style={{ backgroundColor: "#E7E7E7" }}>CPD JE2 4UE</p>}
+                                    {Layout === "Custom Plates" && <p className="SIZE3_Footer" style={{ backgroundColor: "#E7E7E7", color: FooterColor }}>{FooterText}</p>}
+                                </div>
+                            </div>
+                        </div>
 
+                    }
+
+                    {(PlateChoice === "Front and Rear" || PlateChoice === "Rear Only") && Badge && selectedState === 'standard' && RearSize === "Option3" &&
+                        <div className="Centeralize">
+                            <div className="SIZE3_Badge" style={{ backgroundColor: "#F1B317" }}>
+                                <div className="BG_Container1" style={{ backgroundColor: BadgeBackground }}>
+                                    <img src={`/Badges/${BadgeFlag}.png`} className={Vertical ? "SIZE3_Image2" : "SIZE3_Image1"} alt='Badge'></img>
+                                    <div id={ShortHand ? "SIZE3_Text1" : "SIZE3_Text2"}>{BadgeCity}</div>
+                                </div>
+                                <div className='BG_Container2'>
+                                    {PlateText && <div className="SIZE3_Number" style={{ fontFamily: Font, border: `3px solid ${Border}` }}>{PlateText}</div>}
+                                    {Layout === "Legal Plates" && <p className="SIZE3_Footer" style={{ backgroundColor: "#F1B317" }}>CPD JE2 4UE</p>}
+                                    {Layout === "Custom Plates" && <p className="SIZE3_Footer" style={{ backgroundColor: "#F1B317", color: FooterColor }}>{FooterText}</p>}
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+
+
+
+                    {(PlateChoice === "Front and Rear" || PlateChoice === "Front Only") && !Badge && selectedState === 'standard' && FrontSize === "Option4" &&
+                        <div className="Centeralize">
+                            <div className="SIZE4" style={{ backgroundColor: "#E7E7E7" }}>
+                                <div className='BG_Container2'>
+                                    {PlateText && <div className="SIZE4_Number" style={{ fontFamily: Font, border: `3px solid ${Border}` }}>{PlateText}</div>}
+                                    {!PlateText && <div className="SIZE4_Number" style={{ fontFamily: Font, border: `3px solid ${Border}` }}>YOUR REG</div>}
+                                    {Layout === "Legal Plates" && <p className="SIZE4_Footer" style={{ backgroundColor: "#E7E7E7" }}>CPD JE2 4UE</p>}
+                                    {Layout === "Custom Plates" && <p className="SIZE4_Footer" style={{ backgroundColor: "#E7E7E7", color: FooterColor }}>{FooterText}</p>}
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    {(PlateChoice === "Front and Rear" || PlateChoice === "Rear Only") && !Badge && selectedState === 'standard' && RearSize === "Option4" &&
+                        <div className="Centeralize">
+                            <div className="SIZE4" style={{ backgroundColor: "#F1B317" }}>
+                                <div className='BG_Container2'>
+                                    {PlateText && <div className="SIZE4_Number" style={{ fontFamily: Font, border: `3px solid ${Border}` }}>{PlateText}</div>}
+                                    {!PlateText && <div className="SIZE4_Number" style={{ fontFamily: Font, border: `3px solid ${Border}` }}>YOUR REG</div>}
+                                    {Layout === "Legal Plates" && <p className="SIZE4_Footer" style={{ backgroundColor: "#F1B317" }}>CPD JE2 4UE</p>}
+                                    {Layout === "Custom Plates" && <p className="SIZE4_Footer" style={{ backgroundColor: "#F1B317", color: FooterColor }}>{FooterText}</p>}
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    {(PlateChoice === "Front and Rear" || PlateChoice === "Front Only") && Badge && selectedState === 'standard' && FrontSize === "Option4" &&
+                        <div className="Centeralize">
+                            <div className="SIZE4_Badge" style={{ backgroundColor: "#E7E7E7" }}>
+                                <div className="BG_Container1" style={{ backgroundColor: BadgeBackground }}>
+                                    <img src={`/Badges/${BadgeFlag}.png`} className={Vertical ? "SIZE3_Image2" : "SIZE3_Image1"} alt='Badge'></img>
+                                    <div id={ShortHand ? "SIZE3_Text1" : "SIZE3_Text2"}>{BadgeCity}</div>
+                                </div>
+                                <div className='BG_Container2'>
+                                    {PlateText && <div className="SIZE4_Number" style={{ fontFamily: Font, border: `3px solid ${Border}` }}>{PlateText}</div>}
+                                    {Layout === "Legal Plates" && <p className="SIZE3_Footer" style={{ backgroundColor: "#E7E7E7" }}>CPD JE2 4UE</p>}
+                                    {Layout === "Custom Plates" && <p className="SIZE3_Footer" style={{ backgroundColor: "#E7E7E7", color: FooterColor }}>{FooterText}</p>}
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    {(PlateChoice === "Front and Rear" || PlateChoice === "Rear Only") && Badge && selectedState === 'standard' && RearSize === "Option4" &&
+                        <div className="Centeralize">
+                            <div className="SIZE4_Badge" style={{ backgroundColor: "#F1B317" }}>
+                                <div className="BG_Container1" style={{ backgroundColor: BadgeBackground }}>
+                                    <img src={`/Badges/${BadgeFlag}.png`} className={Vertical ? "SIZE3_Image2" : "SIZE3_Image1"} alt='Badge'></img>
+                                    <div id={ShortHand ? "SIZE3_Text1" : "SIZE3_Text2"}>{BadgeCity}</div>
+                                </div>
+                                <div className='BG_Container2'>
+                                    {PlateText && <div className="SIZE4_Number" style={{ fontFamily: Font, border: `3px solid ${Border}` }}>{PlateText}</div>}
+                                    {Layout === "Legal Plates" && <p className="SIZE3_Footer" style={{ backgroundColor: "#F1B317" }}>CPD JE2 4UE</p>}
+                                    {Layout === "Custom Plates" && <p className="SIZE3_Footer" style={{ backgroundColor: "#F1B317", color: FooterColor }}>{FooterText}</p>}
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+
+
+
+
+                    {(PlateChoice === "Front and Rear" || PlateChoice === "Front Only") && !Badge && selectedState === 'standard' && FrontSize === "Option5" &&
+                        <div className="Centeralize">
+                            <div className="SIZE5" style={{ backgroundColor: "#E7E7E7" }}>
+                                <div className='BG_Container2'>
+                                    {PlateText && <div className="SIZE5_Number" style={{ fontFamily: Font, border: `3px solid ${Border}` }}>{PlateText}</div>}
+                                    {!PlateText && <div className="SIZE5_Number" style={{ fontFamily: Font, border: `3px solid ${Border}` }}>YOUR REG</div>}
+                                    {Layout === "Legal Plates" && <p className="SIZE4_Footer" style={{ backgroundColor: "#E7E7E7" }}>CPD JE2 4UE</p>}
+                                    {Layout === "Custom Plates" && <p className="SIZE4_Footer" style={{ backgroundColor: "#E7E7E7", color: FooterColor }}>{FooterText}</p>}
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    {(PlateChoice === "Front and Rear" || PlateChoice === "Rear Only") && !Badge && selectedState === 'standard' && RearSize === "Option5" &&
+                        <div className="Centeralize">
+                            <div className="SIZE5" style={{ backgroundColor: "#F1B317" }}>
+                                <div className='BG_Container2'>
+                                    {PlateText && <div className="SIZE5_Number" style={{ fontFamily: Font, border: `3px solid ${Border}` }}>{PlateText}</div>}
+                                    {!PlateText && <div className="SIZE5_Number" style={{ fontFamily: Font, border: `3px solid ${Border}` }}>YOUR REG</div>}
+                                    {Layout === "Legal Plates" && <p className="SIZE4_Footer" style={{ backgroundColor: "#F1B317" }}>CPD JE2 4UE</p>}
+                                    {Layout === "Custom Plates" && <p className="SIZE4_Footer" style={{ backgroundColor: "#F1B317", color: FooterColor }}>{FooterText}</p>}
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    {(PlateChoice === "Front and Rear" || PlateChoice === "Front Only") && Badge && selectedState === 'standard' && FrontSize === "Option5" &&
+                        <div className="Centeralize">
+                            <div className="SIZE5_Badge" style={{ backgroundColor: "#E7E7E7" }}>
+                                <div className="BG_Container1" style={{ backgroundColor: BadgeBackground }}>
+                                    <img src={`/Badges/${BadgeFlag}.png`} className={Vertical ? "SIZE5_Image2" : "SIZE5_Image1"} alt='Badge'></img>
+                                    <div id={ShortHand ? "SIZE3_Text1" : "SIZE3_Text2"}>{BadgeCity}</div>
+                                </div>
+                                <div className='BG_Container2'>
+                                    {PlateText && <div className="SIZE5_Number" style={{ fontFamily: Font, border: `3px solid ${Border}` }}>{PlateText}</div>}
+                                    {Layout === "Legal Plates" && <p className="SIZE3_Footer" style={{ backgroundColor: "#E7E7E7" }}>CPD JE2 4UE</p>}
+                                    {Layout === "Custom Plates" && <p className="SIZE3_Footer" style={{ backgroundColor: "#E7E7E7", color: FooterColor }}>{FooterText}</p>}
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    {(PlateChoice === "Front and Rear" || PlateChoice === "Rear Only") && Badge && selectedState === 'standard' && RearSize === "Option5" &&
+                        <div className="Centeralize">
+                            <div className="SIZE5_Badge" style={{ backgroundColor: "#F1B317" }}>
+                                <div className="BG_Container1" style={{ backgroundColor: BadgeBackground }}>
+                                    <img src={`/Badges/${BadgeFlag}.png`} className={Vertical ? "SIZE5_Image2" : "SIZE5_Image1"} alt='Badge'></img>
+                                    <div id={ShortHand ? "SIZE3_Text1" : "SIZE3_Text2"}>{BadgeCity}</div>
+                                </div>
+                                <div className='BG_Container2'>
+                                    {PlateText && <div className="SIZE5_Number" style={{ fontFamily: Font, border: `3px solid ${Border}` }}>{PlateText}</div>}
+                                    {Layout === "Legal Plates" && <p className="SIZE3_Footer" style={{ backgroundColor: "#F1B317" }}>CPD JE2 4UE</p>}
+                                    {Layout === "Custom Plates" && <p className="SIZE3_Footer" style={{ backgroundColor: "#F1B317", color: FooterColor }}>{FooterText}</p>}
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+
+                    {(PlateChoice === "Front and Rear" || PlateChoice === "Front Only") && !Badge && selectedState === 'standard' && (FrontSize === "Option6" || FrontSize === "Option8") &&
+                        <div className="Centeralize">
+                            <div className='S3_Wrapper' style={{ backgroundColor: "#E7E7E7" }}>
+                                <div className='S3_Container' style={{ fontFamily: Font, border: `3px solid ${Border}` }}>
+                                    <div className='S3_Top'>
+                                        {PlateText && <p>{PlateText.substring(0, 4)}</p>}
+                                        {!PlateText && <p>REG</p>}
+                                    </div>
+                                    <div className='S3_Bottom'>
+                                        {PlateText && <p>{PlateText.substring(4)}</p>}
+                                        {!PlateText && <p className='S3'>NO#</p>}
+                                    </div>
+                                    {Layout === "Legal Plates" && <p className="SIZE6_Footer" style={{ backgroundColor: "#E7E7E7" }}>CPD JE2 4UE</p>}
+                                    {Layout === "Custom Plates" && <p className="SIZE6_Footer" style={{ backgroundColor: "#E7E7E7", color: FooterColor }}>{FooterText}</p>}
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    {(PlateChoice === "Front and Rear" || PlateChoice === "Rear Only") && !Badge && selectedState === 'standard' && (RearSize === "Option6" || RearSize === "Option8") &&
+                        <div className="Centeralize">
+                            <div className='S3_Wrapper' style={{ backgroundColor: "#F1B317" }}>
+                                <div className='S3_Container' style={{ fontFamily: Font, border: `3px solid ${Border}` }}>
+                                    <div className='S3_Top'>
+                                        {PlateText && <p>{PlateText.substring(0, 4)}</p>}
+                                        {!PlateText && <p>REG</p>}
+                                    </div>
+                                    <div className='S3_Bottom'>
+                                        {PlateText && <p>{PlateText.substring(4)}</p>}
+                                        {!PlateText && <p className='S3'>NO#</p>}
+                                    </div>
+                                    {Layout === "Legal Plates" && <p className="SIZE6_Footer" style={{ backgroundColor: "#F1B317" }}>CPD JE2 4UE</p>}
+                                    {Layout === "Custom Plates" && <p className="SIZE6_Footer" style={{ backgroundColor: "#F1B317", color: FooterColor }}>{FooterText}</p>}
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    {(PlateChoice === "Front and Rear" || PlateChoice === "Front Only") && Badge && selectedState === 'standard' && (FrontSize === "Option6" || FrontSize === "Option8") &&
+                        <div className="Centeralize">
+                            <div className='S3_Wrapper_Badge' style={{ backgroundColor: "#E7E7E7" }}>
+                                <div className='S3_Container' style={{ fontFamily: Font, border: `3px solid ${Border}` }}>
+                                    <div className='S3_Top_Badge'>
+                                        {PlateText && <p>{PlateText.substring(0, 4)}</p>}
+                                        {!PlateText && <p>REG</p>}
+                                    </div>
+                                    <div className='S3_Bottom_Badge'>
+                                        <div className='S3_Badge_Container' style={{ backgroundColor: BadgeBackground }}>
+                                            <img src={`/Badges/${BadgeFlag}.png`} className={Vertical ? "BG_Image2" : "BG_Image1"} alt='Badge'></img>
+                                            <div id={ShortHand ? "BG_Text" : "BG_Text1"}>{BadgeCity}</div>
+                                        </div>
+                                        <div className='S3_Badge_PlateNumber'>
+                                            {PlateText && <p>{PlateText.substring(4)}</p>}
+                                            {!PlateText && <p>NO#</p>}
+                                        </div>
+                                    </div>
+                                    {Layout === "Legal Plates" && <p className="SIZE6_Footer" style={{ backgroundColor: "#E7E7E7" }}>CPD JE2 4UE</p>}
+                                    {Layout === "Custom Plates" && <p className="SIZE6_Footer" style={{ backgroundColor: "#E7E7E7", color: FooterColor }}>{FooterText}</p>}
+                                </div>
+                            </div>
+                            <div />
+                        </div>
+                    }
+                    {(PlateChoice === "Front and Rear" || PlateChoice === "Rear Only") && Badge && selectedState === 'standard' && (RearSize === "Option6" || RearSize === "Option8") &&
+                        <div className="Centeralize">
+                            <div className='S3_Wrapper_Badge' style={{ backgroundColor: "#F1B317" }}>
+                                <div className='S3_Container' style={{ fontFamily: Font, border: `3px solid ${Border}` }}>
+                                    <div className='S3_Top_Badge'>
+                                        {PlateText && <p>{PlateText.substring(0, 4)}</p>}
+                                        {!PlateText && <p>REG</p>}
+                                    </div>
+                                    <div className='S3_Bottom_Badge'>
+                                        <div className='S3_Badge_Container' style={{ backgroundColor: BadgeBackground }}>
+                                            <img src={`/Badges/${BadgeFlag}.png`} className={Vertical ? "BG_Image2" : "BG_Image1"} alt='Badge'></img>
+                                            <div id={ShortHand ? "BG_Text" : "BG_Text1"}>{BadgeCity}</div>
+                                        </div>
+                                        <div className='S3_Badge_PlateNumber'>
+                                            {PlateText && <p>{PlateText.substring(4)}</p>}
+                                            {!PlateText && <p>NO#</p>}
+                                        </div>
+                                    </div>
+                                    {Layout === "Legal Plates" && <p className="SIZE6_Footer" style={{ backgroundColor: "#F1B317" }}>CPD JE2 4UE</p>}
+                                    {Layout === "Custom Plates" && <p className="SIZE6_Footer" style={{ backgroundColor: "#F1B317", color: FooterColor }}>{FooterText}</p>}
+                                </div>
+                            </div>
+                            <div />
+                        </div>
+                    }
+
+
+                    {(PlateChoice === "Front and Rear" || PlateChoice === "Front Only") && !Badge && selectedState === 'standard' && FrontSize === "Option9" &&
+                        <div className="Centeralize">
+                            <div className="Option6_NoBadge" style={{ backgroundColor: "#E7E7E7" }}>
+                                <div className='BG_Container2'>
+                                    {PlateText && <div className="Option6_Number" style={{ fontFamily: Font, border: `3px solid ${Border}` }}>{PlateText}</div>}
+                                    {!PlateText && <div className="Option6_Number" style={{ fontFamily: Font, border: `3px solid ${Border}` }}>YOUR REG</div>}
+                                    {Layout === "Legal Plates" && <p className="Option5_Footer" style={{ backgroundColor: "#E7E7E7" }}>CPD JE2 4UE</p>}
+                                    {Layout === "Custom Plates" && <p className="Option5_Footer" style={{ backgroundColor: "#E7E7E7", color: FooterColor }}>{FooterText}</p>}
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    {(PlateChoice === "Front and Rear" || PlateChoice === "Rear Only") && !Badge && selectedState === 'standard' && RearSize === "Option9" &&
+                        <div className="Centeralize">
+                            <div className="Option6_NoBadge" style={{ backgroundColor: "#F1B317" }}>
+                                <div className='BG_Container2'>
+                                    {PlateText && <div className="Option6_Number" style={{ fontFamily: Font, border: `3px solid ${Border}` }}>{PlateText}</div>}
+                                    {!PlateText && <div className="Option6_Number" style={{ fontFamily: Font, border: `3px solid ${Border}` }}>YOUR REG</div>}
+                                    {Layout === "Legal Plates" && <p className="Option5_Footer" style={{ backgroundColor: "#F1B317" }}>CPD JE2 4UE</p>}
+                                    {Layout === "Custom Plates" && <p className="Option5_Footer" style={{ backgroundColor: "#F1B317", color: FooterColor }}>{FooterText}</p>}
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    {(PlateChoice === "Front and Rear" || PlateChoice === "Front Only") && Badge && selectedState === 'standard' && FrontSize === "Option9" &&
+                        <div className="Centeralize">
+                            <div className="BG_Plate2" style={{ backgroundColor: "#E7E7E7" }}>
+                                <div className="BG_Container1" style={{ backgroundColor: BadgeBackground }}>
+                                    <img src={`/Badges/${BadgeFlag}.png`} className={Vertical ? "BG_Image2" : "BG_Image1"} alt='Badge'></img>
+                                    <div id={ShortHand ? "BG_Text" : "BG_Text1"}>{BadgeCity}</div>
+                                </div>
+                                <div className='BG_Container2'>
+                                    {PlateText && <div className="BG_Number1" style={{ fontFamily: Font, border: `3px solid ${Border}` }}>{PlateText}</div>}
+                                    {Layout === "Legal Plates" && <p className="BG_Footer" style={{ backgroundColor: "#E7E7E7" }}>CPD JE2 4UE</p>}
+                                    {Layout === "Custom Plates" && <p className="BG_Footer" style={{ backgroundColor: "#E7E7E7", color: FooterColor }}>{FooterText}</p>}
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    {(PlateChoice === "Front and Rear" || PlateChoice === "Rear Only") && Badge && selectedState === 'standard' && RearSize === "Option9" &&
+                        <div className="Centeralize">
+                            <div className="BG_Plate2" style={{ backgroundColor: "#F1B317" }}>
+                                <div className="BG_Container1" style={{ backgroundColor: BadgeBackground }}>
+                                    <img src={`/Badges/${BadgeFlag}.png`} className={Vertical ? "BG_Image2" : "BG_Image1"} alt='Badge'></img>
+                                    <div id={ShortHand ? "BG_Text" : "BG_Text1"}>{BadgeCity}</div>
+                                </div>
+                                <div className='BG_Container2'>
+                                    {PlateText && <div className="BG_Number1" style={{ fontFamily: Font, border: `3px solid ${Border}` }}>{PlateText}</div>}
+                                    {Layout === "Legal Plates" && <p className="BG_Footer" style={{ backgroundColor: "#F1B317" }}>CPD JE2 4UE</p>}
+                                    {Layout === "Custom Plates" && <p className="BG_Footer" style={{ backgroundColor: "#F1B317", color: FooterColor }}>{FooterText}</p>}
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+
+                    {(PlateChoice === "Front and Rear" || PlateChoice === "Front Only") && !Badge && selectedState === 'standard' && FrontSize === "Option7" &&
+                        <div className="Centeralize">
+                            <div className="Option10_NoBadge" style={{ backgroundColor: "#E7E7E7" }}>
+                                <div className='BG_Container2'>
+                                    {PlateText && <div className="Option10_Number" style={{ fontFamily: Font, border: `3px solid ${Border}` }}>{PlateText}</div>}
+                                    {!PlateText && <div className="Option10_Number" style={{ fontFamily: Font, border: `3px solid ${Border}` }}>YOUR REG</div>}
+                                    {Layout === "Legal Plates" && <p className="Option5_Footer" style={{ backgroundColor: "#E7E7E7" }}>CPD JE2 4UE</p>}
+                                    {Layout === "Custom Plates" && <p className="Option5_Footer" style={{ backgroundColor: "#E7E7E7", color: FooterColor }}>{FooterText}</p>}
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    {(PlateChoice === "Front and Rear" || PlateChoice === "Rear Only") && !Badge && selectedState === 'standard' && RearSize === "Option7" &&
+                        <div className="Centeralize">
+                            <div className="Option10_NoBadge" style={{ backgroundColor: "#F1B317" }}>
+                                <div className='BG_Container2'>
+                                    {PlateText && <div className="Option10_Number" style={{ fontFamily: Font, border: `3px solid ${Border}` }}>{PlateText}</div>}
+                                    {!PlateText && <div className="Option10_Number" style={{ fontFamily: Font, border: `3px solid ${Border}` }}>YOUR REG</div>}
+                                    {Layout === "Legal Plates" && <p className="Option5_Footer" style={{ backgroundColor: "#F1B317" }}>CPD JE2 4UE</p>}
+                                    {Layout === "Custom Plates" && <p className="Option5_Footer" style={{ backgroundColor: "#F1B317", color: FooterColor }}>{FooterText}</p>}
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    {(PlateChoice === "Front and Rear" || PlateChoice === "Front Only") && Badge && selectedState === 'standard' && FrontSize === "Option7" &&
+                        <div className="Centeralize">
+                            <div className="Option10_Plate1" style={{ backgroundColor: "#E7E7E7" }}>
+                                <div className="BG_Container1" style={{ backgroundColor: BadgeBackground }}>
+                                    <img src={`/Badges/${BadgeFlag}.png`} className={Vertical ? "Option3_Image2" : "Option3_Image1"} alt='Badge'></img>
+                                    <div id={ShortHand ? "Option3_Text" : "Option3_Text1"}>{BadgeCity}</div>
+                                </div>
+                                <div className='BG_Container2'>
+                                    {PlateText && <div className="Option10_Number1" style={{ fontFamily: Font, border: `3px solid ${Border}` }}>{PlateText}</div>}
+                                    {!PlateText && <div className="Option10_Number1" style={{ fontFamily: Font, border: `3px solid ${Border}` }}>YOUR REG</div>}
+                                    {Layout === "Legal Plates" && <p className="SIZE4_Footer" style={{ backgroundColor: "#E7E7E7" }}>CPD JE2 4UE</p>}
+                                    {Layout === "Custom Plates" && <p className="SIZE4_Footer" style={{ backgroundColor: "#E7E7E7", color: FooterColor }}>{FooterText}</p>}
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    {(PlateChoice === "Front and Rear" || PlateChoice === "Rear Only") && Badge && selectedState === 'standard' && RearSize === "Option7" &&
+                        <div className="Centeralize">
+                            <div className="Option10_Plate1" style={{ backgroundColor: "#F1B317" }}>
+                                <div className="BG_Container1" style={{ backgroundColor: BadgeBackground }}>
+                                    <img src={`/Badges/${BadgeFlag}.png`} className={Vertical ? "Option3_Image2" : "Option3_Image1"} alt='Badge'></img>
+                                    <div id={ShortHand ? "Option3_Text" : "Option3_Text1"}>{BadgeCity}</div>
+                                </div>
+                                <div className='BG_Container2'>
+                                    {PlateText && <div className="Option10_Number1" style={{ fontFamily: Font, border: `3px solid ${Border}` }}>{PlateText}</div>}
+                                    {!PlateText && <div className="Option10_Number1" style={{ fontFamily: Font, border: `3px solid ${Border}` }}>YOUR REG</div>}
+                                    {Layout === "Legal Plates" && <p className="SIZE4_Footer" style={{ backgroundColor: "#F1B317" }}>CPD JE2 4UE</p>}
+                                    {Layout === "Custom Plates" && <p className="SIZE4_Footer" style={{ backgroundColor: "#F1B317", color: FooterColor }}>{FooterText}</p>}
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+
+                    {(PlateChoice === "Front and Rear" || PlateChoice === "Front Only") && !Badge && selectedState === 'standard' && FrontSize === "Option10" &&
+                        <div className="Centeralize">
+                            <div className="SIZE10" style={{ backgroundColor: "#E7E7E7" }}>
+                                <div className='BG_Container2'>
+                                    {PlateText && <div className="SIZE10_Number" style={{ fontFamily: Font, border: `3px solid ${Border}` }}>{PlateText}</div>}
+                                    {!PlateText && <div className="SIZE10_Number" style={{ fontFamily: Font, border: `3px solid ${Border}` }}>YOUR REG</div>}
+                                    {Layout === "Legal Plates" && <p className="SIZE4_Footer" style={{ backgroundColor: "#E7E7E7" }}>CPD JE2 4UE</p>}
+                                    {Layout === "Custom Plates" && <p className="SIZE4_Footer" style={{ backgroundColor: "#E7E7E7", color: FooterColor }}>{FooterText}</p>}
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    {(PlateChoice === "Front and Rear" || PlateChoice === "Rear Only") && !Badge && selectedState === 'standard' && RearSize === "Option10" &&
+                        <div className="Centeralize">
+                            <div className="SIZE10" style={{ backgroundColor: "#F1B317" }}>
+                                <div className='BG_Container2'>
+                                    {PlateText && <div className="SIZE10_Number" style={{ fontFamily: Font, border: `3px solid ${Border}` }}>{PlateText}</div>}
+                                    {!PlateText && <div className="SIZE10_Number" style={{ fontFamily: Font, border: `3px solid ${Border}` }}>YOUR REG</div>}
+                                    {Layout === "Legal Plates" && <p className="SIZE4_Footer" style={{ backgroundColor: "#F1B317" }}>CPD JE2 4UE</p>}
+                                    {Layout === "Custom Plates" && <p className="SIZE4_Footer" style={{ backgroundColor: "#F1B317", color: FooterColor }}>{FooterText}</p>}
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    {(PlateChoice === "Front and Rear" || PlateChoice === "Front Only") && Badge && selectedState === 'standard' && FrontSize === "Option10" &&
+                        <div className="Centeralize">
+                            <div className="SIZE10_Badge" style={{ backgroundColor: "#E7E7E7" }}>
+                                <div className="BG_Container1" style={{ backgroundColor: BadgeBackground }}>
+                                    <img src={`/Badges/${BadgeFlag}.png`} className={Vertical ? "SIZE5_Image2" : "SIZE5_Image1"} alt='Badge'></img>
+                                    <div id={ShortHand ? "BG_Text" : "BG_Text1"}>{BadgeCity}</div>
+                                </div>
+                                <div className='BG_Container2'>
+                                    {PlateText && <div className="SIZE10_Text" style={{ fontFamily: Font, border: `3px solid ${Border}` }}>{PlateText}</div>}
+                                    {Layout === "Legal Plates" && <p className="SIZE11_Footer" style={{ backgroundColor: "#E7E7E7" }}>CPD JE2 4UE</p>}
+                                    {Layout === "Custom Plates" && <p className="SIZE11_Footer" style={{ backgroundColor: "#E7E7E7", color: FooterColor }}>{FooterText}</p>}
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+
+                    {(PlateChoice === "Front and Rear" || PlateChoice === "Rear Only") && Badge && selectedState === 'standard' && RearSize === "Option10" &&
+                        <div className="Centeralize">
+                            <div className="SIZE10_Badge" style={{ backgroundColor: "#F1B317" }}>
+                                <div className="BG_Container1" style={{ backgroundColor: BadgeBackground }}>
+                                    <img src={`/Badges/${BadgeFlag}.png`} className={Vertical ? "SIZE5_Image2" : "SIZE5_Image1"} alt='Badge'></img>
+                                    <div id={ShortHand ? "BG_Text" : "BG_Text1"}>{BadgeCity}</div>
+                                </div>
+                                <div className='BG_Container2'>
+                                    {PlateText && <div className="SIZE10_Text" style={{ fontFamily: Font, border: `3px solid ${Border}` }}>{PlateText}</div>}
+                                    {Layout === "Legal Plates" && <p className="SIZE11_Footer" style={{ backgroundColor: "#F1B317" }}>CPD JE2 4UE</p>}
+                                    {Layout === "Custom Plates" && <p className="SIZE11_Footer" style={{ backgroundColor: "#F1B317", color: FooterColor }}>{FooterText}</p>}
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+
+
+                    {(PlateChoice === "Front and Rear" || PlateChoice === "Rear Only") && !Badge && selectedState === 'standard' && RearSize === "Option11" &&
+                        <div className="Centeralize">
+                            <div className="SIZE11" style={{ backgroundColor: "#F1B317" }}>
+                                <div className='BG_Container2'>
+                                    {PlateText && <div className="SIZE11_Number" style={{ fontFamily: Font, border: `3px solid ${Border}` }}>{PlateText}</div>}
+                                    {!PlateText && <div className="SIZE11_Number" style={{ fontFamily: Font, border: `3px solid ${Border}` }}>YOUR REG</div>}
+                                    {Layout === "Legal Plates" && <p className="SIZE11_Footer" style={{ backgroundColor: "#F1B317" }}>CPD JE2 4UE</p>}
+                                    {Layout === "Custom Plates" && <p className="SIZE11_Footer" style={{ backgroundColor: "#F1B317", color: FooterColor }}>{FooterText}</p>}
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    {(PlateChoice === "Front and Rear" || PlateChoice === "Rear Only") && Badge && selectedState === 'standard' && RearSize === "Option11" &&
+                        <div className="Centeralize">
+                            <div className="SIZE11_Badge" style={{ backgroundColor: "#F1B317" }}>
+                                <div className="BG_Container1" style={{ backgroundColor: BadgeBackground }}>
+                                    <img src={`/Badges/${BadgeFlag}.png`} className={Vertical ? "SIZE5_Image2" : "SIZE5_Image1"} alt='Badge'></img>
+                                    <div id={ShortHand ? "BG_Text" : "BG_Text1"}>{BadgeCity}</div>
+                                </div>
+                                <div className='BG_Container2'>
+                                    {PlateText && <div className="SIZE11_Text" style={{ fontFamily: Font, border: `3px solid ${Border}` }}>{PlateText}</div>}
+                                    {Layout === "Legal Plates" && <p className="SIZE11_Footer" style={{ backgroundColor: "#F1B317" }}>CPD JE2 4UE</p>}
+                                    {Layout === "Custom Plates" && <p className="SIZE11_Footer" style={{ backgroundColor: "#F1B317", color: FooterColor }}>{FooterText}</p>}
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+
+                    {(PlateChoice === "Front and Rear" || PlateChoice === "Rear Only") && !Badge && selectedState === 'standard' && RearSize === "Option12" &&
+                        <div className="Centeralize">
+                            <div className="SIZE11" style={{ backgroundColor: "#F1B317" }}>
+                                <div className='BG_Container2'>
+                                    {PlateText && <div className="SIZE11_Number" style={{ fontFamily: Font, border: `3px solid ${Border}`, padding: "0.7rem" }}>{PlateText}</div>}
+                                    {!PlateText && <div className="SIZE11_Number" style={{ fontFamily: Font, border: `3px solid ${Border}` }}>YOUR REG</div>}
+                                    {Layout === "Legal Plates" && <p className="SIZE11_Footer" style={{ backgroundColor: "#F1B317" }}>CPD JE2 4UE</p>}
+                                    {Layout === "Custom Plates" && <p className="SIZE11_Footer" style={{ backgroundColor: "#F1B317", color: FooterColor }}>{FooterText}</p>}
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    {(PlateChoice === "Front and Rear" || PlateChoice === "Rear Only") && Badge && selectedState === 'standard' && RearSize === "Option12" &&
+                        <div className="Centeralize">
+                            <div className="SIZE11_Badge" style={{ backgroundColor: "#F1B317" }}>
+                                <div className="BG_Container1" style={{ backgroundColor: BadgeBackground }}>
+                                    <img src={`/Badges/${BadgeFlag}.png`} className={Vertical ? "BG_Image2" : "BG_Image1"} alt='Badge'></img>
+                                    <div id={ShortHand ? "BG_Text" : "BG_Text1"}>{BadgeCity}</div>
+                                </div>
+                                <div className='BG_Container2'>
+                                    {PlateText && <div className="SIZE11_Text" style={{ fontFamily: Font, border: `3px solid ${Border}`, padding: "0.7rem" }}>{PlateText}</div>}
+                                    {Layout === "Legal Plates" && <p className="SIZE11_Footer" style={{ backgroundColor: "#F1B317" }}>CPD JE2 4UE</p>}
+                                    {Layout === "Custom Plates" && <p className="SIZE11_Footer" style={{ backgroundColor: "#F1B317", color: FooterColor }}>{FooterText}</p>}
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    {(PlateChoice === "Front and Rear" || PlateChoice === "Rear Only") && !Badge && selectedState === 'standard' && RearSize === "Option13" &&
+                        <div className="Centeralize">
+                            <div className="SIZE11" style={{ backgroundColor: "#F1B317" }}>
+                                <div className='BG_Container2'>
+                                    {PlateText && <div className="SIZE11_Number" style={{ fontFamily: Font, border: `3px solid ${Border}`, padding: "0.9rem" }}>{PlateText}</div>}
+                                    {!PlateText && <div className="SIZE11_Number" style={{ fontFamily: Font, border: `3px solid ${Border}` }}>YOUR REG</div>}
+                                    {Layout === "Legal Plates" && <p className="SIZE11_Footer" style={{ backgroundColor: "#F1B317" }}>CPD JE2 4UE</p>}
+                                    {Layout === "Custom Plates" && <p className="SIZE11_Footer" style={{ backgroundColor: "#F1B317", color: FooterColor }}>{FooterText}</p>}
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    {(PlateChoice === "Front and Rear" || PlateChoice === "Rear Only") && Badge && selectedState === 'standard' && RearSize === "Option13" &&
+                        <div className="Centeralize">
+                            <div className="SIZE11_Badge" style={{ backgroundColor: "#F1B317" }}>
+                                <div className="BG_Container1" style={{ backgroundColor: BadgeBackground }}>
+                                    <img src={`/Badges/${BadgeFlag}.png`} className={Vertical ? "BG_Image2" : "BG_Image1"} alt='Badge'></img>
+                                    <div id={ShortHand ? "BG_Text" : "BG_Text1"}>{BadgeCity}</div>
+                                </div>
+                                <div className='BG_Container2'>
+                                    {PlateText && <div className="SIZE11_Text" style={{ fontFamily: Font, border: `3px solid ${Border}`, padding: "0.9rem" }}>{PlateText}</div>}
+                                    {Layout === "Legal Plates" && <p className="SIZE11_Footer" style={{ backgroundColor: "#F1B317" }}>CPD JE2 4UE</p>}
+                                    {Layout === "Custom Plates" && <p className="SIZE11_Footer" style={{ backgroundColor: "#F1B317", color: FooterColor }}>{FooterText}</p>}
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    {(PlateChoice === "Front and Rear" || PlateChoice === "Rear Only") && !Badge && selectedState === 'standard' && RearSize === "Option14" &&
+                        <div className="Centeralize">
+                            <div className="SIZE11" style={{ backgroundColor: "#F1B317" }}>
+                                <div className='BG_Container2'>
+                                    {PlateText && <div className="SIZE11_Number" style={{ fontFamily: Font, border: `3px solid ${Border}`, padding: "0.9rem" }}>{PlateText}</div>}
+                                    {!PlateText && <div className="SIZE11_Number" style={{ fontFamily: Font, border: `3px solid ${Border}` }}>YOUR REG</div>}
+                                    {Layout === "Legal Plates" && <p className="SIZE11_Footer" style={{ backgroundColor: "#F1B317" }}>CPD JE2 4UE</p>}
+                                    {Layout === "Custom Plates" && <p className="SIZE11_Footer" style={{ backgroundColor: "#F1B317", color: FooterColor }}>{FooterText}</p>}
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    {(PlateChoice === "Front and Rear" || PlateChoice === "Rear Only") && Badge && selectedState === 'standard' && RearSize === "Option14" &&
+                        <div className="Centeralize">
+                            <div className="SIZE11_Badge" style={{ backgroundColor: "#F1B317" }}>
+                                <div className="BG_Container1" style={{ backgroundColor: BadgeBackground }}>
+                                    <img src={`/Badges/${BadgeFlag}.png`} className={Vertical ? "BG_Image2" : "BG_Image1"} alt='Badge'></img>
+                                    <div id={ShortHand ? "BG_Text" : "BG_Text1"}>{BadgeCity}</div>
+                                </div>
+                                <div className='BG_Container2'>
+                                    {PlateText && <div className="SIZE11_Text" style={{ fontFamily: Font, border: `3px solid ${Border}`, padding: "0.9rem", paddingRight: "1.2rem" }}>{PlateText}</div>}
+                                    {Layout === "Legal Plates" && <p className="SIZE11_Footer" style={{ backgroundColor: "#F1B317" }}>CPD JE2 4UE</p>}
+                                    {Layout === "Custom Plates" && <p className="SIZE11_Footer" style={{ backgroundColor: "#F1B317", color: FooterColor }}>{FooterText}</p>}
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    {(PlateChoice === "Front and Rear" || PlateChoice === "Rear Only") && !Badge && selectedState === 'standard' && RearSize === "Option15" &&
+                        <div className="Centeralize">
+                            <div className="SIZE12" style={{ backgroundColor: "#F1B317" }}>
+                                <div className='BG_Container2'>
+                                    {PlateText && <div className="SIZE11_Number" style={{ fontFamily: Font, border: `3px solid ${Border}`, padding: "0.9rem" }}>{PlateText}</div>}
+                                    {!PlateText && <div className="SIZE11_Number" style={{ fontFamily: Font, border: `3px solid ${Border}` }}>YOUR REG</div>}
+                                    {Layout === "Legal Plates" && <p className="SIZE11_Footer" style={{ backgroundColor: "#F1B317" }}>CPD JE2 4UE</p>}
+                                    {Layout === "Custom Plates" && <p className="SIZE11_Footer" style={{ backgroundColor: "#F1B317", color: FooterColor }}>{FooterText}</p>}
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    {(PlateChoice === "Front and Rear" || PlateChoice === "Rear Only") && Badge && selectedState === 'standard' && RearSize === "Option15" &&
+                        <div className="Centeralize">
+                            <div className="SIZE12_Badge" style={{ backgroundColor: "#F1B317" }}>
+                                <div className="BG_Container1" style={{ backgroundColor: BadgeBackground }}>
+                                    <img src={`/Badges/${BadgeFlag}.png`} className={Vertical ? "BG_Image2" : "BG_Image1"} alt='Badge'></img>
+                                    <div id={ShortHand ? "BG_Text" : "BG_Text1"}>{BadgeCity}</div>
+                                </div>
+                                <div className='BG_Container2'>
+                                    {PlateText && <div className="SIZE11_Text" style={{ fontFamily: Font, border: `3px solid ${Border}`, padding: "0.9rem", paddingRight: "1.2rem" }}>{PlateText}</div>}
+                                    {Layout === "Legal Plates" && <p className="SIZE11_Footer" style={{ backgroundColor: "#F1B317" }}>CPD JE2 4UE</p>}
+                                    {Layout === "Custom Plates" && <p className="SIZE11_Footer" style={{ backgroundColor: "#F1B317", color: FooterColor }}>{FooterText}</p>}
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+
+                    {(PlateChoice === "Front and Rear" || PlateChoice === "Rear Only") && !Badge && selectedState === 'standard' && RearSize === "Option16" &&
+                     <div className="Centeralize" id='Range-Cont'>
+                        <img className="RoverImage" src="/Range.png" alt="Rover" style={{ border: '2px solid #000', mask: 'url(#image-mask)' }} />
+                        <div class="Rover" >
+                                <div class="Rover-Inner" >
+                                    <div style={{ fontFamily: Font }}>{PlateText}</div>
+                                    {Layout === "Legal Plates" && <p className="Rover_Footer">CPD JE2 4UE</p>}
+                                    {Layout === "Custom Plates" && <p className="Rover_Footer" style={{ color: FooterColor }}>{FooterText}</p>}
+                                </div>
+                            </div>
+                      </div>
+}
+
+
+                    {(PlateChoice === "Front and Rear" || PlateChoice === "Rear Only") && Badge && selectedState === 'standard' && RearSize === "Option16" &&
+                     <div className="Centeralize" id='Range-Cont'>
+                     <img className="RoverImage" src="/Range.png" alt="Rover" style={{ border: '2px solid #000', mask: 'url(#image-mask)' }} />
+                         <div className="Rover-1" style={{ fontFamily: Font }}>
+                                <div className="Badger">
+                                        <div className="BG_Container1" style={{ backgroundColor: BadgeBackground }}>
+                                            <img src={`/Badges/${BadgeFlag}.png`} className={Vertical ? "Image2" : "Image1"} alt='Badge'></img>
+                                            <div id={ShortHand ? "BG_Text" : "BG_Text1"}>{BadgeCity}</div>
+                                        </div>
+                                        <div>
+                                        {PlateText}
+                                        </div>
+                                </div>
+                                <div class="Rover-Inner2" >
+                                    {Layout === "Legal Plates" && <p className="Rover_Footer">CPD JE2 4UE</p>}
+                                    {Layout === "Custom Plates" && <p className="Rover_Footer" style={{ color: FooterColor }}>{FooterText}</p>}
+                                </div>
+
+                            </div>
+                        </div>
+                    }
+
+
+{(PlateChoice === "Front and Rear" || PlateChoice === "Rear Only") && !Badge && selectedState === 'standard' && RearSize === "Option17" &&
+                     <div className="Centeralize" id='Range-Cont'>
+                        <img className="RoverImage" src="/Range2.png" alt="Rover" style={{ border: '2px solid #000', mask: 'url(#image-mask)' }} />
+                        <div class="Rover" >
+                                <div class="Rover-Inner" >
+                                    <div style={{ fontFamily: Font }}>{PlateText}</div>
+                                    {Layout === "Legal Plates" && <p className="Rover_Footer">CPD JE2 4UE</p>}
+                                    {Layout === "Custom Plates" && <p className="Rover_Footer" style={{ color: FooterColor }}>{FooterText}</p>}
+                                </div>
+                            </div>
+                      </div>
+}
+
+
+                    {(PlateChoice === "Front and Rear" || PlateChoice === "Rear Only") && Badge && selectedState === 'standard' && RearSize === "Option17" &&
+                     <div className="Centeralize" id='Range-Cont'>
+                     <img className="RoverImage" src="/Range2.png" alt="Rover" style={{ border: '2px solid #000', mask: 'url(#image-mask)' }} />
+                         <div className="Rover-1" style={{ fontFamily: Font }}>
+                                <div className="Badger1">
+                                        <div className="BG_Container1" style={{ backgroundColor: BadgeBackground }}>
+                                            <img src={`/Badges/${BadgeFlag}.png`} className={Vertical ? "Image2" : "Image1"} alt='Badge'></img>
+                                            <div id={ShortHand ? "BG_Text" : "BG_Text1"}>{BadgeCity}</div>
+                                        </div>
+                                        <div>
+                                        {PlateText}
+                                        </div>
+                                </div>
+                                <div class="Rover-Inner2" >
+                                    {Layout === "Legal Plates" && <p className="Rover_Footer">CPD JE2 4UE</p>}
+                                    {Layout === "Custom Plates" && <p className="Rover_Footer" style={{ color: FooterColor }}>{FooterText}</p>}
+                                </div>
+
+                            </div>
+                        </div>
+                    }
+
+{(PlateChoice === "Front and Rear" || PlateChoice === "Rear Only") && !Badge && selectedState === 'standard' && RearSize === "Option18" &&
+                     <div className="Centeralize" id='Range-Cont'>
+                        <img className="RoverImage" src="/Range3.png" alt="Rover" style={{ border: '2px solid #000', mask: 'url(#image-mask)' }} />
+                        <div class="Rover" >
+                                <div class="Rover-Inner" >
+                                    <div style={{ fontFamily: Font }}>{PlateText}</div>
+                                    {Layout === "Legal Plates" && <p className="Rover_Footer">CPD JE2 4UE</p>}
+                                    {Layout === "Custom Plates" && <p className="Rover_Footer" style={{ color: FooterColor }}>{FooterText}</p>}
+                                </div>
+                            </div>
+                      </div>
+}
+
+
+                    {(PlateChoice === "Front and Rear" || PlateChoice === "Rear Only") && Badge && selectedState === 'standard' && RearSize === "Option18" &&
+                     <div className="Centeralize" id='Range-Cont'>
+                     <img className="RoverImage" src="/Range3.png" alt="Rover" style={{ border: '2px solid #000', mask: 'url(#image-mask)' }} />
+                         <div className="Rover-1" style={{ fontFamily: Font }}>
+                                <div className="Badger">
+                                        <div className="BG_Container1" style={{ backgroundColor: BadgeBackground }}>
+                                            <img src={`/Badges/${BadgeFlag}.png`} className={Vertical ? "Image2" : "Image1"} alt='Badge'></img>
+                                            <div id={ShortHand ? "BG_Text" : "BG_Text1"}>{BadgeCity}</div>
+                                        </div>
+                                        <div>
+                                        {PlateText}
+                                        </div>
+                                </div>
+                                <div class="Rover-Inner2" >
+                                    {Layout === "Legal Plates" && <p className="Rover_Footer">CPD JE2 4UE</p>}
+                                    {Layout === "Custom Plates" && <p className="Rover_Footer" style={{ color: FooterColor }}>{FooterText}</p>}
+                                </div>
+
+                            </div>
+                        </div>
+                    }
 
 
 
