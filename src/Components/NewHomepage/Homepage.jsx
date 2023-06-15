@@ -580,7 +580,7 @@ export default function HomePage() {
                         </div>
                     }
 
-{(PlateChoice === "Front and Rear" || PlateChoice === "Front Only") && !Badge && selectedState === 'standard' && FrontSize === "Option10" &&
+                    {(PlateChoice === "Front and Rear" || PlateChoice === "Front Only") && !Badge && selectedState === 'standard' && FrontSize === "Option10" &&
                         <div className="Centeralize">
                             <div className="SIZE10" style={{ backgroundColor: "#E7E7E7" }}>
                                 <div className='BG_Container2'>
@@ -899,20 +899,6 @@ export default function HomePage() {
                     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                     {(PlateChoice === "Front and Rear" || PlateChoice === "Rear Only") && !Badge && selectedState === 'standard' && RearSize === "Option1" &&
                         <div className="Centeralize">
                             <div className="Option1_Basic" style={{ backgroundColor: "#F1B317" }}>
@@ -1176,6 +1162,16 @@ export default function HomePage() {
                             </div>
                         </div>
                     }
+
+                    <div className="Centeralize" >
+                        <div id='YAB'>
+                        <div className="Payment-Box">
+                            <div className="Bought">Plate Type: Standard</div>
+                            <div className="Price">£38.98</div>
+                        </div>
+                        <button className="Cart-Button">Add to Cart</button>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -1189,28 +1185,28 @@ export default function HomePage() {
                     <div className="Divider-Box">
                         <div className="Divider-Text3">Makers of Custom Number Plates and Show Plates</div>
                         <div className="Divider-Text4">The Cheapest Registration Plates in the UK!</div>
-                        <div className="Divider-Text5">Trusted provider of custom car number plates with over 
-                        a decade of industry experience. We specialize in offering personalized plates at affordable 
-                        prices to customers in the UK and Ireland. Our selection includes both legally compliant plates 
-                        for road use and stylish plates for car shows. Whether you're looking for a unique gift or need 
-                        to replace your existing registration plates, we have you covered. Choose from a variety of custom 
-                        designs, including 3D Gel and 4D Premium plates. Rest assured that once you've finalized your design 
-                        and placed your order, we'll swiftly manufacture and dispatch your new number plates on the same day, 
-                        delivering to any destination in the UK.
+                        <div className="Divider-Text5">Trusted provider of custom car number plates with over
+                            a decade of industry experience. We specialize in offering personalized plates at affordable
+                            prices to customers in the UK and Ireland. Our selection includes both legally compliant plates
+                            for road use and stylish plates for car shows. Whether you're looking for a unique gift or need
+                            to replace your existing registration plates, we have you covered. Choose from a variety of custom
+                            designs, including 3D Gel and 4D Premium plates. Rest assured that once you've finalized your design
+                            and placed your order, we'll swiftly manufacture and dispatch your new number plates on the same day,
+                            delivering to any destination in the UK.
                         </div>
                     </div>
                 </div>
                 <div id="Divider-Holder">
                     <div className="Divider-Box">
                         <div className="Divider-Text3">3D Gel and 4D Premium Number Plates</div>
-                        <div className="Divider-Text5">We specialize in creating customized number plates that allow you to showcase 
-                        your unique style and personality. Our designs are fully compliant with UK regulations and ensure your plates 
-                        are road legal. Choose from our range of 3D gel and 4D premium designs, available in various color borders including
-                         black, red, grey, and pink. To add that extra touch of personalization, explore our wide selection of side badges,
-                          which make for the perfect accessory for modern vehicles. Our 3D gel plates are crafted using high-quality resin, 
-                          providing a standout three-dimensional effect that looks stunning on cars, particularly in high-end showrooms. 
-                          For a personal and premium look, opt for our laser-cut acrylic 4D number plates. At Legal Show Plates, we offer 
-                          affordable pricing for our 3D gel and 4D premium number plates. Order your bespoke plates conveniently online today!
+                        <div className="Divider-Text5">We specialize in creating customized number plates that allow you to showcase
+                            your unique style and personality. Our designs are fully compliant with UK regulations and ensure your plates
+                            are road legal. Choose from our range of 3D gel and 4D premium designs, available in various color borders including
+                            black, red, grey, and pink. To add that extra touch of personalization, explore our wide selection of side badges,
+                            which make for the perfect accessory for modern vehicles. Our 3D gel plates are crafted using high-quality resin,
+                            providing a standout three-dimensional effect that looks stunning on cars, particularly in high-end showrooms.
+                            For a personal and premium look, opt for our laser-cut acrylic 4D number plates. At Legal Show Plates, we offer
+                            affordable pricing for our 3D gel and 4D premium number plates. Order your bespoke plates conveniently online today!
                         </div>
                     </div>
                     <div>
@@ -1219,13 +1215,13 @@ export default function HomePage() {
 
                 </div>
 
-                
+
 
 
 
             </div>
 
-            <Footer/>
+            <Footer />
 
 
 

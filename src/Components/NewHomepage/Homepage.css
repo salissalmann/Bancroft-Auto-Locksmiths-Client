@@ -1007,3 +1007,31 @@
         height: auto;
     object-fit:contain;
 }
+#YAB
+{
+    border: 3px solid red;
+    width: 90%;
+    display:flex;
+    border-radius: 8px;
+
+    justify-content:center;
+    flex-direction: column; 
+    padding: 1rem;   
+}
+.Payment-Box
+{
+    display:flex;
+    justify-content: space-between;
+    color: rgb(255, 255, 255);
+    padding: 1rem;
+}
+.Cart-Button
+{
+    width:100%;
+    padding: 0.5rem;
+    background-color: red;
+    color: white;
+    border-radius: 8px;
+    border: 1px solid white;
+
+}
