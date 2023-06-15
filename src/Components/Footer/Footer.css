@@ -1,0 +1,6 @@
+#Footer
+{
+    display: grid;
+    grid-template-columns: 34% 34% 32%;
+    padding: 2rem;
+}

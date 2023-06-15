@@ -2,6 +2,7 @@
     display: grid;
     grid-template-columns: 50% 50%;
     justify-content: center;
+    padding-bottom: 3rem;
 }
 
 #Headline {
@@ -935,4 +936,74 @@
         grid-template-columns: 15% 85%;
 
     }
+}
+.GridItem2
+{
+    padding-bottom: 2rem !important;
+    border-color: 1px solid red;
+}
+.Divider
+{
+    background-color:  #F4F6FA;
+    padding: 2rem;
+    padding-left: 0;
+    padding-right: 0rem;
+    border-bottom: 3px solid red;
+    border-top: 3px solid red;
+
+}
+.Divider-Text
+{
+    font-family: 'Nunito';
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+.Divider-Text2
+{
+    color: red;
+    font-family: 'Nunito';
+    text-align: center;
+    font-size: 1rem;
+    margin-bottom: 2rem;
+}
+.Divider-Box
+{
+    background-color: #F4F6FA;
+    padding-top: 0rem;
+    padding: 2rem;
+}
+.Divider-Text3
+{
+    font-family: 'Nunito';
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+.Divider-Text4
+{
+    font-family: 'Nunito';
+    font-size: 1rem;
+    font-weight: 500;
+    color: red;
+    margin-bottom: 1rem;
+
+}
+.Divider-Text5
+{
+    font-family: 'Nunito';
+    font-size: 1rem;
+    font-weight: 500;
+    text-align: justify;
+}
+#Divider-Holder
+{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    justify-content: center;
+}
+.DividerImage
+{   width: 100%;
+        height: auto;
+    object-fit:contain;
 }
