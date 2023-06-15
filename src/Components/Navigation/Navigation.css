@@ -1,6 +1,6 @@
 body
 {
-    background-color:whitesmoke;
+    background-color: #F4F6FA;
 }
 #Navbar
 {
@@ -9,7 +9,7 @@ body
     align-items: center;
     color:white;
     padding: 1.5rem;
-    background-color: #2A4C99;
+    background-color:#51A3DA;
     border-bottom: 1px solid white;
 }
 #Component-1
@@ -35,32 +35,19 @@ body
 {
     margin-top: -1rem;
 }
-#Cover-Holder {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
 
-  #Cover-Inner {
-    max-width: 1000px;
-    text-align: center;
-  }
-
-  #Cover-Inner h6 {
-    margin-bottom: 20px;
-  }
-
-  #Cover-Inner img {
+  #Cover-Holder {
+    position: relative;
     width: 100%;
-    object-fit: cover;
-    border-radius: 8px;
-    max-height: 200px;
+    max-width: 1600px;
+    margin: 0 auto;
+    margin-bottom: 1rem;
   }
 
-  @media (max-width: 768px) {
-    #Cover-Inner {
-      padding: 10px;
-    }
+  #Cover-Holder img {
+    display: block;
+    width: 100%;
+    object-fit:cover;
   }
 
 
