@@ -156,6 +156,7 @@
     border-radius: 5px;
     margin-bottom: 1rem;
     width: 90%;
+    color: black !important;
 }
 
 .Option1_Number {
@@ -174,6 +175,7 @@
 }
 
 .Option1_Footer {
+    z-index: 999;
     width: fit-content;
     height: fit-content;
     margin-bottom: -0.2rem;
@@ -1034,4 +1036,517 @@
     border-radius: 8px;
     border: 1px solid white;
 
+}
+
+#PlateFront4D,#PlateFront4D2,#PlateFront4D3,#PlateFront4D4,#PlateFront4D5,
+#PlateFront4D6,#PlateFront4D7,#PlateFront4D8,#PlateFront4D9,#PlateFront4D10 
+{
+    display: flex;
+    font-family: 'Montserrat', sans-serif;
+    justify-content: center;
+    color: #4b4b4b;
+    padding: 0.5rem;
+    padding-bottom:-0.5rem;
+    border-radius: 5px;
+    font-weight: bold;
+    position: relative;
+    overflow: hidden;
+}
+#PlateFront4D {
+    font-size: 5rem;
+}
+
+
+#PlateFront4D2 {
+    font-size: 4.5rem;
+}
+
+#PlateFront4D3 {
+    font-size: 2rem;
+}
+
+#PlateFront4D4 {
+    font-size: 2.3rem;
+}
+
+#PlateFront4D5 {
+    font-size: 3rem;
+}
+
+#PlateFront4D6 {
+    font-size: 2rem;
+}
+
+#PlateFront4D7 {
+    font-size: 3.5rem;
+}
+
+#PlateFront4D8 {
+    font-size: 4rem;
+}
+#PlateFront4D9 {
+    font-size: 3.5rem;
+}
+#PlateFront4D10 {
+    font-size: 3rem;
+}
+#PlateFront4D::after,#PlateFront4D2::after,#PlateFront4D3::after,
+#PlateFront4D4::after,#PlateFront4D5::after,#PlateFront4D6::after,
+#PlateFront4D7::after,#PlateFront4D8::after,#PlateFront4D9::after,#PlateFront4D10::after {
+    content: attr(data-content);
+    color: black;
+    width: 100%;
+    overflow: hidden;
+    padding: 0.5rem;
+    border-radius: 5px;
+    font-weight: bold;
+    padding-bottom:-0.5rem;
+    position: absolute;
+    top: 49%;
+    left: 49.2%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+#PlateFront4D::after {
+    font-size: 5rem;
+}
+
+#PlateFront4D2::after {
+    font-size: 2rem;
+}
+
+#PlateFront4D3::after {
+    font-size: 2rem;
+}
+
+#PlateFront4D4::after {
+    font-size: 2.3rem;
+}
+
+#PlateFront4D5::after {
+    font-size: 3rem;
+}
+
+#PlateFront4D6::after {
+    font-size: 2rem;
+}
+
+#PlateFront4D7::after {
+    font-size: 3.5rem;
+}
+
+#PlateFront4D8::after {
+    font-size: 4rem;
+}
+#PlateFront4D9::after {
+    font-size: 3.5rem;
+}
+#PlateFront4D10::after {
+    font-size: 3rem;
+}
+
+#PlateFront4DR, #PlateFront4D2R, #PlateFront4D3R, #PlateFront4D4R, #PlateFront4D5R,
+#PlateFront4D6R, #PlateFront4D7R, #PlateFront4D8R,#PlateFront4D9R,#PlateFront4D10R {
+    display: flex;
+    font-family: 'Montserrat', sans-serif;
+    justify-content: center;
+    color: #828282;
+    padding: 0.5rem;
+    padding-bottom:-0.5rem;
+    border-radius: 5px;
+    font-weight: bold;
+    position: relative;
+    overflow: hidden;
+}
+
+#PlateFront4DR {
+    font-size: 5rem;
+}
+
+#PlateFront4D2R {
+    font-size: 2rem;
+}
+
+#PlateFront4D3R {
+    font-size: 2rem;
+}
+
+#PlateFront4D4R {
+    font-size: 2.3rem;
+}
+
+#PlateFront4D5R {
+    font-size: 3rem;
+}
+
+#PlateFront4D6R {
+    font-size: 2rem;
+}
+
+#PlateFront4D7R {
+    font-size: 3.5rem;
+}
+
+#PlateFront4D8R {
+    font-size: 4rem;
+}
+#PlateFront4D9R {
+    font-size: 3.5rem;
+}
+#PlateFront4D10R {
+    font-size: 3rem;
+}
+
+#PlateFront4DR::after, #PlateFront4D2R::after, #PlateFront4D3R::after,
+#PlateFront4D4R::after, #PlateFront4D5R::after, #PlateFront4D6R::after,
+#PlateFront4D7R::after, #PlateFront4D8R::after,#PlateFront4D9R::after,#PlateFront4D10R::after {
+    content: attr(data-content);
+    color: black;
+    width: 100%;
+    overflow: hidden;
+    padding: 0.5rem;
+    border-radius: 5px;
+    font-weight: bold;
+    position: absolute;
+    top: 49%;
+    left: 49.2%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+#PlateFront4DR::after {
+    font-size: 5rem;
+}
+
+#PlateFront4D2R::after {
+    font-size: 2rem;
+}
+
+#PlateFront4D3R::after {
+    font-size: 2rem;
+}
+
+#PlateFront4D4R::after {
+    font-size: 2.3rem;
+}
+
+#PlateFront4D5R::after {
+    font-size: 3rem;
+}
+
+#PlateFront4D6R::after {
+    font-size: 2rem;
+}
+
+#PlateFront4D7R::after {
+    font-size: 3.5rem;
+}
+
+#PlateFront4D8R::after {
+    font-size: 4rem;
+}
+#PlateFront4D9R::after {
+    font-size: 3.5rem;
+}
+#PlateFront4D10R::after {
+    font-size: 3rem;
+}
+
+
+@media (max-width: 760px) {
+    #PlateFront4D {
+        font-size: 5rem;
+    }
+    #PlateFront4D::after {
+        font-size: 5rem;
+    }
+    #PlateFront4D5 {
+        font-size: 2.5rem;
+    }
+    #PlateFront4D5::after {
+        font-size: 2.5rem;
+    }
+    #PlateFront4D7 {
+        font-size: 2.5rem;
+    }
+    #PlateFront4D7::after {
+        font-size: 2.5rem;
+    }
+    #PlateFront4D10 {
+        font-size: 3rem;
+    }
+    #PlateFront4D10::after {
+        font-size: 3rem;
+    }
+    
+    #PlateFront4DR {
+        font-size: 5rem;
+    }
+    #PlateFront4DR::after {
+        font-size: 5rem;
+    }
+    #PlateFront4D5R {
+        font-size: 2.5rem;
+    }
+    #PlateFront4D5R::after {
+        font-size: 2.5rem;
+    }
+    #PlateFront4D7R {
+        font-size: 2.5rem;
+    }
+    #PlateFront4D7R::after {
+        font-size: 2.5rem;
+    }
+    #PlateFront4D10R {
+        font-size: 3rem;
+    }
+    #PlateFront4D10R::after {
+        font-size: 3rem;
+    }
+    #PickerLabel
+    {
+        font-size: 0.7rem;
+    }
+    .radio-inputs {
+        width: 50%
+    }
+    #Divider-Holder
+    {
+        grid-template-columns: 100%;
+    }
+    #Footer_Main
+    {
+        grid-template-columns: 100%;
+    }
+
+}
+@media (max-width: 480px) {
+    #PlateFront4D {
+        font-size: 3rem;
+    }
+    #PlateFront4D::after {
+        font-size: 3rem;
+    }    
+    #PlateFront4D3 {
+        font-size: 1.5rem;
+    }
+    #PlateFront4D3::after {
+        font-size: 1.5rem;
+    }
+    #PlateFront4D4 {
+        font-size: 1.5rem;
+    }
+    #PlateFront4D4::after {
+        font-size: 1.5rem;
+    }
+    #PlateFront4D5 {
+        font-size: 1.5rem;
+    }
+    #PlateFront4D5::after {
+        font-size: 1.5rem;
+    }
+    #PlateFront4D7 {
+        font-size: 1.5rem;
+    }
+    #PlateFront4D7::after {
+        font-size: 1.5rem;
+    }
+    #PlateFront4D9 {
+        font-size: 1.8rem;
+    }
+    #PlateFront4D9::after {
+        font-size: 1.8rem;
+    }
+    #PlateFront4D10 {
+        font-size: 1.3rem;
+    }
+    #PlateFront4D10::after {
+        font-size: 1.3rem;
+    }
+
+    #PlateFront4DR {
+        font-size: 3rem;
+    }
+    #PlateFront4DR::after {
+        font-size: 3rem;
+    }    
+    #PlateFront4D3R {
+        font-size: 1.5rem;
+    }
+    #PlateFront4D3R::after {
+        font-size: 1.5rem;
+    }
+    #PlateFront4D4R {
+        font-size: 1.5rem;
+    }
+    #PlateFront4D4R::after {
+        font-size: 1.5rem;
+    }
+    #PlateFront4D5R {
+        font-size: 1.5rem;
+    }
+    #PlateFront4D5R::after {
+        font-size: 1.5rem;
+    }
+    #PlateFront4D7R {
+        font-size: 1.5rem;
+    }
+    #PlateFront4D7R::after {
+        font-size: 1.5rem;
+    }
+    #PlateFront4D9R {
+        font-size: 1.8rem;
+    }
+    #PlateFront4D9R::after {
+        font-size: 1.8rem;
+    }
+    #PlateFront4D10R {
+        font-size: 1.3rem;
+    }
+    #PlateFront4D10R::after {
+        font-size: 1.3rem;
+    }
+
+    .Option2_Bottom {
+        font-size: 4rem !important;
+    }
+    #PickerLabel
+    {
+        font-size: 0.6rem;
+    }
+    .radio-inputs {
+        width: 50%
+    }
+    .Divider-Text5
+    {
+        font-size: 0.7rem;        
+    }
+    .Divider-Text3
+    {
+        font-size: 1.2rem;
+    }
+}
+@media (max-width: 400px) {
+    #PlateFront4D {
+        font-size: 2rem;
+    }
+    #PlateFront4D::after {
+        font-size: 2rem;
+    }
+    #PlateFront4D4 {
+        font-size: 1rem;
+    }
+    #PlateFront4D4::after {
+        font-size: 1rem;
+    }
+
+    #PlateFront4DR {
+        font-size: 2rem;
+    }
+    #PlateFront4DR::after {
+        font-size: 2rem;
+    }
+    #PlateFront4D4R {
+        font-size: 1rem;
+    }
+    #PlateFront4D4R::after {
+        font-size: 1rem;
+    }
+    .radio-inputs {
+        width: 50%
+    }
+
+    
+}
+@media (max-width: 380px) {
+    #PlateFront4D {
+        font-size: 2rem;
+    }
+    #PlateFront4D::after {
+        font-size: 2rem;
+    }
+    #PlateFront4D3 {
+        font-size: 1rem;
+    }
+    #PlateFront4D3::after {
+        font-size: 1rem;
+    }
+    #PlateFront4D5 {
+        font-size: 1rem;
+    }
+    #PlateFront4D5::after {
+        font-size: 1rem;
+    }
+    
+
+    #PlateFront4DR {
+        font-size: 2rem;
+    }
+    #PlateFront4DR::after {
+        font-size: 2rem;
+    }
+    #PlateFront4D3R {
+        font-size: 1rem;
+    }
+    #PlateFront4D3R::after {
+        font-size: 1rem;
+    }
+    #PlateFront4D5R {
+        font-size: 1rem;
+    }
+    #PlateFront4D5R::after {
+        font-size: 1rem;
+    }
+    .Option2_Bottom {
+        font-size: 4rem !important;
+    }
+    .radio-inputs {
+        width: 60%
+    }
+
+}
+
+
+
+
+#Option2_Top_4D{
+    margin-top: -1.5rem;
+    border-radius: 5px;
+    border-bottom: 0;
+    font-size: 6rem;
+    font-weight: bolder;
+
+    font-family: 'Montserrat', sans-serif;
+    justify-content: center;
+    color: #828282;
+    padding: 0.5rem;
+    border-radius: 5px;
+    font-weight: bold;
+    position: relative;
+    overflow: hidden;
+}
+#Option2_Top_4D::after{
+    content: attr(data-content);
+    color: black;
+    width: 100%;
+    font-size: 6rem;
+    overflow: hidden;
+    padding: 0.5rem;
+    border-radius: 5px;
+    font-weight: bold;
+    position: absolute;
+    top: 49%;
+    left: 49.2%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+.Option2_Bottom {
+    margin-top: -3rem;
+    margin-bottom: -1.5rem;
+    border-radius: 5px;
+    border-bottom: 0;
+    font-size: 6rem;
+    color: black;
+    font-weight: bolder;
 }

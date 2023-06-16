@@ -58,99 +58,35 @@
     padding: 1rem;
     margin-bottom: -2rem;
 }
-#PlateFront4D,#PlateFront4D2,#PlateFront4D3,#PlateFront4D4,#PlateFront4D5,
-#PlateFront4D6,#PlateFront4D7,#PlateFront4D8 
+#Preview
 {
     display: flex;
     font-family: 'Montserrat', sans-serif;
     justify-content: center;
-    color: #828282;
+    color: #4b4b4b;
     padding: 0.5rem;
     border-radius: 5px;
     font-weight: bold;
-    margin-bottom: 1rem;
     position: relative;
     overflow: hidden;
 }
-#PlateFront4D {
-    font-size: 5rem;
-}
-#PlateFront4D2 {
-    font-size: 4.5rem;
-}
-
-#PlateFront4D3 {
-    font-size: 4.2rem;
-}
-
-#PlateFront4D4 {
-    font-size: 1rem;
-}
-
-#PlateFront4D5 {
-    font-size: 5rem;
-}
-
-#PlateFront4D6 {
-    font-size: 2rem;
-}
-
-#PlateFront4D7 {
-    font-size: 6rem;
-}
-
-#PlateFront4D8 {
-    font-size: 4rem;
-}
-#PlateFront4D::after,#PlateFront4D2::after,#PlateFront4D3::after,
-#PlateFront4D4::after,#PlateFront4D5::after,#PlateFront4D6::after,
-#PlateFront4D7::after,#PlateFront4D8::after {
-    content: attr(data-content);
+#Preview::after
+{
+    content: "PREVIEW";
     color: black;
     width: 100%;
     overflow: hidden;
     padding: 0.5rem;
     border-radius: 5px;
     font-weight: bold;
-    margin-bottom: 1rem;
     position: absolute;
     top: 49%;
-    left: 49%;
+    left: 49.2%;
     transform: translate(-50%, -50%);
     text-align: center;
 }
 
-#PlateFront4D::after {
-    font-size: 5rem;
-}
 
-#PlateFront4D2::after {
-    font-size: 4.5rem;
-}
-
-#PlateFront4D3::after {
-    font-size: 4.2rem;
-}
-
-#PlateFront4D4::after {
-    font-size: 1rem;
-}
-
-#PlateFront4D5::after {
-    font-size: 5rem;
-}
-
-#PlateFront4D6::after {
-    font-size: 2rem;
-}
-
-#PlateFront4D7::after {
-    font-size: 6rem;
-}
-
-#PlateFront4D8::after {
-    font-size: 4rem;
-}
 
 
 .BadgeImage
@@ -1255,102 +1191,7 @@
 
 
 
-    #PlateFront4DR, #PlateFront4D2R, #PlateFront4D3R, #PlateFront4D4R, #PlateFront4D5R,
-    #PlateFront4D6R, #PlateFront4D7R, #PlateFront4D8R {
-        display: flex;
-        font-family: 'Montserrat', sans-serif;
-        justify-content: center;
-        color: #828282;
-        padding: 0.5rem;
-        border-radius: 5px;
-        font-weight: bold;
-        margin-bottom: 1rem;
-        position: relative;
-        overflow: hidden;
-    }
-    
-    #PlateFront4DR {
-        font-size: 5rem;
-    }
-    
-    #PlateFront4D2R {
-        font-size: 4.5rem;
-    }
-    
-    #PlateFront4D3R {
-        font-size: 4.2rem;
-    }
-    
-    #PlateFront4D4R {
-        font-size: 1rem;
-    }
-    
-    #PlateFront4D5R {
-        font-size: 5rem;
-    }
-    
-    #PlateFront4D6R {
-        font-size: 2rem;
-    }
-    
-    #PlateFront4D7R {
-        font-size: 6rem;
-    }
-    
-    #PlateFront4D8R {
-        font-size: 4rem;
-    }
-    
-    #PlateFront4DR::after, #PlateFront4D2R::after, #PlateFront4D3R::after,
-    #PlateFront4D4R::after, #PlateFront4D5R::after, #PlateFront4D6R::after,
-    #PlateFront4D7R::after, #PlateFront4D8R::after {
-        content: attr(data-content);
-        color: black;
-        width: 100%;
-        overflow: hidden;
-        padding: 0.5rem;
-        border-radius: 5px;
-        font-weight: bold;
-        margin-bottom: 1rem;
-        position: absolute;
-        top: 49%;
-        left: 49%;
-        transform: translate(-50%, -50%);
-        text-align: center;
-    }
-    
-    #PlateFront4DR::after {
-        font-size: 5rem;
-    }
-    
-    #PlateFront4D2R::after {
-        font-size: 4.5rem;
-    }
-    
-    #PlateFront4D3R::after {
-        font-size: 4.2rem;
-    }
-    
-    #PlateFront4D4R::after {
-        font-size: 1rem;
-    }
-    
-    #PlateFront4D5R::after {
-        font-size: 5rem;
-    }
-    
-    #PlateFront4D6R::after {
-        font-size: 2rem;
-    }
-    
-    #PlateFront4D7R::after {
-        font-size: 6rem;
-    }
-    
-    #PlateFront4D8R::after {
-        font-size: 4rem;
-    }
-    
+
     .BG_Plate1 {
         width: 90%;
         display: grid;
@@ -1725,6 +1566,7 @@
     padding: 0;
 }
 .Option3_Footer {
+    z-index: 999;
     width:fit-content;
     height: fit-content;
     margin-bottom: -0.1rem;
@@ -1907,6 +1749,7 @@
     padding: 0;
 }
 .Option5_Footer {
+    z-index: 99;
     width:fit-content;
     height: fit-content;
     margin-bottom: -0.1rem;
@@ -2481,6 +2324,7 @@
     margin-left: 40%;
 }
 .SIZE4_Footer {
+    z-index: 999;
     width:fit-content;
     height: fit-content;
     margin-bottom: -0.1rem;
@@ -2499,6 +2343,7 @@
     text-align: center !important;
 }
 .SIZE11_Footer {
+    z-index: 99;
     width:fit-content;
     height: fit-content;
     margin-bottom: -0.1rem;
