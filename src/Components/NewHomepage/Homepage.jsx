@@ -47,7 +47,16 @@ export default function HomePage() {
             "FooterColor": FooterColor,
             "Total": CalculatePrice()
           });
-          Navigate('/checkout')
+          if (Global.isLoggedIn)
+          {
+                Navigate('/checkout')
+          }
+          else
+          {
+                Navigate('/login')
+                Global.SetRedirectToCart(true)
+          }
+
     }
 
     const DisplayBought = () => {
@@ -1734,13 +1743,6 @@ export default function HomePage() {
             </div>
 
             <Footer />
-
-
-
-
-
-
-
         </>
     )
 }
