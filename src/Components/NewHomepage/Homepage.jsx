@@ -1,10 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState , useContext} from 'react';
 import Navigation from '../Navigation/Navigation'
 import Footer from '../Footer/Footer';
-
 import "./Homepage.css"
+import Context from "../../Context/Context"
+import {useNavigate} from "react-router-dom"
 
 export default function HomePage() {
+    const Global = useContext(Context)
+    const Navigate = useNavigate()
+
     const [selectedState, setSelectedState] = useState("standard");
     const [PlateChoice, SetPlateChoice] = useState("Front and Rear");
     const [PlateText, SetPlateText] = useState("");
@@ -12,7 +16,7 @@ export default function HomePage() {
     const [Font, SetFont] = useState("'Montserrat', sans-serif");
     const [FrontSize, SetFrontSize] = useState("Option1");
     const [RearSize, SetRearSize] = useState("Option1");
-    const [Badge, SetBadge] = useState()
+    const [Badge, SetBadge] = useState("")
     const [BadgeCity, SetBadgeCity] = useState("")
     const [BadgeFlag, SetBadgeFlag] = useState("")
     const [BadgeBackground, SetBadgeBackground] = useState("#366CB7")
@@ -22,8 +26,165 @@ export default function HomePage() {
     const [ShortHand, setShortHand] = useState(false);
     const [FooterColor, SetFooterColor] = useState("black")
 
-    const HandleFooterColor = (e) => { SetFooterColor(e.target.value); };
+    const OrderPlacement = () =>
+    {
+        Global.SetOrder({
+            "Type": selectedState,
+            "FrontOption": FrontSize,
+            "RearOption": RearSize,
+            "PlateChoice": PlateChoice,
+            "PlateText": PlateText,
+            "Layout": Layout,
+            "Font": Font,
+            "FrontSize": FrontSize,
+            "RearSize": RearSize,
+            "Badge": Badge,
+            "BadgeBackground": BadgeBackground,
+            "Border": Border,
+            "FooterText": FooterText,
+            "Vertical": Vertical,
+            "ShortHand": ShortHand,
+            "FooterColor": FooterColor,
+            "Total": CalculatePrice()
+          });
+          Navigate('/checkout')
+    }
 
+    const DisplayBought = () => {
+        return (
+            <>
+                {(selectedState === 'standard' && PlateChoice === 'Front and Rear') &&
+                    <div className="Bought">
+                        <div><b>Plate Type:</b> Standard</div>
+                        <div><b>FrontSize:</b> {ReturnSize(FrontSize)}</div>
+                        <div><b>RearSize:</b> {ReturnSize(RearSize)}</div>
+                        <div><b>Layout:</b> {Layout}</div>
+                        {(Border !== "transparent") &&
+                            <div><b>Border:</b> {Border}</div>
+                        }
+                        {Badge !== "" &&
+                            <div><b>Badge:</b> {Badge}</div>
+                        }
+                        {Font !== "'Montserrat', sans-serif" &&
+                            <div><b>Font:</b> {Font}</div>
+                        }
+                    </div>
+                }
+                {(selectedState === 'standard' && PlateChoice === 'Front Only') &&
+                    <div className="Bought">
+                        <div><b>Plate Type:</b> Standard</div>
+                        <div><b>FrontSize:</b> {ReturnSize(FrontSize)}</div>
+                        <div><b>Layout:</b> {Layout}</div>
+                        {(Border !== "transparent") &&
+                            <div><b>Border:</b> {Border}</div>
+                        }
+                        {Badge !== "" &&
+                            <div><b>Badge:</b> {Badge}</div>
+                        }
+                        {Font !== "'Montserrat', sans-serif" &&
+                            <div><b>Font:</b> {Font}</div>
+                        }
+                    </div>
+                }
+                {(selectedState === 'standard' && PlateChoice === 'Rear Only') &&
+                    <div className="Bought">
+                        <div><b>Plate Type:</b> Standard</div>
+                        <div><b>FrontSize:</b> {ReturnSize(FrontSize)}</div>
+                        <div><b>Layout:</b> {Layout}</div>
+                        {(Border !== "transparent") &&
+                            <div><b>Border:</b> {Border}</div>
+                        }
+                        {Badge !== "" &&
+                            <div><b>Badge:</b> {Badge}</div>
+                        }
+                        {Font !== "'Montserrat', sans-serif" &&
+                            <div><b>Font:</b> {Font}</div>
+                        }
+                    </div>
+                }
+                {(selectedState !== 'standard') &&
+                    <div className="Bought">
+                        <div><b>Plate Type:</b>4D Plate</div>
+                        <div><b>FrontSize:</b> {ReturnSize(FrontSize)}</div>
+                        <div><b>RearSize:</b> {ReturnSize(RearSize)}</div>
+                        <div><b>Layout:</b> {Layout}</div>
+                        {(Border !== "transparent") &&
+                            <div><b>Border:</b> {Border}</div>
+                        }
+                        {Font !== "'Montserrat', sans-serif" &&
+                            <div><b>Font:</b> {Font}</div>
+                        }
+                    </div>
+                }
+            </>
+        )
+    }
+
+    const CalculatePrice = () => {
+        let CPrice = 0
+        if (selectedState === 'standard' && PlateChoice === 'Front and Rear') {
+            CPrice = CPrice + GetPrices(FrontSize)
+            CPrice = CPrice + GetPrices(RearSize)
+            if (Layout !== "Legal Plates") {
+                CPrice = CPrice + 2
+            }
+            if (Border !== "transparent") {
+                CPrice = CPrice + 3
+            }
+            if (Badge !== "") {
+                CPrice = CPrice + 3
+            }
+            if (Font !== "'Montserrat', sans-serif") {
+                CPrice = CPrice + 3
+            }
+            return CPrice.toFixed(2);
+        }
+        if (selectedState === 'standard' && PlateChoice === 'Front Only') {
+            CPrice = CPrice + GetPrices(FrontSize)
+            if (Layout !== "Legal Plates") {
+                CPrice = CPrice + 2
+            }
+            if (Border !== "transparent") {
+                CPrice = CPrice + 3
+            }
+            if (Badge !== "") {
+                CPrice = CPrice + 3
+            }
+            if (Font !== "'Montserrat', sans-serif") {
+                CPrice = CPrice + 3
+            }
+            return CPrice.toFixed(2);
+        }
+        if (selectedState === 'standard' && PlateChoice === 'Rear Only') {
+            CPrice = CPrice + GetPrices(RearSize)
+            if (Layout !== "Legal Plates") {
+                CPrice = CPrice + 2
+            }
+            if (Border !== "transparent") {
+                CPrice = CPrice + 3
+            }
+            if (Badge !== "") {
+                CPrice = CPrice + 3
+            }
+            if (Font !== "'Montserrat', sans-serif") {
+                CPrice = CPrice + 3
+            }
+            return CPrice.toFixed(2);
+        }
+        if (selectedState !== 'standard') {
+            CPrice = CPrice + GetPrices4D(FrontSize, RearSize)
+            if (Border !== "transparent") {
+                CPrice = CPrice + 3
+            }
+            if (Font !== "'Montserrat', sans-serif") {
+                CPrice = CPrice + 3
+            }
+            return CPrice.toFixed(2);
+
+        }
+        return CPrice
+    }
+    const HandleFooterColor = (e) => { SetFooterColor(e.target.value); };
     const HandlePlates = (e) => { SetPlateChoice(e.target.value); };
     const HandlePlateText = (e) => {
         const plateText = e.target.value;
@@ -34,9 +195,7 @@ export default function HomePage() {
         SetLayout(e.target.value);
         SetFooterColor("black")
     };
-    const HandleFont = (e) => {
-        SetFont(e.target.value);
-    };
+    const HandleFont = (e) => { SetFont(e.target.value);};
     const HandleFrontSize = (e) => {
         SetFrontSize(e.target.value);
         const styleOptions = {
@@ -76,6 +235,9 @@ export default function HomePage() {
             Option13: "PlateFront4D10R",
             Option14: "PlateFront4D10R",
             Option15: "PlateFront4D10R",
+            Option16: "PlateFront4DRover",
+            Option17: "PlateFront4DRover",
+            Option18: "PlateFront4DRover",
 
         };
         setAttribute2(styleOptions[e.target.value]);
@@ -88,7 +250,10 @@ export default function HomePage() {
     const HandleBorder = (e) => { SetBorder(e.target.value) };
     const HandleBadge = (e) => {
         SetBadge(e.target.value);
-        if (e.target.value !== "") {
+        if (e.target.value === "None") {
+            SetBadge("")
+        }
+        if (e.target.value !== "" && e.target.value !== "None") {
             const [flag, city] = e.target.value.split('-');
             if (flag.endsWith('P')) {
                 SetVertical(true)
@@ -128,6 +293,44 @@ export default function HomePage() {
 
     })
 
+    const ReturnSize = (Option) => {
+        const Size = {
+            Option1: "Standard Size (20.5x4.4in)",
+            Option2: "Standard 4x4 279mm X 203mm (11in X 8in)",
+            Option3: "229mm x 76mm (9in x 3in)",
+            Option4: "254mm x 76mm (10in x 3in)",
+            Option5: "305mm x 76mm (12in x 3in)",
+            Option6: "305mm x 152mm (12in x 6in)",
+            Option7: "330mm x 111mm (13in x 4.4in)",
+            Option8: "330mm x 165mm (13in x 6.5in)",
+            Option9: "16in x 4.5in (16in x 4.5in)",
+            Option10: "520mm x 121mm (20.5in x 4.75in)",
+            Option11: "520mm x 127mm (20.5in x 5in)",
+            Option12: "520mm x 140mm (20.5in x 5.5in)",
+            Option13: "520mm x 152mm (20.5in x 6in)",
+            Option14: "533mm x 152mm (21in x 6in)",
+            Option15: "559mm x 152mm (22in x 6in)",
+            Option16: "Rover 75 (635x175mm)",
+            Option17: "Range Rover Sport V1 (615x150mm)",
+            Option18: "Range Rover Sport V2 (560x165mm)",
+        }
+        return Size[Option] || ""
+    }
+
+    const ResetAll = () =>
+    {
+        SetRearSize("Option1");
+        SetFrontSize("Option1");
+        SetBadgeBackground("#366CB7");
+        SetBorder("transparent");
+        SetBadge("");
+        SetBadgeCity("");
+        SetBadgeFlag("");
+        SetFooterText("Enter Footer Text");
+        SetLayout("Legal Plates");
+        SetFont("'Montserrat', sans-serif")
+    }
+    
     return (
         <>
             <Navigation />
@@ -183,56 +386,61 @@ export default function HomePage() {
 
                                     <select id='Dropdown' required onChange={HandleFont}>
                                         <option value="">-- Select Plate Font--</option>
+                                        <option value="'Montserrat', sans-serif">-- Default--</option>
                                         {Fonts.map((font, index) => (
                                             <option key={index} value={FontFamily[index]}>{font}</option>
                                         ))}
                                     </select>
                                 </div>
 
-                                <div className="container my-2" id='Selection-Options'>
-                                    <select id='Dropdown-Large' required onChange={HandleFrontSize}>
-                                        <option value="">-- Select Front Plate Size--</option>
-                                        <option value="Option1">Standard Size (20.5x4.4in)</option>
-                                        <option value="Option2">Standard 4x4 279mm X 203mm (11in X 8in)</option>
-                                        <option value="Option3">229mm x 76mm (9in x 3in)</option>
-                                        <option value="Option4">254mm x 76mm (10in x 3in)</option>
-                                        <option value="Option5">305mm x 76mm (12in x 3in)</option>
-                                        <option value="Option6">305mm x 152mm (12in x 6in)</option>
-                                        <option value="Option7">330mm x 111mm (13in x 4.4in)</option>
-                                        <option value="Option8">330mm x 165mm (13in x 6.5in)</option>
-                                        <option value="Option9">16in x 4.5in (16in x 4.5in)</option>
-                                        <option value="Option10">520mm x 121mm (20.5in x 4.75in)</option>
-                                    </select>
-                                </div>
+                                {(PlateChoice === "Front and Rear" || PlateChoice === "Front Only") &&
+                                    <div className="container my-2" id='Selection-Options'>
+                                        <select id='Dropdown-Large' required onChange={HandleFrontSize}>
+                                            <option value="">-- Select Front Plate Size--</option>
+                                            <option value="Option1">Standard Size (20.5x4.4in)</option>
+                                            <option value="Option2">Standard 4x4 279mm X 203mm (11in X 8in)</option>
+                                            <option value="Option3">229mm x 76mm (9in x 3in)</option>
+                                            <option value="Option4">254mm x 76mm (10in x 3in)</option>
+                                            <option value="Option5">305mm x 76mm (12in x 3in)</option>
+                                            <option value="Option6">305mm x 152mm (12in x 6in)</option>
+                                            <option value="Option7">330mm x 111mm (13in x 4.4in)</option>
+                                            <option value="Option8">330mm x 165mm (13in x 6.5in)</option>
+                                            <option value="Option9">16in x 4.5in (16in x 4.5in)</option>
+                                            <option value="Option10">520mm x 121mm (20.5in x 4.75in)</option>
+                                        </select>
+                                    </div>
+                                }
 
-                                <div className="container my-2" id='Selection-Options'>
-                                    <select id='Dropdown-Large' required onChange={HandleRearSize}>
-                                        <option value="">-- Select Rear Plate Size--</option>
-                                        <option value="Option1">Standard Size (20.5x4.4in)</option>
-                                        <option value="Option2">Standard 4x4 279mm X 203mm (11in X 8in)</option>
-                                        <option value="Option3">229mm x 76mm (9in x 3in)</option>
-                                        <option value="Option4">254mm x 76mm (10in x 3in)</option>
-                                        <option value="Option5">305mm x 76mm (12in x 3in)</option>
-                                        <option value="Option6">305mm x 152mm (12in x 6in)</option>
-                                        <option value="Option7">330mm x 111mm (13in x 4.4in)</option>
-                                        <option value="Option8">330mm x 165mm (13in x 6.5in)</option>
-                                        <option value="Option9">16in x 4.5in (16in x 4.5in)</option>
-                                        <option value="Option10">520mm x 121mm (20.5in x 4.75in)</option>
-                                        <option value="Option11">520mm x 127mm (20.5in x Sin)</option>
-                                        <option value="Option12">520mm x 140mm (20.5in x 5.5in)</option>
-                                        <option value="Option13">520mm x 152mm (20.5in x 6in)</option>
-                                        <option value="Option14">533mm x 152mm (21in x 6in)</option>
-                                        <option value="Option15">559mm x 152mm (22in x 6in)</option>
-                                        <option value="Option16">Rover 75 (635x175mm)</option>
-                                        <option value="Option17">Range Rover Sport V1 (615x150mm)</option>
-                                        <option value="Option18">Range Rover Sport V2 (560x165mm)</option>
+                                {(PlateChoice === "Front and Rear" || PlateChoice === "Rear Only") &&
+                                    <div className="container my-2" id='Selection-Options'>
+                                        <select id='Dropdown-Large' required onChange={HandleRearSize}>
+                                            <option value="">-- Select Rear Plate Size--</option>
+                                            <option value="Option1">Standard Size (20.5x4.4in)</option>
+                                            <option value="Option2">Standard 4x4 279mm X 203mm (11in X 8in)</option>
+                                            <option value="Option3">229mm x 76mm (9in x 3in)</option>
+                                            <option value="Option4">254mm x 76mm (10in x 3in)</option>
+                                            <option value="Option5">305mm x 76mm (12in x 3in)</option>
+                                            <option value="Option6">305mm x 152mm (12in x 6in)</option>
+                                            <option value="Option7">330mm x 111mm (13in x 4.4in)</option>
+                                            <option value="Option8">330mm x 165mm (13in x 6.5in)</option>
+                                            <option value="Option9">16in x 4.5in (16in x 4.5in)</option>
+                                            <option value="Option10">520mm x 121mm (20.5in x 4.75in)</option>
+                                            <option value="Option11">520mm x 127mm (20.5in x Sin)</option>
+                                            <option value="Option12">520mm x 140mm (20.5in x 5.5in)</option>
+                                            <option value="Option13">520mm x 152mm (20.5in x 6in)</option>
+                                            <option value="Option14">533mm x 152mm (21in x 6in)</option>
+                                            <option value="Option15">559mm x 152mm (22in x 6in)</option>
+                                            <option value="Option16">Rover 75 (635x175mm)</option>
+                                            <option value="Option17">Range Rover Sport V1 (615x150mm)</option>
+                                            <option value="Option18">Range Rover Sport V2 (560x165mm)</option>
 
-                                    </select>
-                                </div>
-
+                                        </select>
+                                    </div>
+                                }
                                 <div className="container my-2" id='Selection-Options2'>
                                     <select id='Dropdown-Large' required onChange={HandleBadge}>
                                         <option value="">-- Select Badge --</option>
+                                        <option value="None">-- None --</option>
                                         {Badges.map((badge, index) => (
                                             <option key={index} value={badge}>{badge}</option>
                                         ))}
@@ -268,19 +476,20 @@ export default function HomePage() {
                                         </div>
                                     </div>
                                 }
+
+                                    <div className="Centeralize1" onClick={ResetAll}>
+                                        <button className="Cart-Button1">Reset</button>
+                                    </div>                                    
+
                             </>
                         ) :
                             (
                                 <>
                                     <div className="container my-2" id='Selection-Options'>
-                                        <select id='Dropdown-Medium' required onChange={HandlePlates}>
-                                            <option value="Front and Rear">Front and Rear</option>
-                                            <option value="Front Only">Front Only</option>
-                                            <option value="Rear Only">Rear Only</option>
-                                        </select>
-
-                                        <select id='Dropdown-Medium' required onChange={HandleFont}>
+                                        <select id='Dropdown-Large' required onChange={HandleFont}>
                                             <option value="">-- Select Plate Font--</option>
+                                            <option value="'Montserrat', sans-serif">-- Default--</option>
+
                                             {Fonts.map((font, index) => (
                                                 <option key={index} value={FontFamily[index]}>{font}</option>
                                             ))}
@@ -291,14 +500,6 @@ export default function HomePage() {
                                         <select id='Dropdown-Large' required onChange={HandleFrontSize}>
                                             <option value="">-- Select Front Plate Size--</option>
                                             <option value="Option1">Standard Size (20.5x4.4in)</option>
-                                            <option value="Option2">Standard 4x4 279mm X 203mm (11in X 8in)</option>
-                                            <option value="Option3">229mm x 76mm (9in x 3in)</option>
-                                            <option value="Option4">254mm x 76mm (10in x 3in)</option>
-                                            <option value="Option5">305mm x 76mm (12in x 3in)</option>
-                                            <option value="Option6">305mm x 152mm (12in x 6in)</option>
-                                            <option value="Option7">330mm x 111mm (13in x 4.4in)</option>
-                                            <option value="Option8">330mm x 165mm (13in x 6.5in)</option>
-                                            <option value="Option9">16in x 4.5in (16in x 4.5in)</option>
                                             <option value="Option10">520mm x 121mm (20.5in x 4.75in)</option>
                                         </select>
                                     </div>
@@ -307,14 +508,7 @@ export default function HomePage() {
                                         <select id='Dropdown-Large' required onChange={HandleRearSize}>
                                             <option value="">-- Select Rear Plate Size--</option>
                                             <option value="Option1">Standard Size (20.5x4.4in)</option>
-                                            <option value="Option2">Standard 4x4 279mm X 203mm (11in X 8in)</option>
-                                            <option value="Option3">229mm x 76mm (9in x 3in)</option>
-                                            <option value="Option4">254mm x 76mm (10in x 3in)</option>
-                                            <option value="Option5">305mm x 76mm (12in x 3in)</option>
-                                            <option value="Option6">305mm x 152mm (12in x 6in)</option>
-                                            <option value="Option7">330mm x 111mm (13in x 4.4in)</option>
-                                            <option value="Option8">330mm x 165mm (13in x 6.5in)</option>
-                                            <option value="Option9">16in x 4.5in (16in x 4.5in)</option>
+                                            <option value="Option2">Standard M/c (9in X 7in)</option>
                                             <option value="Option10">520mm x 121mm (20.5in x 4.75in)</option>
                                             <option value="Option11">520mm x 127mm (20.5in x Sin)</option>
                                             <option value="Option12">520mm x 140mm (20.5in x 5.5in)</option>
@@ -337,9 +531,13 @@ export default function HomePage() {
                                             <button type="button" onClick={ResetBc} id="ResetButton">Reset</button>
                                         </div>
                                     </div>
+
+                                    <div className="Centeralize1" onClick={ResetAll}>
+                                        <button className="Cart-Button1">Reset</button>
+                                    </div>                                    
+                                    
                                 </>
                             )}
-
                     </div>
                 </div>
 
@@ -1135,7 +1333,7 @@ export default function HomePage() {
 
 
 
-                    {(PlateChoice === "Front and Rear" || PlateChoice === "Front Only") && selectedState !== 'standard' && FrontSize === "Option1" &&
+                    {selectedState !== 'standard' && FrontSize === "Option1" &&
                         <div className="Centeralize">
                             <div className="Option1_Basic" style={{ backgroundColor: "#E7E7E7" }}>
                                 <div className='Option1_Container'>
@@ -1147,7 +1345,7 @@ export default function HomePage() {
                             </div>
                         </div>
                     }
-                    {(PlateChoice === "Front and Rear" || PlateChoice === "Front Only") && selectedState !== 'standard' && FrontSize === "Option2" &&
+                    {selectedState !== 'standard' && FrontSize === "Option2" &&
                         <div className="Centeralize">
                             <div className='Option2_Wrapper' style={{ backgroundColor: "#E7E7E7" }}>
                                 <div className='Option2_Container' style={{ fontFamily: Font, border: `3px solid ${Border}` }}>
@@ -1257,7 +1455,7 @@ export default function HomePage() {
                     }
 
 
-                    {(PlateChoice === "Front and Rear" || PlateChoice === "Rear Only") && selectedState !== 'standard' && RearSize === "Option1" &&
+                    {selectedState !== 'standard' && RearSize === "Option1" &&
                         <div className="Centeralize">
                             <div className="Option1_Basic" style={{ backgroundColor: "#F1B317" }}>
                                 <div className='Option1_Container'>
@@ -1269,7 +1467,7 @@ export default function HomePage() {
                             </div>
                         </div>
                     }
-                    {(PlateChoice === "Front and Rear" || PlateChoice === "Rear Only") && selectedState !== 'standard' && RearSize === "Option2" &&
+                    {selectedState !== 'standard' && RearSize === "Option2" &&
                         <div className="Centeralize">
                             <div className='Option2_Wrapper' style={{ backgroundColor: "#F1B317" }}>
                                 <div className='Option2_Container' style={{ fontFamily: Font, border: `3px solid ${Border}` }}>
@@ -1287,7 +1485,7 @@ export default function HomePage() {
                             </div>
                         </div>
                     }
-                    {(PlateChoice === "Front and Rear" || PlateChoice === "Rear Only") && selectedState !== 'standard' && RearSize === "Option3" &&
+                    {selectedState !== 'standard' && RearSize === "Option3" &&
                         <div className="Centeralize">
                             <div className="Option3" style={{ backgroundColor: "#F1B317" }}>
                                 <div className='Option3_Container'>
@@ -1299,7 +1497,7 @@ export default function HomePage() {
                             </div>
                         </div>
                     }
-                    {(PlateChoice === "Front and Rear" || PlateChoice === "Rear Only") && selectedState !== 'standard' && RearSize === "Option4" &&
+                    {selectedState !== 'standard' && RearSize === "Option4" &&
                         <div className="Centeralize">
                             <div className="SIZE4" style={{ backgroundColor: "#F1B317" }}>
                                 <div className='BG_Container2'>
@@ -1311,7 +1509,7 @@ export default function HomePage() {
                             </div>
                         </div>
                     }
-                    {(PlateChoice === "Front and Rear" || PlateChoice === "Rear Only") && selectedState !== 'standard' && RearSize === "Option5" &&
+                    {selectedState !== 'standard' && RearSize === "Option5" &&
                         <div className="Centeralize">
                             <div className="SIZE5" style={{ backgroundColor: "#F1B317" }}>
                                 <div className='BG_Container2'>
@@ -1323,7 +1521,7 @@ export default function HomePage() {
                             </div>
                         </div>
                     }
-                    {(PlateChoice === "Front and Rear" || PlateChoice === "Rear Only") && selectedState !== 'standard' && (RearSize === "Option6" || RearSize === "Option8") &&
+                    {selectedState !== 'standard' && (RearSize === "Option6" || RearSize === "Option8") &&
                         <div className="Centeralize">
                             <div className='S3_Wrapper' style={{ backgroundColor: "#F1B317" }}>
                                 <div className='S3_Container' style={{ fontFamily: Font, border: `3px solid ${Border}` }}>
@@ -1341,7 +1539,7 @@ export default function HomePage() {
                             </div>
                         </div>
                     }
-                    {(PlateChoice === "Front and Rear" || PlateChoice === "Rear Only") && selectedState !== 'standard' && RearSize === "Option7" &&
+                    {selectedState !== 'standard' && RearSize === "Option7" &&
                         <div className="Centeralize">
                             <div className="Option10_NoBadge" style={{ backgroundColor: "#F1B317" }}>
                                 <div className='BG_Container2'>
@@ -1353,7 +1551,7 @@ export default function HomePage() {
                             </div>
                         </div>
                     }
-                    {(PlateChoice === "Front and Rear" || PlateChoice === "Rear Only") && selectedState !== 'standard' && RearSize === "Option9" &&
+                    {selectedState !== 'standard' && RearSize === "Option9" &&
                         <div className="Centeralize">
                             <div className="Option6_NoBadge" style={{ backgroundColor: "#F1B317" }}>
                                 <div className='BG_Container2'>
@@ -1365,7 +1563,7 @@ export default function HomePage() {
                             </div>
                         </div>
                     }
-                    {(PlateChoice === "Front and Rear" || PlateChoice === "Rear Only") && selectedState !== 'standard' && RearSize === "Option10" &&
+                    {selectedState !== 'standard' && RearSize === "Option10" &&
                         <div className="Centeralize">
                             <div className="SIZE10" style={{ backgroundColor: "#F1B317" }}>
                                 <div className='BG_Container2'>
@@ -1381,7 +1579,7 @@ export default function HomePage() {
 
 
 
-                    {(PlateChoice === "Front and Rear" || PlateChoice === "Rear Only") && !Badge && selectedState !== 'standard' && RearSize === "Option11" &&
+                    {selectedState !== 'standard' && RearSize === "Option11" &&
                         <div className="Centeralize">
                             <div className="SIZE11" style={{ backgroundColor: "#F1B317" }}>
                                 <div className='BG_Container2'>
@@ -1393,7 +1591,7 @@ export default function HomePage() {
                             </div>
                         </div>
                     }
-                    {(PlateChoice === "Front and Rear" || PlateChoice === "Rear Only") && !Badge && selectedState !== 'standard' && RearSize === "Option12" &&
+                    {selectedState !== 'standard' && RearSize === "Option12" &&
                         <div className="Centeralize">
                             <div className="SIZE11" style={{ backgroundColor: "#F1B317" }}>
                                 <div className='BG_Container2'>
@@ -1405,7 +1603,7 @@ export default function HomePage() {
                             </div>
                         </div>
                     }
-                    {(PlateChoice === "Front and Rear" || PlateChoice === "Rear Only") && !Badge && selectedState !== 'standard' && RearSize === "Option13" &&
+                    {selectedState !== 'standard' && RearSize === "Option13" &&
                         <div className="Centeralize">
                             <div className="SIZE11" style={{ backgroundColor: "#F1B317" }}>
                                 <div className='BG_Container2'>
@@ -1417,7 +1615,7 @@ export default function HomePage() {
                             </div>
                         </div>
                     }
-                    {(PlateChoice === "Front and Rear" || PlateChoice === "Rear Only") && !Badge && selectedState !== 'standard' && RearSize === "Option14" &&
+                    {selectedState !== 'standard' && RearSize === "Option14" &&
                         <div className="Centeralize">
                             <div className="SIZE11" style={{ backgroundColor: "#F1B317" }}>
                                 <div className='BG_Container2'>
@@ -1429,7 +1627,7 @@ export default function HomePage() {
                             </div>
                         </div>
                     }
-                    {(PlateChoice === "Front and Rear" || PlateChoice === "Rear Only") && !Badge && selectedState !== 'standard' && RearSize === "Option15" &&
+                    {selectedState !== 'standard' && RearSize === "Option15" &&
                         <div className="Centeralize">
                             <div className="SIZE12" style={{ backgroundColor: "#F1B317" }}>
                                 <div className='BG_Container2'>
@@ -1441,36 +1639,36 @@ export default function HomePage() {
                             </div>
                         </div>
                     }
-                    {(PlateChoice === "Front and Rear" || PlateChoice === "Rear Only") && !Badge && selectedState === 'standard' && RearSize === "Option16" &&
+                    {selectedState !== 'standard' && RearSize === "Option16" &&
                         <div className="Centeralize" id='Range-Cont'>
                             <img className="RoverImage" src="/Range.png" alt="Rover" style={{ border: '2px solid #000', mask: 'url(#image-mask)' }} />
                             <div class="Rover" >
                                 <div class="Rover-Inner" >
-                                    <div style={{ fontFamily: Font }}>{PlateText}</div>
+                                    <div style={{ fontFamily: Font }} id={Attribute2} >{PlateText}</div>
                                     {Layout === "Legal Plates" && <p className="Rover_Footer">CPD JE2 4UE</p>}
                                     {Layout === "Custom Plates" && <p className="Rover_Footer" style={{ color: FooterColor }}>{FooterText}</p>}
                                 </div>
                             </div>
                         </div>
                     }
-                    {(PlateChoice === "Front and Rear" || PlateChoice === "Rear Only") && !Badge && selectedState === 'standard' && RearSize === "Option17" &&
+                    {selectedState !== 'standard' && RearSize === "Option17" &&
                         <div className="Centeralize" id='Range-Cont'>
                             <img className="RoverImage" src="/Range2.png" alt="Rover" style={{ border: '2px solid #000', mask: 'url(#image-mask)' }} />
                             <div class="Rover" >
                                 <div class="Rover-Inner" >
-                                    <div style={{ fontFamily: Font }}>{PlateText}</div>
+                                    <div style={{ fontFamily: Font }} id={Attribute2}>{PlateText}</div>
                                     {Layout === "Legal Plates" && <p className="Rover_Footer">CPD JE2 4UE</p>}
                                     {Layout === "Custom Plates" && <p className="Rover_Footer" style={{ color: FooterColor }}>{FooterText}</p>}
                                 </div>
                             </div>
                         </div>
                     }
-                    {(PlateChoice === "Front and Rear" || PlateChoice === "Rear Only") && !Badge && selectedState === 'standard' && RearSize === "Option18" &&
+                    {selectedState !== 'standard' && RearSize === "Option18" &&
                         <div className="Centeralize" id='Range-Cont'>
                             <img className="RoverImage" src="/Range3.png" alt="Rover" style={{ border: '2px solid #000', mask: 'url(#image-mask)' }} />
                             <div class="Rover" >
                                 <div class="Rover-Inner" >
-                                    <div style={{ fontFamily: Font }}>{PlateText}</div>
+                                    <div style={{ fontFamily: Font }} id={Attribute2}>{PlateText}</div>
                                     {Layout === "Legal Plates" && <p className="Rover_Footer">CPD JE2 4UE</p>}
                                     {Layout === "Custom Plates" && <p className="Rover_Footer" style={{ color: FooterColor }}>{FooterText}</p>}
                                 </div>
@@ -1480,10 +1678,10 @@ export default function HomePage() {
                     <div className="Centeralize" >
                         <div id='YAB'>
                             <div className="Payment-Box">
-                                <div className="Bought">Plate Type: Standard</div>
-                                <div className="Price">£38.98</div>
+                                <DisplayBought />
+                                <div className="Price">€{CalculatePrice()}</div>
                             </div>
-                            <button className="Cart-Button">Add to Cart</button>
+                            <button className="Cart-Button" onClick={OrderPlacement}>Add to Cart</button>
                         </div>
                     </div>
                 </div>
@@ -1585,6 +1783,80 @@ const Fonts = [
     'Nunito'
 ];
 
+const GetPrices = (Option) => {
+    const Price = {
+        Option1: 12.99,
+        Option2: 16.99,
+        Option3: 15.49,
+        Option4: 17.49,
+        Option5: 18.49,
+        Option6: 19.49,
+        Option7: 19.49,
+        Option8: 18.49,
+        Option9: 22.49,
+        Option10: 19.49,
+        Option11: 18.49,
+        Option12: 19.49,
+        Option13: 20.49,
+        Option14: 21.49,
+        Option15: 22.49,
+        Option16: 27.49,
+        Option17: 27.49,
+        Option18: 27.49,
+    };
+    return Price[Option] || 0;
+}
+
+const GetPrices4D = (FrontOption, RearOption) => {
+    if (FrontOption === 'Option1' && RearOption === 'Option1')
+        return 46.98
+    else if (FrontOption === 'Option1' && RearOption === 'Option2')
+        return 51.48
+    else if (FrontOption === 'Option1' && RearOption === 'Option10')
+        return 54.98
+    else if (FrontOption === 'Option1' && RearOption === 'Option11')
+        return 53.98
+    else if (FrontOption === 'Option1' && RearOption === 'Option12')
+        return 54.98
+    else if (FrontOption === 'Option1' && RearOption === 'Option13')
+        return 55.98
+    else if (FrontOption === 'Option1' && RearOption === 'Option14')
+        return 56.98
+    else if (FrontOption === 'Option1' && RearOption === 'Option15')
+        return 57.98
+    else if (FrontOption === 'Option1' && RearOption === 'Option16')
+        return 62.98
+    else if (FrontOption === 'Option1' && RearOption === 'Option17')
+        return 62.98
+    else if (FrontOption === 'Option1' && RearOption === 'Option18')
+        return 62.98
+
+
+    else if (FrontOption === 'Option10' && RearOption === 'Option1')
+        return 54.98
+    else if (FrontOption === 'Option10' && RearOption === 'Option2')
+        return 59.48
+    else if (FrontOption === 'Option10' && RearOption === 'Option10')
+        return 62.98
+    else if (FrontOption === 'Option10' && RearOption === 'Option11')
+        return 61.98
+    else if (FrontOption === 'Option10' && RearOption === 'Option12')
+        return 62.98
+    else if (FrontOption === 'Option10' && RearOption === 'Option13')
+        return 63.98
+    else if (FrontOption === 'Option10' && RearOption === 'Option14')
+        return 64.98
+    else if (FrontOption === 'Option10' && RearOption === 'Option15')
+        return 65.98
+    else if (FrontOption === 'Option10' && RearOption === 'Option16')
+        return 70.98
+    else if (FrontOption === 'Option10' && RearOption === 'Option17')
+        return 70.98
+    else if (FrontOption === 'Option10' && RearOption === 'Option18')
+        return 70.98
+    else
+        return 0
+}
 const FontFamily = [
     "'Montserrat', sans-serif",
     "'Arial', sans-serif",
@@ -1608,86 +1880,6 @@ const FontFamily = [
     "'Comic Neue', cursive",
     "'Nunito', sans-serif"
 ];
-
-const GetStyles = (Option) => {
-    const styleOptions = {
-        Option1: "StandardFrame",
-        Option2: "StandardFrame2",
-        Option3: "StandardFrame3",
-        Option4: "StandardFrame4",
-        Option5: "StandardFrame5",
-        Option6: "StandardFrame6",
-        Option7: "StandardFrame7",
-        Option8: "StandardFrame8",
-    };
-
-    return styleOptions[Option] || ""; // Return the corresponding style option or an empty string if not found
-};
-
-const GetOptionStyles = (Option) => {
-    const styleOptions = {
-        Option1: {
-            1: "StandardFrame-Badge",
-            2: "StandardFrame-BC",
-            3: "StandardFrame-BI",
-            4: "StandardFrame-BIT",
-            5: "StandardFrame-BPN",
-        },
-        Option2: {
-            1: "StandardFrame-Badge2",
-            2: "StandardFrame-BC2",
-            3: "StandardFrame-BI2",
-            4: "StandardFrame-BIT2",
-            5: "StandardFrame-BPN2",
-        },
-        Option3: {
-            1: "StandardFrame-Badge3",
-            2: "StandardFrame-BC3",
-            3: "StandardFrame-BI3",
-            4: "StandardFrame-BIT3",
-            5: "StandardFrame-BPN3",
-        },
-        Option4: {
-            1: "StandardFrame-Badge4",
-            2: "StandardFrame-BC4",
-            3: "StandardFrame-BI4",
-            4: "StandardFrame-BIT4",
-            5: "StandardFrame-BPN4",
-        },
-        Option5: {
-            1: "StandardFrame-Badge5",
-            2: "StandardFrame-BC5",
-            3: "StandardFrame-BI5",
-            4: "StandardFrame-BIT5",
-            5: "StandardFrame-BPN5",
-        },
-        Option6: {
-            1: "StandardFrame-Badge6",
-            2: "StandardFrame-BC6",
-            3: "StandardFrame-BI6",
-            4: "StandardFrame-BIT6",
-            5: "StandardFrame-BPN6",
-        },
-        Option7: {
-            1: "StandardFrame-Badge7",
-            2: "StandardFrame-BC7",
-            3: "StandardFrame-BI7",
-            4: "StandardFrame-BIT7",
-            5: "StandardFrame-BPN7",
-        },
-        Option8: {
-            1: "StandardFrame-Badge8",
-            2: "StandardFrame-BC8",
-            3: "StandardFrame-BI8",
-            4: "StandardFrame-BIT8",
-            5: "StandardFrame-BPN8",
-        },
-
-    };
-
-    return styleOptions[Option] || ""; // Return the corresponding style option or an empty string if not found
-}
-
 
 
 const Badges = [
