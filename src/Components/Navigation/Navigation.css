@@ -1,17 +1,18 @@
-body
-{
+body {
     background-color: black;
 }
-#Navbar
-{
-    display: grid ;
+
+#Navbar {
+    width: 100%;
+    display: grid;
     grid-template-columns: 50% 50%;
     align-items: center;
-    color:white;
+    color: white;
     padding: 1.5rem;
-    background-color:black;
-    border-bottom: 1px solid  red;
+    background-color: black;
+    border-bottom: 1px solid red;
 }
+
 #Component-1
 {
     display: flex;

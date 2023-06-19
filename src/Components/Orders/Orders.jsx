@@ -1,584 +1,352 @@
-import React, { useEffect, useState, useContext } from 'react';
-import Navigation from '../Navigation/Navigation'
-import Footer from '../Footer/Footer';
-import "./Homepage.css"
+import React, { useState, useContext, useEffect } from 'react'
+import './Orders.css'
 import Context from "../../Context/Context"
-import { useNavigate } from "react-router-dom"
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
-export default function HomePage() {
-    const Global = useContext(Context)
-    const Navigate = useNavigate()
-
-    const [selectedState, setSelectedState] = useState("standard");
-    const [PlateChoice, SetPlateChoice] = useState("Front and Rear");
-    const [PlateText, SetPlateText] = useState("");
-    const [Layout, SetLayout] = useState("Legal Plates");
-    const [Font, SetFont] = useState("'Montserrat', sans-serif");
-    const [FrontSize, SetFrontSize] = useState("Option1");
-    const [RearSize, SetRearSize] = useState("Option1");
-    const [Badge, SetBadge] = useState("")
-    const [BadgeCity, SetBadgeCity] = useState("")
-    const [BadgeFlag, SetBadgeFlag] = useState("")
-    const [BadgeBackground, SetBadgeBackground] = useState("#366CB7")
-    const [Border, SetBorder] = useState("transparent")
-    const [FooterText, SetFooterText] = useState("Enter Footer Text")
-    const [Vertical, SetVertical] = useState(false)
-    const [ShortHand, setShortHand] = useState(false);
-    const [FooterColor, SetFooterColor] = useState("black")
-    const [Delivery, SetDelivery] = useState("")
-    const [Spare, setSpare] = useState(false)
-
-    const OrderPlacement = () => {
-        if ( PlateText === "" )
-        {
-            toast.error("Enter Plate Number")
-            return
-        }
-        if ( Delivery === "" || Delivery==="N/A")
-        {
-            toast.error("Select Delivery Option")
-            return
-        }
+import { useNavigate } from 'react-router-dom'
 
 
-        Global.SetOrder({
-            "Type": selectedState,
-            "FrontOption": FrontSize,
-            "RearOption": RearSize,
-            "PlateChoice": PlateChoice,
-            "PlateText": PlateText,
-            "Layout": Layout,
-            "Font": Font,
-            "FrontSize": FrontSize,
-            "RearSize": RearSize,
-            "Badge": Badge,
-            "BadgeBackground": BadgeBackground,
-            "Border": Border,
-            "FooterText": FooterText,
-            "Vertical": Vertical,
-            "ShortHand": ShortHand,
-            "FooterColor": FooterColor,
-            "Delivery" : Delivery,
-            "Spare" : Spare,
-            "Total": CalculatePrice()
-        });
-        if (Global.isLoggedIn) {
-            Navigate('/checkout')
-        }
-        else {
-            Navigate('/login')
-            Global.SetRedirectToCart(true)
-        }
+export default function Orders() {
+  const Navigate = useNavigate()
+  const Global = useContext(Context)
+  let Username = "Customer"
+  if (Global.User) {
+    Username = `${Global.User.firstName}  ${Global.User.lastName}`
+  }
+  const [selectedState, setSelectedState] = useState();    
+  const [PlateChoice, SetPlateChoice] = useState("Front and Rear");
+  const [PlateText, SetPlateText] = useState("");
+  const [Layout, SetLayout] = useState("Legal Plates");
+  const [Font, SetFont] = useState("'Montserrat', sans-serif");
+  const [FrontSize, SetFrontSize] = useState("Option1");
+  const [RearSize, SetRearSize] = useState("Option1");
+  const [Badge, SetBadge] = useState("")
+  const [BadgeCity, SetBadgeCity] = useState("")
+  const [BadgeFlag, SetBadgeFlag] = useState("")
+  const [BadgeBackground, SetBadgeBackground] = useState("#366CB7")
+  const [Border, SetBorder] = useState("transparent")
+  const [FooterText, SetFooterText] = useState("Enter Footer Text")
+  const [Vertical, SetVertical] = useState(false)
+  const [ShortHand, setShortHand] = useState(false);
+  const [FooterColor, SetFooterColor] = useState("black")
+  const [Attribute, setAttribute] = useState("PlateFront4D");
+  const [Attribute2, setAttribute2] = useState("PlateFront4DR");
 
-    }
 
-    const DisplayBought = () => {
-        return (
-            <>
-                {(selectedState === 'standard' && PlateChoice === 'Front and Rear') &&
-                    <div className="Bought">
-                        <div><b>Plate Type:</b> Standard</div>
-                        <div><b>FrontSize:</b> {ReturnSize(FrontSize)}</div>
-                        <div><b>RearSize:</b> {ReturnSize(RearSize)}</div>
-                        <div><b>Layout:</b> {Layout}</div>
-                        {(Border !== "transparent") &&
-                            <div><b>Border:</b> {Border}</div>
-                        }
-                        {Badge !== "" &&
-                            <div><b>Badge:</b> {Badge}</div>
-                        }
-                        {Font !== "'Montserrat', sans-serif" &&
-                            <div><b>Font:</b> {Font}</div>
-                        }
-                    </div>
-                }
-                {(selectedState === 'standard' && PlateChoice === 'Front Only') &&
-                    <div className="Bought">
-                        <div><b>Plate Type:</b> Standard</div>
-                        <div><b>FrontSize:</b> {ReturnSize(FrontSize)}</div>
-                        <div><b>Layout:</b> {Layout}</div>
-                        {(Border !== "transparent") &&
-                            <div><b>Border:</b> {Border}</div>
-                        }
-                        {Badge !== "" &&
-                            <div><b>Badge:</b> {Badge}</div>
-                        }
-                        {Font !== "'Montserrat', sans-serif" &&
-                            <div><b>Font:</b> {Font}</div>
-                        }
-                    </div>
-                }
-                {(selectedState === 'standard' && PlateChoice === 'Rear Only') &&
-                    <div className="Bought">
-                        <div><b>Plate Type:</b> Standard</div>
-                        <div><b>FrontSize:</b> {ReturnSize(FrontSize)}</div>
-                        <div><b>Layout:</b> {Layout}</div>
-                        {(Border !== "transparent") &&
-                            <div><b>Border:</b> {Border}</div>
-                        }
-                        {Badge !== "" &&
-                            <div><b>Badge:</b> {Badge}</div>
-                        }
-                        {Font !== "'Montserrat', sans-serif" &&
-                            <div><b>Font:</b> {Font}</div>
-                        }
-                    </div>
-                }
-                {(selectedState !== 'standard') &&
-                    <div className="Bought">
-                        <div><b>Plate Type:</b>4D Plate</div>
-                        <div><b>FrontSize:</b> {ReturnSize(FrontSize)}</div>
-                        <div><b>RearSize:</b> {ReturnSize(RearSize)}</div>
-                        <div><b>Layout:</b> {Layout}</div>
-                        {(Border !== "transparent") &&
-                            <div><b>Border:</b> {Border}</div>
-                        }
-                        {Font !== "'Montserrat', sans-serif" &&
-                            <div><b>Font:</b> {Font}</div>
-                        }
-                    </div>
-                }
-            </>
-        )
-    }
+  useEffect(() => {
 
-    const CalculatePrice = () => {
-        let CPrice = 0
-        if (selectedState === 'standard' && PlateChoice === 'Front and Rear') {
-            CPrice = CPrice + GetPrices(FrontSize)
-            CPrice = CPrice + GetPrices(RearSize)
-            if (Layout !== "Legal Plates") {
-                CPrice = CPrice + 2
-            }
-            if (Border !== "transparent") {
-                CPrice = CPrice + 3
-            }
-            if (Badge !== "") {
-                CPrice = CPrice + 3
-            }
-            if (Font !== "'Montserrat', sans-serif") {
-                CPrice = CPrice + 3
-            }
-        }
-        if (selectedState === 'standard' && PlateChoice === 'Front Only') {
-            CPrice = CPrice + GetPrices(FrontSize)
-            if (Layout !== "Legal Plates") {
-                CPrice = CPrice + 2
-            }
-            if (Border !== "transparent") {
-                CPrice = CPrice + 3
-            }
-            if (Badge !== "") {
-                CPrice = CPrice + 3
-            }
-            if (Font !== "'Montserrat', sans-serif") {
-                CPrice = CPrice + 3
-            }
-        }
-        if (selectedState === 'standard' && PlateChoice === 'Rear Only') {
-            CPrice = CPrice + GetPrices(RearSize)
-            if (Layout !== "Legal Plates") {
-                CPrice = CPrice + 2
-            }
-            if (Border !== "transparent") {
-                CPrice = CPrice + 3
-            }
-            if (Badge !== "") {
-                CPrice = CPrice + 3
-            }
-            if (Font !== "'Montserrat', sans-serif") {
-                CPrice = CPrice + 3
-            }
-        }
-        if (selectedState !== 'standard') {
-            CPrice = CPrice + GetPrices4D(FrontSize, RearSize)
-            if (Border !== "transparent") {
-                CPrice = CPrice + 3
-            }
-            if (Font !== "'Montserrat', sans-serif") {
-                CPrice = CPrice + 3
-            }
-        }
-        if (Spare) {
-            CPrice = CPrice * 2;
-        }
-
-        if (Delivery === 'Urgent') {
-            CPrice = parseFloat(CPrice) + 9.99;
-        }
-        else if (Delivery === 'Normal') {
-            CPrice = parseFloat(CPrice) + 6.99;
-        }
-
-    return CPrice.toFixed(2)
-}
-const HandleDelivery = (e) => { SetDelivery(e.target.value) }
-const handleSpareChange = (event) => { setSpare(event.target.checked); };
-const HandleFooterColor = (e) => { SetFooterColor(e.target.value); };
-const HandlePlates = (e) => { SetPlateChoice(e.target.value); };
-const HandlePlateText = (e) => {
-    const plateText = e.target.value;
-    const characterCount = plateText.replace(/\s/g, '').length; // Count characters excluding spaces
-  
-    if (characterCount <= 7) {
-      SetPlateText(plateText);
-    }
-  };
-  const handleRadioChange = (e) => { setSelectedState(e.target.value); };
-const HandleLayout = (e) => {
-    SetLayout(e.target.value);
-    SetFooterColor("black")
-};
-const HandleFont = (e) => { SetFont(e.target.value); };
-const HandleFrontSize = (e) => {
-    SetFrontSize(e.target.value);
-    const styleOptions = {
-        Option1: "PlateFront4D",
-        Option2: "PlateFront4D2",
-        Option3: "PlateFront4D3",
-        Option4: "PlateFront4D4",
-        Option5: "PlateFront4D5",
-        Option6: "PlateFront4D6",
-        Option7: "PlateFront4D7",
-        Option8: "PlateFront4D8",
-        Option9: "PlateFront4D9",
-        Option10: "PlateFront4D10",
-
-    };
-    setAttribute(styleOptions[e.target.value]);
-    const plateFront4D = document.getElementById(Attribute);
-    if (plateFront4D) {
-        plateFront4D.setAttribute("data-content", PlateText);
-    }
-};
-const HandleRearSize = (e) => {
-    SetRearSize(e.target.value);
-    const styleOptions = {
-        Option1: "PlateFront4DR",
-        Option2: "PlateFront4D2R",
-        Option3: "PlateFront4D3R",
-        Option4: "PlateFront4D4R",
-        Option5: "PlateFront4D5R",
-        Option6: "PlateFront4D6R",
-        Option7: "PlateFront4D7R",
-        Option8: "PlateFront4D8R",
-        Option9: "PlateFront4D9R",
-        Option10: "PlateFront4D10R",
-        Option11: "PlateFront4D10R",
-        Option12: "PlateFront4D10R",
-        Option13: "PlateFront4D10R",
-        Option14: "PlateFront4D10R",
-        Option15: "PlateFront4D10R",
-        Option16: "PlateFront4DRover",
-        Option17: "PlateFront4DRover",
-        Option18: "PlateFront4DRover",
-
-    };
-    setAttribute2(styleOptions[e.target.value]);
-    const plateFront4D = document.getElementById(Attribute2);
-    if (plateFront4D) {
-        plateFront4D.setAttribute("data-content", PlateText);
-    }
-};
-const HandleBadgeBg = (e) => { SetBadgeBackground(e.target.value) };
-const HandleBorder = (e) => { SetBorder(e.target.value) };
-const HandleBadge = (e) => {
-    SetBadge(e.target.value);
-    if (e.target.value === "None") {
+    if (Global.Order) 
+    {
+      setSelectedState(Global.Order.Type)
+      SetPlateChoice(Global.Order.PlateChoice)
+      SetPlateText(Global.Order.PlateText)
+      SetLayout(Global.Order.Layout)
+      SetFont(Global.Order.Font)
+      SetFrontSize(Global.Order.FrontSize)
+      SetRearSize(Global.Order.RearSize)
+      SetBadge(Global.Order.Badge)
+      if (Global.Order.Badge === "None") {
         SetBadge("")
-    }
-    if (e.target.value !== "" && e.target.value !== "None") {
-        const [flag, city] = e.target.value.split('-');
+      }
+      if (Global.Order.Badge !== "" && Global.Order.Badge !== "None") {
+        const [flag, city] = Global.Order.Badge.split('-');
         if (flag.endsWith('P')) {
-            SetVertical(true)
+          SetVertical(true)
         }
         else {
-            SetVertical(false)
+          SetVertical(false)
         }
         if (city.length > 4) {
-            setShortHand(true)
+          setShortHand(true)
         } else {
-            setShortHand(false)
+          setShortHand(false)
         }
         SetBadgeCity(city);
         SetBadgeFlag(flag.replace("P", ""));
-    }
-    if (e.target.value === "") {
+      }
+      if (Global.Order.Badge === "") {
         SetBadge("")
         SetBadgeCity("");
         SetBadgeFlag("");
+      }
+      SetBadgeBackground(Global.Order.BadgeBackground)
+      SetBorder(Global.Order.Border)
+      SetFooterText(Global.Order.FooterText)
+      SetVertical(Global.Order.Vertical)
+      setShortHand(Global.Order.ShortHand)
+      SetFooterColor(Global.Order.FooterColor)
+      if (selectedState !== 'standard') 
+      {
+        const styleOptions = {
+          Option1: "PlateFront4D",
+          Option2: "PlateFront4D2",
+          Option3: "PlateFront4D3",
+          Option4: "PlateFront4D4",
+          Option5: "PlateFront4D5",
+          Option6: "PlateFront4D6",
+          Option7: "PlateFront4D7",
+          Option8: "PlateFront4D8",
+          Option9: "PlateFront4D9",
+          Option10: "PlateFront4D10",
+        };
+        setAttribute(styleOptions[Global.Order.FrontSize]);
+        const plateFront4D = document.getElementById(Attribute);
+        if (plateFront4D) {
+          plateFront4D.setAttribute("data-content", PlateText);
+        }
+        const styleOptions2 = {
+          Option1: "PlateFront4DR",
+          Option2: "PlateFront4D2R",
+          Option3: "PlateFront4D3R",
+          Option4: "PlateFront4D4R",
+          Option5: "PlateFront4D5R",
+          Option6: "PlateFront4D6R",
+          Option7: "PlateFront4D7R",
+          Option8: "PlateFront4D8R",
+          Option9: "PlateFront4D9R",
+          Option10: "PlateFront4D10R",
+          Option11: "PlateFront4D10R",
+          Option12: "PlateFront4D10R",
+          Option13: "PlateFront4D10R",
+          Option14: "PlateFront4D10R",
+          Option15: "PlateFront4D10R",
+          Option16: "PlateFront4DRover",
+          Option17: "PlateFront4DRover",
+          Option18: "PlateFront4DRover",
+
+        };
+        setAttribute2(styleOptions2[Global.Order.RearSize]);
+        const plateFront4D1 = document.getElementById(Attribute2);
+        if (plateFront4D1) {
+          plateFront4D1.setAttribute("data-content", PlateText);
+        }
+      }
     }
-};
-const HandleFooter = (e) => { SetFooterText(e.target.value) }
-const ResetBc = () => { SetBorder("transparent") }
-const ResetBg = () => { SetBadgeBackground("#366CB7") }
-const [Attribute, setAttribute] = useState("PlateFront4D");
-const [Attribute2, setAttribute2] = useState("PlateFront4DR");
+  })
 
-useEffect(() => {
-    const plateFront4D = document.getElementById(Attribute);
-    if (plateFront4D) {
-        plateFront4D.setAttribute("data-content", PlateText);
-    }
-    const plateFront4D2 = document.getElementById(Attribute2);
-    if (plateFront4D2) {
-        plateFront4D2.setAttribute("data-content", PlateText);
-    }
 
-})
 
-const ReturnSize = (Option) => {
-    const Size = {
-        Option1: "Standard Size (20.5x4.4in)",
-        Option2: "Standard 4x4 279mm X 203mm (11in X 8in)",
-        Option3: "229mm x 76mm (9in x 3in)",
-        Option4: "254mm x 76mm (10in x 3in)",
-        Option5: "305mm x 76mm (12in x 3in)",
-        Option6: "305mm x 152mm (12in x 6in)",
-        Option7: "330mm x 111mm (13in x 4.4in)",
-        Option8: "330mm x 165mm (13in x 6.5in)",
-        Option9: "16in x 4.5in (16in x 4.5in)",
-        Option10: "520mm x 121mm (20.5in x 4.75in)",
-        Option11: "520mm x 127mm (20.5in x 5in)",
-        Option12: "520mm x 140mm (20.5in x 5.5in)",
-        Option13: "520mm x 152mm (20.5in x 6in)",
-        Option14: "533mm x 152mm (21in x 6in)",
-        Option15: "559mm x 152mm (22in x 6in)",
-        Option16: "Rover 75 (635x175mm)",
-        Option17: "Range Rover Sport V1 (615x150mm)",
-        Option18: "Range Rover Sport V2 (560x165mm)",
-    }
-    return Size[Option] || ""
-}
 
-const ResetAll = () => {
-    SetRearSize("Option1");
-    SetFrontSize("Option1");
-    SetBadgeBackground("#366CB7");
-    SetBorder("transparent");
-    SetBadge("");
-    SetBadgeCity("");
-    SetBadgeFlag("");
-    SetFooterText("Enter Footer Text");
-    SetLayout("Legal Plates");
-    SetFont("'Montserrat', sans-serif")
-    SetDelivery("")
-    setSpare(false)
-}
-
-return (
+  return (
     <>
-        <Navigation />
-        <Cover />
-
-        <div className='container' id="Headline">
-            <span>You have arrived at the UK's leading number </span>
-            <span>your plate design builder. Want to start building your number plate?</span>
+      <div className="ADashboard-Body">
+        <div id="Navbar">
+          <div id="Component-1">
+            <h3><span>Bancroft Auto </span>Locksmiths</h3>
+          </div>
+          <div id="Component-2">
+            <div className='Username-Holder'>{Username}</div>
+            <button className='Logout-Btn' onClick={() => {
+              localStorage.removeItem('Token')
+              Global.SetUser(null)
+              Global.setIsLoggedIn(false)
+              Navigate('/')
+            }}>Logout</button>
+          </div>
         </div>
 
-        <div className="AddPlateText">
-            <input required type="text" placeholder="Enter Registration " name="PlateText" className="PlateText" label="PlateText" onChange={HandlePlateText} />
-        </div>
-        <div className='container my-2' id="Grid">
-            <div className="GridItem1">
-                <div className='Plate-Builder'>
-                    <div className="radio-inputs">
-                        <label className="radio">
-                            <input
-                                type="radio"
-                                name="radio"
-                                value="standard"
-                                checked={selectedState === 'standard'}
-                                onChange={handleRadioChange}
-                            />
-                            <span className="name">Standard</span>
-                        </label>
-                        <label className="radio">
-                            <input
-                                type="radio"
-                                name="radio"
-                                value="4d"
-                                checked={selectedState === '4d'}
-                                onChange={handleRadioChange}
-                            />
-                            <span className="name">4D Plate</span>
-                        </label>
-                    </div>
-                    {selectedState === 'standard' ? (
-                        <>
-                            <div className="container my-2" id='Selection-Options'>
-                                <select id='Dropdown' required onChange={HandlePlates}>
-                                    <option value="Front and Rear">Front and Rear</option>
-                                    <option value="Front Only">Front Only</option>
-                                    <option value="Rear Only">Rear Only</option>
-                                </select>
 
-                                <select id='Dropdown' required onChange={HandleLayout}>
-                                    <option value="">-- Select Plate Layout --</option>
-                                    <option value="Custom Plates">Custom Plates</option>
-                                    <option value="Legal Plates">Legal Plates</option>
-                                </select>
+        <div className='Order-Details'>Orders Details</div>
 
-                                <select id='Dropdown' required onChange={HandleFont}>
-                                    <option value="">-- Select Plate Font--</option>
-                                    <option value="'Montserrat', sans-serif">-- Default--</option>
-                                    {Fonts.map((font, index) => (
-                                        <option key={index} value={FontFamily[index]}>{font}</option>
-                                    ))}
-                                </select>
-                            </div>
 
-                            {(PlateChoice === "Front and Rear" || PlateChoice === "Front Only") &&
-                                <div className="container my-2" id='Selection-Options'>
-                                    <select id='Dropdown-Large' required onChange={HandleFrontSize}>
-                                        <option value="">-- Select Front Plate Size--</option>
-                                        <option value="Option1">Standard Size (20.5x4.4in)</option>
-                                        <option value="Option2">Standard 4x4 279mm X 203mm (11in X 8in)</option>
-                                        <option value="Option3">229mm x 76mm (9in x 3in)</option>
-                                        <option value="Option4">254mm x 76mm (10in x 3in)</option>
-                                        <option value="Option5">305mm x 76mm (12in x 3in)</option>
-                                        <option value="Option6">305mm x 152mm (12in x 6in)</option>
-                                        <option value="Option7">330mm x 111mm (13in x 4.4in)</option>
-                                        <option value="Option8">330mm x 165mm (13in x 6.5in)</option>
-                                        <option value="Option9">16in x 4.5in (16in x 4.5in)</option>
-                                        <option value="Option10">520mm x 121mm (20.5in x 4.75in)</option>
-                                    </select>
-                                </div>
-                            }
+        <div className="container" id='ViewOrders'>
+          <div className='Order-Details-HolderA'>
+              <div id="Plate-Box">Account Information</div>
+              <div className='Account-Info'>
+                <div><b>Account Email: </b>{Global.Order.UserEmail}</div>
+                <div><b>Order Email: </b>{Global.Order.Email}</div>
+                <div><b>Phone: </b>{Global.Order.Phone}</div>
+              </div>
 
-                            {(PlateChoice === "Front and Rear" || PlateChoice === "Rear Only") &&
-                                <div className="container my-2" id='Selection-Options'>
-                                    <select id='Dropdown-Large' required onChange={HandleRearSize}>
-                                        <option value="">-- Select Rear Plate Size--</option>
-                                        <option value="Option1">Standard Size (20.5x4.4in)</option>
-                                        <option value="Option2">Standard 4x4 279mm X 203mm (11in X 8in)</option>
-                                        <option value="Option3">229mm x 76mm (9in x 3in)</option>
-                                        <option value="Option4">254mm x 76mm (10in x 3in)</option>
-                                        <option value="Option5">305mm x 76mm (12in x 3in)</option>
-                                        <option value="Option6">305mm x 152mm (12in x 6in)</option>
-                                        <option value="Option7">330mm x 111mm (13in x 4.4in)</option>
-                                        <option value="Option8">330mm x 165mm (13in x 6.5in)</option>
-                                        <option value="Option9">16in x 4.5in (16in x 4.5in)</option>
-                                        <option value="Option10">520mm x 121mm (20.5in x 4.75in)</option>
-                                        <option value="Option11">520mm x 127mm (20.5in x Sin)</option>
-                                        <option value="Option12">520mm x 140mm (20.5in x 5.5in)</option>
-                                        <option value="Option13">520mm x 152mm (20.5in x 6in)</option>
-                                        <option value="Option14">533mm x 152mm (21in x 6in)</option>
-                                        <option value="Option15">559mm x 152mm (22in x 6in)</option>
-                                        <option value="Option16">Rover 75 (635x175mm)</option>
-                                        <option value="Option17">Range Rover Sport V1 (615x150mm)</option>
-                                        <option value="Option18">Range Rover Sport V2 (560x165mm)</option>
+              <div id="Plate-Box">Address Information</div>
+              <div className='Account-Info'>
+                <div><b>Delivery Address: </b>{Global.Order.Address1}</div>
+                <div><b>Delivery Address 2: </b>{Global.Order.Address2}</div>
+                <div><b>City: </b>{Global.Order.City}</div>
+                <div><b>Post Code: </b>{Global.Order.PostCode}</div>
+                <div><b>Country: </b>{Global.Order.Country}</div>
+              </div>
 
-                                    </select>
-                                </div>
-                            }
-                            <div className="container my-2" id='Selection-Options2'>
-                                <select id='Dropdown-Large' required onChange={HandleBadge}>
-                                    <option value="">-- Select Badge --</option>
-                                    <option value="None">-- None --</option>
-                                    {Badges.map((badge, index) => (
-                                        <option key={index} value={badge}>{badge}</option>
-                                    ))}
-                                </select>
-                            </div>
+              <div id="Plate-Box">Plate Information</div>
+              <div className='Account-Info'>
+                <div><b>Plate Text: </b>{Global.Order.PlateText}</div>
+                {(Global.Order.Type === 'standard' && Global.Order.PlateChoice === 'Front and Rear') &&
+                  <div className="Order-HisA">
+                    <div><b>Plate Type:</b> Standard [Front and Rear]</div>
+                    <div><b>Front Plate Size:</b>{ReturnSize(Global.Order.FrontSize)}</div>
+                    <div><b>Rear Plate Size:</b> {ReturnSize(Global.Order.RearSize)}</div>
+                    <div><b>Layout:</b> {Global.Order.Layout}</div>
+                    {Global.Order.Layout === "Custom Plates" &&
+                      <>
+                        <div><b>Custom Text:</b> {Global.Order.FooterText}</div>
+                        <div><b>Custom Color:</b> {Global.Order.FooterColor}</div>
+                      </>
+                    }
+                    {(Global.Order.Border !== "transparent") &&
+                      <div><b>Border:</b> {Global.Order.Border}</div>
+                    }
+                    {(Global.Order.Border === "transparent") &&
+                      <div><b>Border:</b> Default</div>
+                    }
+                    {Global.Order.Badge !== "" &&
+                      <>
+                        <div><b>Badge:</b> {Global.Order.Badge}</div>
+                        <div><b>Badge-Background:</b> {Global.Order.BadgeBackground}</div>
+                      </>
+                    }
+                    {Global.Order.Badge === "" &&
+                      <div><b>Badge:</b> No Badges</div>
+                    }
+                    {Global.Order.Font !== "'Montserrat', sans-serif" &&
+                      <div><b>Font:</b> {Global.Order.Font}</div>
+                    }
+                    {Global.Order.Font === "'Montserrat', sans-serif" &&
+                      <div><b>Font:</b> Default</div>
+                    }
+                    {Global.Order.Vertical &&
+                      <div><b>Vertical:</b> Yes</div>
+                    }
+                    {!Global.Order.Vertical &&
+                      <div><b>Vertical:</b> No</div>
+                    }
+                    {Global.Order.ShortHand &&
+                      <div><b>ShortHand:</b> Yes</div>
+                    }
+                    {!Global.Order.ShortHand &&
+                      <div><b>ShortHand:</b> No</div>
+                    }
+                  </div>
+                }
+                {(Global.Order.Type === 'standard' && Global.Order.PlateChoice === 'Front Only') &&
+                  <div className="Order-HisA">
+                    <div><b>Plate Type:</b> Standard [Front Only]</div>
+                    <div><b>Plate Number:</b> {Global.Order.PlateText}</div>
+                    <div><b>Front Plate Size:</b> {ReturnSize(Global.Order.FrontSize)}</div>
+                    <div><b>Layout:</b> {Global.Order.Layout}</div>
+                    {Global.Order.Layout === "Custom Plates" &&
+                      <>
+                        <div><b>Custom Text:</b> {Global.Order.FooterText}</div>
+                        <div><b>Custom Color:</b> {Global.Order.FooterColor}</div>
+                      </>
+                    }
+                    {(Global.Order.Border !== "transparent") &&
+                      <div><b>Border:</b> {Global.Order.Border}</div>
+                    }
+                    {(Global.Order.Border === "transparent") &&
+                      <div><b>Border:</b> Default</div>
+                    }
+                    {Global.Order.Badge !== "" &&
+                      <>
+                        <div><b>Badge:</b> {Global.Order.Badge}</div>
+                        <div><b>Badge-Background:</b> {Global.Order.BadgeBackground}</div>
+                      </>
+                    }
+                    {Global.Order.Badge === "" &&
+                      <div><b>Badge:</b> No Badges</div>
+                    }
+                    {Global.Order.Font !== "'Montserrat', sans-serif" &&
+                      <div><b>Font:</b> {Global.Order.Font}</div>
+                    }
+                    {Global.Order.Font === "'Montserrat', sans-serif" &&
+                      <div><b>Font:</b> Default</div>
+                    }
+                    {Global.Order.Vertical &&
+                      <div><b>Vertical:</b> Yes</div>
+                    }
+                    {!Global.Order.Vertical &&
+                      <div><b>Vertical:</b> No</div>
+                    }
+                    {Global.Order.ShortHand &&
+                      <div><b>ShortHand:</b> Yes</div>
+                    }
+                    {!Global.Order.ShortHand &&
+                      <div><b>ShortHand:</b> No</div>
+                    }
 
-                            <div className="container my-2" id='Selection-Options2'>
-                                <div id='ColorPickerdiv'>
-                                    <label htmlFor="ColorPicker" id="PickerLabel">Select Badge Background:</label>
-                                    <input type="color" id='ColorPicker' onChange={HandleBadgeBg} />
-                                </div>
-                                <div>
-                                    <button type="button" onClick={ResetBg} id="ResetButton">Set Default</button>
-                                </div>
-                            </div>
 
-                            <div className="container my-2" id='Selection-Options2'>
-                                <div id='ColorPickerdiv'>
-                                    <label htmlFor="ColorPicker" id="PickerLabel">Select Plate Border Color:</label>
-                                    <input type="color" style={{ marginLeft: "1.3rem" }} id='ColorPicker' onChange={HandleBorder} />
-                                </div>
-                                <div>
-                                    <button type="button" onClick={ResetBc} id="ResetButton">Set Default</button>
-                                </div>
-                            </div>
+                  </div>
+                }
+                {(Global.Order.Type === 'standard' && Global.Order.PlateChoice === 'Rear Only') &&
+                  <div className="Order-HisA">
+                    <div><b>Plate Type:</b> Standard [Rear Only]</div>
+                    <div><b>Plate Number:</b> {Global.Order.PlateText}</div>
+                    <div><b>Rear Plate Size:</b> {ReturnSize(Global.Order.RearSize)}</div>
+                    <div><b>Layout:</b> {Global.Order.Layout}</div>
+                    {Global.Order.Layout === "Custom Plates" &&
+                      <>
+                        <div><b>Custom Text:</b> {Global.Order.FooterText}</div>
+                        <div><b>Custom Color:</b> {Global.Order.FooterColor}</div>
+                      </>
+                    }
+                    {(Global.Order.Border !== "transparent") &&
+                      <div><b>Border:</b> {Global.Order.Border}</div>
+                    }
+                    {(Global.Order.Border === "transparent") &&
+                      <div><b>Border:</b> Default</div>
+                    }
+                    {Global.Order.Badge !== "" &&
+                      <>
+                        <div><b>Badge:</b> {Global.Order.Badge}</div>
+                        <div><b>Badge-Background:</b> {Global.Order.BadgeBackground}</div>
+                      </>
+                    }
+                    {Global.Order.Badge === "" &&
+                      <div><b>Badge:</b> No Badges</div>
+                    }
+                    {Global.Order.Font !== "'Montserrat', sans-serif" &&
+                      <div><b>Font:</b> {Global.Order.Font}</div>
+                    }
+                    {Global.Order.Font === "'Montserrat', sans-serif" &&
+                      <div><b>Font:</b> Default</div>
+                    }
+                    {Global.Order.Vertical &&
+                      <div><b>Vertical:</b> Yes</div>
+                    }
+                    {!Global.Order.Vertical &&
+                      <div><b>Vertical:</b> No</div>
+                    }
+                    {Global.Order.ShortHand &&
+                      <div><b>ShortHand:</b> Yes</div>
+                    }
+                    {!Global.Order.ShortHand &&
+                      <div><b>ShortHand:</b> No</div>
+                    }
 
-                            {Layout === "Custom Plates" &&
-                                <div className="container my-2" id='Selection-Options'>
-                                    <input required type="text" placeholder={FooterText} name="PlateText" id="Footer" label="PlateText" onChange={HandleFooter} />
-                                    <div id='ColorPickerdiv'>
-                                        <label htmlFor="ColorPicker" id="PickerLabel">Footer Color:</label>
-                                        <input type="color" id='ColorPicker' onChange={HandleFooterColor} />
-                                    </div>
-                                </div>
-                            }
+                  </div>
+                }
+                {(Global.Order.Type !== 'standard') &&
+                  <div className="Order-HisA">
+                    <div><b>Plate Type:</b> 4D [Front and Rear]</div>
+                    <div><b>Plate Number:</b> {Global.Order.PlateText}</div>
+                    <div><b>Front Plate Size:</b> {ReturnSize(Global.Order.FrontSize)}</div>
+                    <div><b>Rear Plate Size:</b> {ReturnSize(Global.Order.RearSize)}</div>
+                    <div><b>Layout:</b> {Global.Order.Layout}</div>
+                    {(Global.Order.Border !== "transparent") &&
+                      <div><b>Border:</b> {Global.Order.Border}</div>
+                    }
+                    {(Global.Order.Border === "transparent") &&
+                      <div><b>Border:</b> Default</div>
+                    }
+                    {Global.Order.Font !== "'Montserrat', sans-serif" &&
+                      <div><b>Font:</b> {Global.Order.Font}</div>
+                    }
+                    {Global.Order.Font === "'Montserrat', sans-serif" &&
+                      <div><b>Font:</b> Default</div>
+                    }
+                  </div>
+                }
+              </div>
 
-                            <div className="Centeralize1" onClick={ResetAll}>
-                                <button className="Cart-Button1">Reset</button>
-                            </div>
 
-                        </>
-                    ) :
-                        (
-                            <>
-                                <div className="container my-2" id='Selection-Options'>
-                                    <select id='Dropdown-Large' required onChange={HandleFont}>
-                                        <option value="">-- Select Plate Font--</option>
-                                        <option value="'Montserrat', sans-serif">-- Default--</option>
-
-                                        {Fonts.map((font, index) => (
-                                            <option key={index} value={FontFamily[index]}>{font}</option>
-                                        ))}
-                                    </select>
-                                </div>
-
-                                <div className="container my-2" id='Selection-Options'>
-                                    <select id='Dropdown-Large' required onChange={HandleFrontSize}>
-                                        <option value="">-- Select Front Plate Size--</option>
-                                        <option value="Option1">Standard Size (20.5x4.4in)</option>
-                                        <option value="Option10">520mm x 121mm (20.5in x 4.75in)</option>
-                                    </select>
-                                </div>
-
-                                <div className="container my-2" id='Selection-Options'>
-                                    <select id='Dropdown-Large' required onChange={HandleRearSize}>
-                                        <option value="">-- Select Rear Plate Size--</option>
-                                        <option value="Option1">Standard Size (20.5x4.4in)</option>
-                                        <option value="Option2">Standard M/c (9in X 7in)</option>
-                                        <option value="Option10">520mm x 121mm (20.5in x 4.75in)</option>
-                                        <option value="Option11">520mm x 127mm (20.5in x Sin)</option>
-                                        <option value="Option12">520mm x 140mm (20.5in x 5.5in)</option>
-                                        <option value="Option13">520mm x 152mm (20.5in x 6in)</option>
-                                        <option value="Option14">533mm x 152mm (21in x 6in)</option>
-                                        <option value="Option15">559mm x 152mm (22in x 6in)</option>
-                                        <option value="Option16">Rover 75 (635x175mm)</option>
-                                        <option value="Option17">Range Rover Sport V1 (615x150mm)</option>
-                                        <option value="Option18">Range Rover Sport V2 (560x165mm)</option>
-
-                                    </select>
-                                </div>
-
-                                <div className="container my-2" id='Selection-Options2'>
-                                    <div id='ColorPickerdiv'>
-                                        <label htmlFor="ColorPicker" id="PickerLabel" >Select Plate Border Color:</label>
-                                        <input type="color" id='ColorPicker' onChange={HandleBorder} />
-                                    </div>
-                                    <div>
-                                        <button type="button" onClick={ResetBc} id="ResetButton">Reset</button>
-                                    </div>
-                                </div>
-
-                                <div className="Centeralize1" onClick={ResetAll}>
-                                    <button className="Cart-Button1">Reset</button>
-                                </div>
-
-                            </>
-                        )}
-                </div>
-            </div>
-
-            <div className="GridItem2">
+              <div id="Plate-Box1"><b>Delivery: </b>{Global.Order.Delivery} Delivery</div>
+              {Global.Order.Spare &&
+                <div id="Plate-Box1"><b>Spare Plate: </b>Included</div>
+              }
+              {!Global.Order.Spare &&
+                <div id="Plate-Box1"><b>Spare Plate: </b>Not Included</div>
+              }
+              <div id="Plate-Box2"><b>Order Value: </b>£{Global.Order.OrderValue}</div>
+          </div>
+          <div className='PlatesAdmin'>
+          <div className="GridItem2">
                 {(PlateChoice === "Front and Rear" || PlateChoice === "Front Only") && !Badge && selectedState === 'standard' && FrontSize === "Option1" &&
                     <div className="Centeralize">
                         <div className="Option1_Basic" style={{ backgroundColor: "#E7E7E7" }}>
@@ -1678,7 +1446,7 @@ return (
                 }
                 {selectedState !== 'standard' && RearSize === "Option16" &&
                     <div className="Centeralize" id='Range-Cont'>
-                        <img className="RoverImage" src="/Range.png" alt="Rover" style={{ border: '2px solid #000', mask: 'url(#image-mask)' }} />
+                        <img className="RoverImage" src="/Range.png" alt="Rover"  />
                         <div class="Rover" >
                             <div class="Rover-Inner" >
                                 <div style={{ fontFamily: Font }} id={Attribute2} >{PlateText}</div>
@@ -1690,7 +1458,7 @@ return (
                 }
                 {selectedState !== 'standard' && RearSize === "Option17" &&
                     <div className="Centeralize" id='Range-Cont'>
-                        <img className="RoverImage" src="/Range2.png" alt="Rover" style={{ border: '2px solid #000', mask: 'url(#image-mask)' }} />
+                        <img className="RoverImage" src="/Range2.png" alt="Rover"   />
                         <div class="Rover" >
                             <div class="Rover-Inner" >
                                 <div style={{ fontFamily: Font }} id={Attribute2}>{PlateText}</div>
@@ -1701,10 +1469,10 @@ return (
                     </div>
                 }
                 {selectedState !== 'standard' && RearSize === "Option18" &&
-                    <div className="Centeralize" id='Range-Cont'>
-                        <img className="RoverImage" src="/Range3.png" alt="Rover" style={{ border: '2px solid #000', mask: 'url(#image-mask)' }} />
+                    <div className="Centeralize" id='Range-Cont' style={{border: "0"}}>
+                        <img className="RoverImage" src="/Range3.png" alt="Rover" style={{border: "0"}} />
                         <div class="Rover" >
-                            <div class="Rover-Inner" >
+                            <div class="Rover-Inner" style={{border: "0"}}>
                                 <div style={{ fontFamily: Font }} id={Attribute2}>{PlateText}</div>
                                 {Layout === "Legal Plates" && <p className="Rover_Footer">CPD JE2 4UE</p>}
                                 {Layout === "Custom Plates" && <p className="Rover_Footer" style={{ color: FooterColor }}>{FooterText}</p>}
@@ -1712,285 +1480,136 @@ return (
                         </div>
                     </div>
                 }
-                <div className="Centeralize" >
-                    <div id='YAB'>
-                        <div className="Payment-Box">
-                            <DisplayBought />
-                            <div className="Price">£{CalculatePrice()}</div>
-                        </div>
-                        <div className='Order-Div'>
-                                <select id='Dropdown-C' required onChange={HandleDelivery}>
-                                    <option value="N/A">-- Select Delivery Option--</option>
-                                    <option value="Urgent">Next Working Day Delivery £9.99</option>
-                                    <option value="Normal">Standard Delivery £6.99 (2 - 4 working days)</option>
-                                </select>
-                            </div>
+          </div>
 
-                            <div className='check'>
-                                <label>
-                                    <input
-                                        type="checkbox"
-                                        checked={Spare}
-                                        onChange={handleSpareChange}
-                                    />
-                                    A spare pair of plates is always handy. Do you want to add a spare pair?
-                                </label>
-                            </div>
-
-                        <button className="Cart-Button" onClick={OrderPlacement}>Add to Cart</button>
-                    </div>
-                </div>
-            </div>
+          <button onClick={ ()=>{  Navigate('/admindashboard')}} className='back-btn'>Back</button>
+          </div>
         </div>
+      </div>
 
-        <div className="Divider">
-            <div className="Divider-Text">Why Choose Us?</div>
-            <div className="Divider-Text2">You're in safe hands!</div>
-            <div id="Divider-Holder">
-                <div>
-                    <img className="DividerImage" src="/Image1.png" alt="Cover2"></img>
-                </div>
-                <div className="Divider-Box">
-                    <div className="Divider-Text3">Makers of Custom Number Plates and Show Plates</div>
-                    <div className="Divider-Text4">The Cheapest Registration Plates in the UK!</div>
-                    <div className="Divider-Text5">Trusted provider of custom car number plates with over
-                        a decade of industry experience. We specialize in offering personalized plates at affordable
-                        prices to customers in the UK and Ireland. Our selection includes both legally compliant plates
-                        for road use and stylish plates for car shows. Whether you're looking for a unique gift or need
-                        to replace your existing registration plates, we have you covered. Choose from a variety of custom
-                        designs, including 3D Gel and 4D Premium plates. Rest assured that once you've finalized your design
-                        and placed your order, we'll swiftly manufacture and dispatch your new number plates on the same day,
-                        delivering to any destination in the UK.
-                    </div>
-                </div>
-            </div>
-            <div id="Divider-Holder">
-                <div className="Divider-Box">
-                    <div className="Divider-Text3">3D Gel and 4D Premium Number Plates</div>
-                    <div className="Divider-Text5">We specialize in creating customized number plates that allow you to showcase
-                        your unique style and personality. Our designs are fully compliant with UK regulations and ensure your plates
-                        are road legal. Choose from our range of 3D gel and 4D premium designs, available in various color borders including
-                        black, red, grey, and pink. To add that extra touch of personalization, explore our wide selection of side badges,
-                        which make for the perfect accessory for modern vehicles. Our 3D gel plates are crafted using high-quality resin,
-                        providing a standout three-dimensional effect that looks stunning on cars, particularly in high-end showrooms.
-                        For a personal and premium look, opt for our laser-cut acrylic 4D number plates. At Legal Show Plates, we offer
-                        affordable pricing for our 3D gel and 4D premium number plates. Order your bespoke plates conveniently online today!
-                    </div>
-                </div>
-                <div>
-                    <img className="DividerImage" src="/Image2.png" alt="Cover2"></img>
-                </div>
-            <ToastContainer theme="colored"/>
-            </div>
-
-
-
-
-
+      <div className="FooterContainer1">
+        <div className="Content1">
+          &copy; Copyright 2005-2023 Bancroft Auto Locksmiths. All rights Reserved.
         </div>
+      </div>
 
-        <Footer />
     </>
-)
+  )
 }
 
 
 
-const Cover = () => {
-    return (
-        <>
-            <div id="Cover-Holder">
-                <img src="/Cover.png" alt="Cover"></img>
-            </div>
-
-        </>
-    )
+const ReturnSize = (Option) => {
+  const Size = {
+    Option1: "Standard Size (20.5x4.4in)",
+    Option2: "Standard 4x4 279mm X 203mm (11in X 8in)",
+    Option3: "229mm x 76mm (9in x 3in)",
+    Option4: "254mm x 76mm (10in x 3in)",
+    Option5: "305mm x 76mm (12in x 3in)",
+    Option6: "305mm x 152mm (12in x 6in)",
+    Option7: "330mm x 111mm (13in x 4.4in)",
+    Option8: "330mm x 165mm (13in x 6.5in)",
+    Option9: "16in x 4.5in (16in x 4.5in)",
+    Option10: "520mm x 121mm (20.5in x 4.75in)",
+    Option11: "520mm x 127mm (20.5in x 5in)",
+    Option12: "520mm x 140mm (20.5in x 5.5in)",
+    Option13: "520mm x 152mm (20.5in x 6in)",
+    Option14: "533mm x 152mm (21in x 6in)",
+    Option15: "559mm x 152mm (22in x 6in)",
+    Option16: "Rover 75 (635x175mm)",
+    Option17: "Range Rover Sport V1 (615x150mm)",
+    Option18: "Range Rover Sport V2 (560x165mm)",
+  }
+  return Size[Option] || ""
 }
 
 
-const Fonts = [
-    'Montserrat',
-    'Arial',
-    'Courier New',
-    'Cafe',
-    'Face',
-    'Fargo',
-    'Helvetica',
-    'IBM',
-    'Munistic',
-    'Playback',
-    'Prompt',
-    'Raptors',
-    'Times New Roman',
-    'Saira',
-    'Sanidana',
-    'Sleeping',
-    'Trajan',
-    'Verdana',
-    'Bungee',
-    'Comic Neue',
-    'Nunito'
-];
 
-const GetPrices = (Option) => {
-    const Price = {
-        Option1: 12.99,
-        Option2: 16.99,
-        Option3: 15.49,
-        Option4: 17.49,
-        Option5: 18.49,
-        Option6: 19.49,
-        Option7: 19.49,
-        Option8: 18.49,
-        Option9: 22.49,
-        Option10: 19.49,
-        Option11: 18.49,
-        Option12: 19.49,
-        Option13: 20.49,
-        Option14: 21.49,
-        Option15: 22.49,
-        Option16: 27.49,
-        Option17: 27.49,
-        Option18: 27.49,
-    };
-    return Price[Option] || 0;
-}
-
-const GetPrices4D = (FrontOption, RearOption) => {
-    if (FrontOption === 'Option1' && RearOption === 'Option1')
-        return 46.98
-    else if (FrontOption === 'Option1' && RearOption === 'Option2')
-        return 51.48
-    else if (FrontOption === 'Option1' && RearOption === 'Option10')
-        return 54.98
-    else if (FrontOption === 'Option1' && RearOption === 'Option11')
-        return 53.98
-    else if (FrontOption === 'Option1' && RearOption === 'Option12')
-        return 54.98
-    else if (FrontOption === 'Option1' && RearOption === 'Option13')
-        return 55.98
-    else if (FrontOption === 'Option1' && RearOption === 'Option14')
-        return 56.98
-    else if (FrontOption === 'Option1' && RearOption === 'Option15')
-        return 57.98
-    else if (FrontOption === 'Option1' && RearOption === 'Option16')
-        return 62.98
-    else if (FrontOption === 'Option1' && RearOption === 'Option17')
-        return 62.98
-    else if (FrontOption === 'Option1' && RearOption === 'Option18')
-        return 62.98
-
-
-    else if (FrontOption === 'Option10' && RearOption === 'Option1')
-        return 54.98
-    else if (FrontOption === 'Option10' && RearOption === 'Option2')
-        return 59.48
-    else if (FrontOption === 'Option10' && RearOption === 'Option10')
-        return 62.98
-    else if (FrontOption === 'Option10' && RearOption === 'Option11')
-        return 61.98
-    else if (FrontOption === 'Option10' && RearOption === 'Option12')
-        return 62.98
-    else if (FrontOption === 'Option10' && RearOption === 'Option13')
-        return 63.98
-    else if (FrontOption === 'Option10' && RearOption === 'Option14')
-        return 64.98
-    else if (FrontOption === 'Option10' && RearOption === 'Option15')
-        return 65.98
-    else if (FrontOption === 'Option10' && RearOption === 'Option16')
-        return 70.98
-    else if (FrontOption === 'Option10' && RearOption === 'Option17')
-        return 70.98
-    else if (FrontOption === 'Option10' && RearOption === 'Option18')
-        return 70.98
-    else
-        return 0
-}
 const FontFamily = [
-    "'Montserrat', sans-serif",
-    "'Arial', sans-serif",
-    "'Courier New', Courier, monospace",
-    "'Cafe', sans-serif",
-    "'Face', cursive",
-    "'Fargo', cursive",
-    "'Helvetica', sans-serif",
-    "'IBM', sans-serif",
-    "'Munistic', cursive",
-    "'Playback', cursive",
-    "'Prompt', sans-serif",
-    "'Raptors', cursive",
-    "'Times New Roman', Times, serif",
-    "'Saira', sans-serif",
-    "'Sanidana', cursive",
-    "'Sleeping', cursive",
-    "'Trajan', serif",
-    "'Verdana', sans-serif",
-    "'Bungee', cursive",
-    "'Comic Neue', cursive",
-    "'Nunito', sans-serif"
+  "'Montserrat', sans-serif",
+  "'Arial', sans-serif",
+  "'Courier New', Courier, monospace",
+  "'Cafe', sans-serif",
+  "'Face', cursive",
+  "'Fargo', cursive",
+  "'Helvetica', sans-serif",
+  "'IBM', sans-serif",
+  "'Munistic', cursive",
+  "'Playback', cursive",
+  "'Prompt', sans-serif",
+  "'Raptors', cursive",
+  "'Times New Roman', Times, serif",
+  "'Saira', sans-serif",
+  "'Sanidana', cursive",
+  "'Sleeping', cursive",
+  "'Trajan', serif",
+  "'Verdana', sans-serif",
+  "'Bungee', cursive",
+  "'Comic Neue', cursive",
+  "'Nunito', sans-serif"
 ];
 
 
 const Badges = [
-    "ST_GEORGE-ENG",
-    "ST_GEORGE-ENGLAND",
-    "ST_GEORGE-GB",
-    "ST_GEORGE-GREAT BRITAIN",
-    "ST_GEORGE-UK",
-    "ST_GEORGE-UNITED KINGDOM",
-    "ST_GEORGEP-ENG",
-    "ST_GEORGEP-ENGLAND",
-    "ST_GEORGEP-GB",
-    "ST_GEORGEP-GREAT BRITAIN",
-    "ST_GEORGEP-UK",
-    "ST_GEORGEP-UNITED KINGDOM",
-    "WALES-CYM",
-    "WALES-CYMRU",
-    "WALES-GB",
-    "WALES-GREAT BRITAIN",
-    "WALES-UK",
-    "WALES-UNITED KINGDOM",
-    "WALES-WALES",
-    "WALESP-CYM",
-    "WALESP-CYMRU",
-    "WALESP-GB",
-    "WALESP-GREAT BRITAIN",
-    "WALESP-UK",
-    "WALESP-UNITED KINGDOM",
-    "WALESP-WALES",
-    "SALTIRE-GREAT BRITAIN",
-    "SALTIRE-SCOTLAND",
-    "SALTIRE-UNITED KINGDOM",
-    "SALTIRE-GB",
-    "SALTIRE-SCO",
-    "SALTIRE-UK",
-    "SALTIREP-GREAT BRITAIN",
-    "SALTIREP-SCOTLAND",
-    "SALTIREP-UNITED KINGDOM",
-    "SALTIREP-GB",
-    "SALTIREP-SCO",
-    "SALTIREP-UK",
-    "UNION-ENG",
-    "UNION-ENGLAND",
-    "UNION-GB",
-    "UNION-GREAT BRITAIN",
-    "UNION-UK",
-    "UNION-UNITED KINGDOM",
-    "UNIONP-ENG",
-    "UNIONP-ENGLAND",
-    "UNIONP-GB",
-    "UNIONP-GREAT BRITAIN",
-    "UNIONP-UK",
-    "UNIONP-UNITED KINGDOM",
-    "UNION-CYM",
-    "UNION-CYMRU",
-    "UNION-UNION",
-    "UNIONP-CYM",
-    "UNIONP-CYMRU",
-    "UNIONP-WALES",
-    "UNION-SCOTLAND",
-    "UNION-SCO",
-    "UNIONP-SCOTLAND",
-    "UNIONP-SCO"
+  "ST_GEORGE-ENG",
+  "ST_GEORGE-ENGLAND",
+  "ST_GEORGE-GB",
+  "ST_GEORGE-GREAT BRITAIN",
+  "ST_GEORGE-UK",
+  "ST_GEORGE-UNITED KINGDOM",
+  "ST_GEORGEP-ENG",
+  "ST_GEORGEP-ENGLAND",
+  "ST_GEORGEP-GB",
+  "ST_GEORGEP-GREAT BRITAIN",
+  "ST_GEORGEP-UK",
+  "ST_GEORGEP-UNITED KINGDOM",
+  "WALES-CYM",
+  "WALES-CYMRU",
+  "WALES-GB",
+  "WALES-GREAT BRITAIN",
+  "WALES-UK",
+  "WALES-UNITED KINGDOM",
+  "WALES-WALES",
+  "WALESP-CYM",
+  "WALESP-CYMRU",
+  "WALESP-GB",
+  "WALESP-GREAT BRITAIN",
+  "WALESP-UK",
+  "WALESP-UNITED KINGDOM",
+  "WALESP-WALES",
+  "SALTIRE-GREAT BRITAIN",
+  "SALTIRE-SCOTLAND",
+  "SALTIRE-UNITED KINGDOM",
+  "SALTIRE-GB",
+  "SALTIRE-SCO",
+  "SALTIRE-UK",
+  "SALTIREP-GREAT BRITAIN",
+  "SALTIREP-SCOTLAND",
+  "SALTIREP-UNITED KINGDOM",
+  "SALTIREP-GB",
+  "SALTIREP-SCO",
+  "SALTIREP-UK",
+  "UNION-ENG",
+  "UNION-ENGLAND",
+  "UNION-GB",
+  "UNION-GREAT BRITAIN",
+  "UNION-UK",
+  "UNION-UNITED KINGDOM",
+  "UNIONP-ENG",
+  "UNIONP-ENGLAND",
+  "UNIONP-GB",
+  "UNIONP-GREAT BRITAIN",
+  "UNIONP-UK",
+  "UNIONP-UNITED KINGDOM",
+  "UNION-CYM",
+  "UNION-CYMRU",
+  "UNION-UNION",
+  "UNIONP-CYM",
+  "UNIONP-CYMRU",
+  "UNIONP-WALES",
+  "UNION-SCOTLAND",
+  "UNION-SCO",
+  "UNIONP-SCOTLAND",
+  "UNIONP-SCO"
 ];
 

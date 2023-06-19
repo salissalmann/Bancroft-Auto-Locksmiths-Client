@@ -1,4 +1,4 @@
-import React, { useContext , useState } from 'react'
+import React, { useState } from 'react'
 import Navigation from '../Navigation/Navigation'
 import Footer from '../Footer/Footer'
 import { useNavigate } from "react-router-dom";
@@ -8,24 +8,32 @@ import { Link } from 'react-router-dom';
 
 export default function Login() {
 
+    const [firstName , SetFirstName ] = useState("")
+    const [lastName , SetLastName ] = useState("")
     const [email, SetEmail] = useState();
     const [password, SetPassword] = useState();
+    const [phone , SetPhone ] = useState("")
+
   
     const Navigate = useNavigate();
   
     const HandleEmailValue = (event) => {SetEmail(event.target.value);};
     const HandlePasswordValue = (event) => {SetPassword(event.target.value);};
+    const HandleFirstName = (event) => {SetFirstName(event.target.value);};
+    const HandleLastName = (event) => {SetLastName(event.target.value);};
+    const HandlePhone = (event) => {SetPhone(event.target.value);};
+
     const Submit = async (e) => 
     {
       e.preventDefault();
       let Success = false;
       try
       {
-         const Response = await fetch("http://localhost:3001/officers/officerLogin", 
+         const Response = await fetch("http://localhost:3001/customer/CreateAccount", 
          {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email, password }),
+          body: JSON.stringify({ firstName , lastName , email , password , phone })
         });
     
         const ResponseToJson = await Response.json();
@@ -61,14 +69,16 @@ export default function Login() {
                     <form onSubmit={Submit}>
                         <div className="form">
                             <div className='form-inner'>
-                                <input name="name" id="name" placeholder="First Name"  autoComplete='off' className="sidebar1-text1" label="Name" />
-                                <input name="lname" id="lname" placeholder="Last Name" autoComplete='off' className="sidebar1-text2" label="lName" />
+                                <input name="name" required  id="name" placeholder="First Name"  autoComplete='off' className="sidebar1-text1" label="Name" onChange={HandleFirstName}/>
+                                <input name="lname"  required  id="lname" placeholder="Last Name" autoComplete='off' className="sidebar1-text2" label="lName" onChange={HandleLastName}/>
                             </div>
-                            <input name="email" id="email" placeholder="Email" autoComplete='off' className="sidebar1-text" label="Email" onChange={HandleEmailValue} />
-                            <input type="password" name="password"  id="password" autoComplete='off' placeholder="Password"  className="sidebar1-text"  label="Password"   onChange={HandlePasswordValue}   />
+
+                            <input name="phonenumber" required  id="phonenumber" placeholder="Phone Number" autoComplete='off' className="sidebar1-text" label="phonenumber" onChange={HandlePhone}/>
+
+                            <input required name="email" id="email" placeholder="Email" autoComplete='off' className="sidebar1-text" label="Email" onChange={HandleEmailValue} />
+                            <input required type="password" name="password"  id="password" autoComplete='off' placeholder="Password"  className="sidebar1-text"  label="Password"   onChange={HandlePasswordValue}   />
                         </div>
 
-                    <input name="phonenumber" id="phonenumber" placeholder="Phone Number" autoComplete='off' className="sidebar1-text" label="phonenumber" />
                     <div className="login-2">
                         <button type="submit" className="login-button"> Create Account </button>
                     </div>

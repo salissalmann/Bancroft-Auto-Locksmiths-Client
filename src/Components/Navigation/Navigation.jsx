@@ -1,8 +1,10 @@
 import React from 'react'
 import './Navigation.css'
-import {BsCart} from 'react-icons/bs'
+import { useNavigate } from 'react-router-dom'
 
 export default function Navigation() {
+
+  const Navigate = useNavigate()
   return (
     <>
     <div id="Navbar">
@@ -10,12 +12,11 @@ export default function Navigation() {
             <h3><span>Bancroft Auto </span>Locksmiths</h3>
         </div>
         <div id="Component-2">
-            <h6>Contact Us</h6>
-            <h6>Help</h6>
+            <h6 onClick={()=>{Navigate('/')}}>Home</h6>
+            <h6 onClick={()=>{Navigate('/contact')}}>Contact</h6>
             <h6 >|</h6>
-            <h6>Login</h6>
-            <h6 >Register</h6>
-            <h3 className='Component-Red'><BsCart/></h3>
+            <h6 onClick={()=>{Navigate('/login')}}>Login</h6>
+            <h6 onClick={()=>{Navigate('/createaccount')}}>Register</h6>
         </div>
     </div>
 
