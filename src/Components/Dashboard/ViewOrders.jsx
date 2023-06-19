@@ -9,7 +9,7 @@ export default function ViewOrders() {
 
     useEffect(() => {
         const fetchOrders = async () => {
-            const response = await fetch(`http://localhost:3001/orders/GetCustomerOrders`, {
+            const response = await fetch(`${process.env.REACT_APP_BASE_URL}/orders/GetCustomerOrders`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',

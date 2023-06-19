@@ -29,7 +29,7 @@ export default function Login() {
       let Success = false;
       try
       {
-         const Response = await fetch("http://localhost:3001/customer/CreateAccount", 
+         const Response = await fetch(`${process.env.REACT_APP_BASE_URL}/customer/CreateAccount`, 
          {
           method: "POST",
           headers: { "Content-Type": "application/json" },

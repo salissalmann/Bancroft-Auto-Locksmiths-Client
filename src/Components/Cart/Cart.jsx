@@ -31,7 +31,7 @@ export default function Cart2() {
     }, [])
     useEffect(() => {
         const CreatePaymentIntent = async () => {
-            const Response = await fetch("http://localhost:3001/create-payment-intent",
+            const Response = await fetch(`${process.env.REACT_APP_BASE_URL}/create-payment-intent`,
                 {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },

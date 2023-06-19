@@ -14,7 +14,7 @@ export default function Page2(props) {
 
     const AddOrder = async () => {
         try {
-          const response = await fetch("http://localhost:3001/createOrder", {
+          const response = await fetch(`${process.env.REACT_APP_BASE_URL}/createOrder`, {
             method: "POST",
             headers: { 
                 "Content-Type": "application/json",

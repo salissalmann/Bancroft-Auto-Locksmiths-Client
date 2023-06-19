@@ -10,7 +10,7 @@ export default function ViewOrders() {
     const Navigate = useNavigate();
     useEffect(() => {
         const fetchOrders = async () => {
-            const response = await fetch(`http://localhost:3001/orders/GetProcessedOrders`, {
+            const response = await fetch(`${process.env.REACT_APP_BASE_URL}/orders/GetProcessedOrders`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -28,7 +28,7 @@ export default function ViewOrders() {
 
     const HandleStatus = (id) => {
         const UpdateStatus = async () => {
-            const response = await fetch(`http://localhost:3001/orders/Status`, {
+            const response = await fetch(`${process.env.REACT_APP_BASE_URL}/orders/Status`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

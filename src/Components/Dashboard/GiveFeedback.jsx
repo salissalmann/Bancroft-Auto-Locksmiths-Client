@@ -16,7 +16,7 @@ export default function ReviewPage() {
         event.preventDefault();
         let Success = false;
         try {
-            const Response = await fetch("http://localhost:3001/feedback/AddFeedback",
+            const Response = await fetch(`${process.env.REACT_APP_BASE_URL}/feedback/AddFeedback`,
                 {
                     method: "POST",
                     headers: {
@@ -47,7 +47,7 @@ export default function ReviewPage() {
     const DeleteFeedback = async (id, event) => {
         try {
             let Success = false
-            const Response = await fetch("http://localhost:3001/feedback/DeleteFeedback",
+            const Response = await fetch(`${process.env.REACT_APP_BASE_URL}/feedback/DeleteFeedback`,
                 {
                     method: "DELETE",
                     headers: {
@@ -75,7 +75,7 @@ export default function ReviewPage() {
     const [Feedbacks, setFeedbacks] = useState([]);
     useEffect(() => {
         const fetchOrders = async () => {
-            const response = await fetch(`http://localhost:3001/feedback/GetFeedback`, {
+            const response = await fetch(`${process.env.REACT_APP_BASE_URL}/feedback/GetFeedback`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',

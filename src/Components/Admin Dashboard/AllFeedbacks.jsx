@@ -10,7 +10,7 @@ export default function ReviewPage() {
     const DeleteFeedback = async (id, event) => {
         try {
             let Success = false
-            const Response = await fetch("http://localhost:3001/feedback/DeleteFeedback",
+            const Response = await fetch(`${process.env.REACT_APP_BASE_URL}/feedback/DeleteFeedback`,
                 {
                     method: "DELETE",
                     headers: {
@@ -39,7 +39,7 @@ export default function ReviewPage() {
 
     useEffect(() => {
         const fetchOrders = async () => {
-            const response = await fetch(`http://localhost:3001/feedback/GetAllFeedback`, {
+            const response = await fetch(`${process.env.REACT_APP_BASE_URL}/feedback/GetAllFeedback`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
