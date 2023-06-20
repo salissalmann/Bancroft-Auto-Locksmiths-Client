@@ -24,6 +24,7 @@ export default function Login() {
       let Success = false;
       try
       {
+        toast.success("Please wait...")
         const Response = await fetch(`${process.env.REACT_APP_BASE_URL}/customer/Login`, 
         {
          method: "POST",

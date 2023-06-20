@@ -16,31 +16,31 @@ function App() {
   return (
        <div className="App">
         <States>
-          <BrowserRouter basename={process.env.REACT_APP_PUBLIC_URL}>
+          <BrowserRouter >
             <Routes>                
-              <Route  path="/"  element={<NewHomePage/>} />
-              <Route  path="/login" element={<Login/>}/>
-              <Route  path="/createaccount" element={<Signup/>}/>
-              <Route  path="/checkout" element={
+              <Route path="/"  element={<NewHomePage/>} />
+              <Route path="/login" element={<Login/>}/>
+              <Route path="/createaccount" element={<Signup/>}/>
+              <Route path="/checkout" element={
                   <ProtectedRoute>
                   <Cart/>
                   </ProtectedRoute>
               }/>
-              <Route  path="/dashboard" element={
+              <Route path="/dashboard" element={
                   <ProtectedRoute>
                   <Dashboard/>
                   </ProtectedRoute>
               }/>
 
-              <Route  path="/staging.admin" element={<AdminLogin/>}/>
-              <Route  path="/admindashboard" element={
+              <Route path="/staging.admin" element={<AdminLogin/>}/>
+              <Route path="/admindashboard" element={
                   <ProtectedRoute>
                     <AdminDashboard/>                     
                   </ProtectedRoute>
               }/>
               <Route path="/contact" element={<Contact/>}/>
 
-              <Route   path="/order" element={<Orders/>}/>
+              <Route path="/order" element={<Orders/>}/>
  
 
            

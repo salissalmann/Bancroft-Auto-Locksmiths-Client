@@ -176,8 +176,12 @@ body{
     display: flex;
     flex-direction: column;
 }
-
-.Option1_Footer {
+.centered-container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .Option1_Footer {
     z-index: 999;
     width: fit-content;
     height: fit-content;
@@ -186,9 +190,8 @@ body{
     font-size: 12px;
     color: #000000;
     text-align: center;
-    margin-left: 45%;
-}
-
+  }
+    
 /*******************************************************************************************************/
 .Option1B {
     width: 90%;
@@ -315,15 +318,26 @@ body{
         font-size: 4rem;
     }
 }
-
-.Option2_Footer {
-    font-family: Arial, Helvetica, sans-serif;
+.Option2_Footer {    
+    z-index: 999;
     width: fit-content;
     height: fit-content;
-    margin-bottom: -0.5rem;
+    margin-bottom: -0.2rem;
+    margin-top: -0.7rem;
+    font-size: 9px;
+    color: #000000;
+    text-align: center;
+}
+
+.Option3Big_Footer {
+    z-index: 999;
+    width: fit-content;
+    height: fit-content;
+    margin-bottom: -0.8rem;
     font-size: 12px;
     color: #000000;
     text-align: center;
+
 }
 
 /*************************************************************************************************************/
@@ -390,12 +404,12 @@ body{
     color: #000000;
     text-align: center;
 }
-
 @media (max-width: 760px) {
     .Option1_Footer {
-        margin-left: 40%;
-        font-size: 10px;
-        margin-top: -0.7rem;
+        font-size: 9px;
+        margin-bottom: -0.2rem;
+        margin-top: -0.5rem;
+    
     }
 
     .Option1B {
@@ -4516,4 +4530,33 @@ body{
         height: 13px;
     }
 
+}
+
+
+
+@media (max-width: 760px) {
+    .Option2_Footer {
+        font-size: 7px;
+        margin-bottom: -0.2rem;
+        margin-top: -0.5rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .Option1_Footer {
+        font-size: 7px;
+    }
+}
+
+@media (max-width: 760px) {
+    .Option1_Footer {
+        font-size: 9px;
+        margin-bottom: -0.2rem;
+        margin-top: -0.5rem;
+    }
+    .Option2_Footer {
+        font-size: 7px;
+        margin-bottom: -0.2rem;
+        margin-top: -0.5rem;
+    }
 }
