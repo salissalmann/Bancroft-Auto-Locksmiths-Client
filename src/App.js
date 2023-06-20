@@ -32,7 +32,6 @@ function App() {
                   </ProtectedRoute>
               }/>
 
-              <Route path="*" element={<Login/>}/>
               <Route path="/staging.admin" element={<AdminLogin/>}/>
               <Route path="/admindashboard" element={
                   <ProtectedRoute>
