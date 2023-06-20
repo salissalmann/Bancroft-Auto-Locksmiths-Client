@@ -18,29 +18,29 @@ function App() {
         <States>
           <BrowserRouter basename={process.env.REACT_APP_PUBLIC_URL}>
             <Routes>                
-              <Route exact path="/"  element={<NewHomePage/>} />
-              <Route exact path="/login" element={<Login/>}/>
-              <Route exact path="/createaccount" element={<Signup/>}/>
-              <Route exact path="/checkout" element={
+              <Route  path="/"  element={<NewHomePage/>} />
+              <Route  path="/login" element={<Login/>}/>
+              <Route  path="/createaccount" element={<Signup/>}/>
+              <Route  path="/checkout" element={
                   <ProtectedRoute>
                   <Cart/>
                   </ProtectedRoute>
               }/>
-              <Route exact path="/dashboard" element={
+              <Route  path="/dashboard" element={
                   <ProtectedRoute>
                   <Dashboard/>
                   </ProtectedRoute>
               }/>
 
-              <Route exact path="/staging.admin" element={<AdminLogin/>}/>
-              <Route exact path="/admindashboard" element={
+              <Route  path="/staging.admin" element={<AdminLogin/>}/>
+              <Route  path="/admindashboard" element={
                   <ProtectedRoute>
                     <AdminDashboard/>                     
                   </ProtectedRoute>
               }/>
-              <Route exact path="/contact" element={<Contact/>}/>
+              <Route path="/contact" element={<Contact/>}/>
 
-              <Route exact  path="/order" element={<Orders/>}/>
+              <Route   path="/order" element={<Orders/>}/>
  
 
            
