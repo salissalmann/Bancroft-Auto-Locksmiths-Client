@@ -46,7 +46,7 @@ export default function Login() {
         }, 1000)}
         else 
         {
-          toast.error("Invalid Credentials");
+          toast.error("Email already exsists");
         }
       }
       catch(err)

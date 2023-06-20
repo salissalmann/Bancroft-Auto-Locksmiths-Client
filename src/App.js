@@ -18,29 +18,29 @@ function App() {
         <States>
           <BrowserRouter >
             <Routes>                
-              <Route path="/"  element={<NewHomePage/>} />
-              <Route path="/login" element={<Login/>}/>
-              <Route path="/createaccount" element={<Signup/>}/>
-              <Route path="/checkout" element={
+              <Route exact path="/"  element={<NewHomePage/>} />
+              <Route exact path="/login" element={<Login/>}/>
+              <Route exact path="/createaccount" element={<Signup/>}/>
+              <Route exact path="/checkout" element={
                   <ProtectedRoute>
                   <Cart/>
                   </ProtectedRoute>
               }/>
-              <Route path="/dashboard" element={
+              <Route exact path="/dashboard" element={
                   <ProtectedRoute>
                   <Dashboard/>
                   </ProtectedRoute>
               }/>
 
-              <Route path="/staging.admin" element={<AdminLogin/>}/>
-              <Route path="/admindashboard" element={
+              <Route exact path="/staging.admin" element={<AdminLogin/>}/>
+              <Route exact path="/admindashboard" element={
                   <ProtectedRoute>
                     <AdminDashboard/>                     
                   </ProtectedRoute>
               }/>
-              <Route path="/contact" element={<Contact/>}/>
+              <Route exact path="/contact" element={<Contact/>}/>
 
-              <Route path="/order" element={<Orders/>}/>
+              <Route exact  path="/order" element={<Orders/>}/>
  
 
            
