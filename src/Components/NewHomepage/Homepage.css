@@ -154,6 +154,24 @@ body{
 }
 
 /*****************************************************************************************************/
+.Option2NEW_Basic {
+    padding: 0.6rem;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    width: 90%;
+    color: black !important;
+}
+
+.Option2NEW_Number {
+    border-radius: 5px;
+    text-align: center;
+    font-size: 80px;
+    font-weight: bolder;
+    color: black;
+    box-sizing: border-box;
+    padding: 0;
+}
+
 .Option1_Basic {
     padding: 0.3rem;
     border-radius: 5px;
@@ -203,7 +221,16 @@ body{
     padding: 0.3rem;
     border-radius: 10px;
 }
-
+.Option1BNEW {
+    width: 90%;
+    display: grid;
+    grid-template-columns: 10% 88%;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding: 0.6rem;
+    border-radius: 10px;
+}
 .Option1B_Container {
     display: flex;
     flex-direction: column;
@@ -322,7 +349,7 @@ body{
     z-index: 999;
     width: fit-content;
     height: fit-content;
-    margin-bottom: -0.2rem;
+    margin-bottom: -0.1rem;
     margin-top: -0.7rem;
     font-size: 9px;
     color: #000000;
@@ -486,9 +513,12 @@ body{
 
 @media (max-width: 540px) {
     .Option1_Number {
-        font-size: 40px;
+        font-size: 45px;
     }
-
+    .Option2NEW_Number {
+        font-size: 50px;
+    }
+    
     .Option1B_Container {
         padding: 0.5rem;
     }
@@ -554,7 +584,7 @@ body{
 
 @media (max-width: 430px) {
     .Option1_Number {
-        font-size: 30px !important;
+        font-size: 45px !important;
     }
 
     .Option1B_Image1 {
@@ -1093,7 +1123,9 @@ body{
 #PlateFront4D2,
 #PlateFront4D3,
 #PlateFront4D4,
+#PlateFront4D4Copy,
 #PlateFront4D5,
+#PlateFront4D5Copy,
 #PlateFront4D6,
 #PlateFront4D7,
 #PlateFront4D8,
@@ -1127,8 +1159,15 @@ body{
 #PlateFront4D4 {
     font-size: 2.3rem;
 }
-
+#PlateFront4D4Copy
+{
+    font-size: 2.3;
+}
 #PlateFront4D5 {
+    font-size: 3rem;
+}
+#PlateFront4D5Copy
+{
     font-size: 3rem;
 }
 
@@ -1156,7 +1195,9 @@ body{
 #PlateFront4D2::after,
 #PlateFront4D3::after,
 #PlateFront4D4::after,
+#PlateFront4D4Copy::after,
 #PlateFront4D5::after,
+#PlateFront4D5Copy::after,
 #PlateFront4D6::after,
 #PlateFront4D7::after,
 #PlateFront4D8::after,
@@ -1192,8 +1233,15 @@ body{
 #PlateFront4D4::after {
     font-size: 2.3rem;
 }
-
+#PlateFront4D4Copy:after
+{
+    font-size: 2.3rem;
+}
 #PlateFront4D5::after {
+    font-size: 3rem;
+}
+#PlateFront4D5Copy::after
+{
     font-size: 3rem;
 }
 
@@ -1368,8 +1416,16 @@ body{
     #PlateFront4D5 {
         font-size: 2.5rem;
     }
+    #PlateFront4D5Copy
+    {
+        font-size: 2.5rem;
+    }
 
     #PlateFront4D5::after {
+        font-size: 2.5rem;
+    }
+    #PlateFront4D5Copy::after
+    {
         font-size: 2.5rem;
     }
 
@@ -1459,16 +1515,33 @@ body{
     #PlateFront4D4 {
         font-size: 1.5rem;
     }
+    #PlateFront4D4Copy
+    {
+        font-size: 1.5;
+    }
 
     #PlateFront4D4::after {
         font-size: 1.5rem;
     }
+    #PlateFront4D4Copy::after
+    {
+        font-size: 1.5rem;
+    }
+
 
     #PlateFront4D5 {
         font-size: 1.5rem;
     }
+    #PlateFront4D5Copy
+    {
+        font-size: 1.5rem;
+    }
 
     #PlateFront4D5::after {
+        font-size: 1.5rem;
+    }
+    #PlateFront4D5Copy::after
+    {
         font-size: 1.5rem;
     }
 
@@ -1595,10 +1668,18 @@ body{
     #PlateFront4D4 {
         font-size: 1rem;
     }
+    #PlateFront4D4Copy
+    {
+        font-size: 1rem;
+    }
 
     #PlateFront4D4::after {
         font-size: 1rem;
     }
+    #PlateFront4D4Copy::after{
+        font-size: 1rem;
+    }
+
 
     #PlateFront4DR {
         font-size: 2rem;
@@ -1648,8 +1729,16 @@ body{
     #PlateFront4D5 {
         font-size: 1rem;
     }
+    #PlateFront4D5Copy
+    {
+        font-size: 1rem;
+    }
 
     #PlateFront4D5::after {
+        font-size: 1rem;
+    }
+    #PlateFront4D5Copy::after
+    {
         font-size: 1rem;
     }
 
@@ -3829,10 +3918,16 @@ body{
 
 /***********************************************/
 .Option10_NoBadge {
-    padding: 0.3rem;
+    padding: 0.1rem;
     border-radius: 5px;
     margin-bottom: 1rem;
-    width: 55%;
+    width: 65%;
+}
+.Option3NEW_NoBadge {
+    padding: 0.1rem;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    width: 75%;
 }
 
 .Option11_NoBadge {
@@ -3846,6 +3941,16 @@ body{
     border-radius: 5px;
     text-align: center;
     font-size: 55px;
+    font-weight: bolder;
+    color: black;
+    box-sizing: border-box;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+.Option10NEW_Number {
+    border-radius: 5px;
+    text-align: center;
+    font-size: 65px;
     font-weight: bolder;
     color: black;
     box-sizing: border-box;
@@ -3917,6 +4022,26 @@ body{
 /***********************************************/
 .Option10_Plate1 {
     width: 60%;
+    display: grid;
+    grid-template-columns: 12% 88%;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding: 0.3rem;
+    border-radius: 10px;
+}
+.Option10NEW_Plate1 {
+    width: 65%;
+    display: grid;
+    grid-template-columns: 12% 88%;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding: 0.3rem;
+    border-radius: 10px;
+}
+.Option3NEW_Plate1 {
+    width: 75%;
     display: grid;
     grid-template-columns: 12% 88%;
     justify-content: center;

@@ -61,40 +61,37 @@ export default function Cart2() {
                                 <div><b>Plate Number:</b> {Global.Order.PlateText}</div>
                                 <div><b>Front Plate Size:</b> {ReturnSize(Global.Order.FrontSize)}</div>
                                 <div><b>Rear Plate Size:</b> {ReturnSize(Global.Order.RearSize)}</div>
-                                <div><b>Layout:</b> {Global.Order.Layout}</div>
-                                {Global.Order.Layout === "Custom Plates" &&
-                                    <>
-                                        <div><b>Custom Text:</b> {Global.Order.FooterText}</div>
-                                        <div><b>Custom Color:</b> {Global.Order.FooterColor}</div>
-                                    </>
-                                }
                                 {(Global.Order.Border !== "transparent") &&
                                     <div><b>Border:</b> {Global.Order.Border}</div>
                                 }
                                 {(Global.Order.Border === "transparent") &&
-                                    <div><b>Border:</b> Default</div>
+                                    <div><b>Border:</b> None</div>
                                 }
                                 {Global.Order.Badge !== "" &&
                                     <>
                                         <div><b>Badge:</b> {Global.Order.Badge}</div>
-                                        <div><b>Badge-Background:</b> {Global.Order.BadgeBackground}</div>
                                     </>
                                 }
                                 {Global.Order.Badge === "" &&
                                     <div><b>Badge:</b> No Badges</div>
                                 }
-                                {Global.Order.Font !== "'Montserrat', sans-serif" &&
-                                    <div><b>Font:</b> {Global.Order.Font}</div>
+                                {Global.Order.Badge !== "" && Global.Order.BadgeBackground === '#366CB7' &&
+                                    <div><b>Badge Type:</b> Normal</div>
                                 }
-                                {Global.Order.Font === "'Montserrat', sans-serif" &&
-                                    <div><b>Font:</b> Default</div>
+                                {Global.Order.Badge !== "" && Global.Order.BadgeBackground !== '#366CB7' &&
+                                    <div><b>Badge Type:</b> Gel</div>
                                 }
+                                <div><b>Material:</b> Standard ABS</div>
                                 <div><b>Delivery:</b> {Global.Order.Delivery} Delivery</div>
                                 {Global.Order.Spare &&
                                     <div><b>Spare:</b> Spare Included</div>}
                                 {!Global.Order.Spare &&
                                     <div><b>Spare:</b> Spare Excluded</div>}
-
+                                {Global.Order.FittingKit &&
+                                    <div><b>Fitting Kit:</b> Included</div>}
+                                {!Global.Order.FittingKit &&
+                                    <div><b>Fitting Kit:</b>Excluded</div>}
+                    
                             </div>
                         }
                         {(Global.Order.Type === 'standard' && Global.Order.PlateChoice === 'Front Only') &&
@@ -102,39 +99,36 @@ export default function Cart2() {
                                 <div><b>Plate Type:</b> Standard [Front Only]</div>
                                 <div><b>Plate Number:</b> {Global.Order.PlateText}</div>
                                 <div><b>Front Plate Size:</b> {ReturnSize(Global.Order.FrontSize)}</div>
-                                <div><b>Layout:</b> {Global.Order.Layout}</div>
-                                {Global.Order.Layout === "Custom Plates" &&
-                                    <>
-                                        <div><b>Custom Text:</b> {Global.Order.FooterText}</div>
-                                        <div><b>Custom Color:</b> {Global.Order.FooterColor}</div>
-                                    </>
-                                }
                                 {(Global.Order.Border !== "transparent") &&
                                     <div><b>Border:</b> {Global.Order.Border}</div>
                                 }
                                 {(Global.Order.Border === "transparent") &&
-                                    <div><b>Border:</b> Default</div>
+                                    <div><b>Border:</b> None</div>
                                 }
                                 {Global.Order.Badge !== "" &&
                                     <>
                                         <div><b>Badge:</b> {Global.Order.Badge}</div>
-                                        <div><b>Badge-Background:</b> {Global.Order.BadgeBackground}</div>
                                     </>
                                 }
                                 {Global.Order.Badge === "" &&
                                     <div><b>Badge:</b> No Badges</div>
                                 }
-                                {Global.Order.Font !== "'Montserrat', sans-serif" &&
-                                    <div><b>Font:</b> {Global.Order.Font}</div>
+                                {Global.Order.Badge !== "" && Global.Order.BadgeBackground === '#366CB7' &&
+                                    <div><b>Badge Type:</b> Normal</div>
                                 }
-                                {Global.Order.Font === "'Montserrat', sans-serif" &&
-                                    <div><b>Font:</b> Default</div>
+                                {Global.Order.Badge !== "" && Global.Order.BadgeBackground !== '#366CB7' &&
+                                    <div><b>Badge Type:</b> Gel</div>
                                 }
+                                <div><b>Material:</b> Standard ABS</div>
                                 <div><b>Delivery:</b> {Global.Order.Delivery} Delivery</div>
                                 {Global.Order.Spare &&
                                     <div><b>Spare:</b> Spare Included</div>}
                                 {!Global.Order.Spare &&
                                     <div><b>Spare:</b> Spare Excluded</div>}
+                                {Global.Order.FittingKit &&
+                                    <div><b>Fitting Kit:</b> Included</div>}
+                                {!Global.Order.FittingKit &&
+                                    <div><b>Fitting Kit:</b>Excluded</div>}
 
                             </div>
                         }
@@ -143,39 +137,36 @@ export default function Cart2() {
                                 <div><b>Plate Type:</b> Standard [Rear Only]</div>
                                 <div><b>Plate Number:</b> {Global.Order.PlateText}</div>
                                 <div><b>Rear Plate Size:</b> {ReturnSize(Global.Order.RearSize)}</div>
-                                <div><b>Layout:</b> {Global.Order.Layout}</div>
-                                {Global.Order.Layout === "Custom Plates" &&
-                                    <>
-                                        <div><b>Custom Text:</b> {Global.Order.FooterText}</div>
-                                        <div><b>Custom Color:</b> {Global.Order.FooterColor}</div>
-                                    </>
-                                }
                                 {(Global.Order.Border !== "transparent") &&
                                     <div><b>Border:</b> {Global.Order.Border}</div>
                                 }
                                 {(Global.Order.Border === "transparent") &&
-                                    <div><b>Border:</b> Default</div>
+                                    <div><b>Border:</b> None</div>
                                 }
                                 {Global.Order.Badge !== "" &&
                                     <>
                                         <div><b>Badge:</b> {Global.Order.Badge}</div>
-                                        <div><b>Badge-Background:</b> {Global.Order.BadgeBackground}</div>
                                     </>
                                 }
                                 {Global.Order.Badge === "" &&
                                     <div><b>Badge:</b> No Badges</div>
                                 }
-                                {Global.Order.Font !== "'Montserrat', sans-serif" &&
-                                    <div><b>Font:</b> {Global.Order.Font}</div>
+                                {Global.Order.Badge !== "" && Global.Order.BadgeBackground === '#366CB7' &&
+                                    <div><b>Badge Type:</b> Normal</div>
                                 }
-                                {Global.Order.Font === "'Montserrat', sans-serif" &&
-                                    <div><b>Font:</b> Default</div>
+                                {Global.Order.Badge !== "" && Global.Order.BadgeBackground !== '#366CB7' &&
+                                    <div><b>Badge Type:</b> Gel</div>
                                 }
+                                <div><b>Material:</b> Standard ABS</div>
                                 <div><b>Delivery:</b> {Global.Order.Delivery} Delivery</div>
                                 {Global.Order.Spare &&
                                     <div><b>Spare:</b> Spare Included</div>}
                                 {!Global.Order.Spare &&
                                     <div><b>Spare:</b> Spare Excluded</div>}
+                                {Global.Order.FittingKit &&
+                                    <div><b>Fitting Kit:</b> Included</div>}
+                                {!Global.Order.FittingKit &&
+                                    <div><b>Fitting Kit:</b>Excluded</div>}
                             </div>
                         }
                         {(Global.Order.Type !== 'standard') &&
@@ -184,24 +175,23 @@ export default function Cart2() {
                                 <div><b>Plate Number:</b> {Global.Order.PlateText}</div>
                                 <div><b>Front Plate Size:</b> {ReturnSize(Global.Order.FrontSize)}</div>
                                 <div><b>Rear Plate Size:</b> {ReturnSize(Global.Order.RearSize)}</div>
-                                <div><b>Layout:</b> {Global.Order.Layout}</div>
                                 {(Global.Order.Border !== "transparent") &&
                                     <div><b>Border:</b> {Global.Order.Border}</div>
                                 }
                                 {(Global.Order.Border === "transparent") &&
-                                    <div><b>Border:</b> Default</div>
+                                    <div><b>Border:</b> None</div>
                                 }
-                                {Global.Order.Font !== "'Montserrat', sans-serif" &&
-                                    <div><b>Font:</b> {Global.Order.Font}</div>
-                                }
-                                {Global.Order.Font === "'Montserrat', sans-serif" &&
-                                    <div><b>Font:</b> Default</div>
-                                }
+
+                                <div><b>Material:</b> Standard ABS</div>
                                 <div><b>Delivery:</b> {Global.Order.Delivery} Delivery</div>
                                 {Global.Order.Spare &&
                                     <div><b>Spare:</b> Spare Included</div>}
                                 {!Global.Order.Spare &&
                                     <div><b>Spare:</b> Spare Excluded</div>}
+                                {Global.Order.FittingKit &&
+                                    <div><b>Fitting Kit:</b> Included</div>}
+                                {!Global.Order.FittingKit &&
+                                    <div><b>Fitting Kit:</b>Excluded</div>}
                             </div>
                         }
                     </>
@@ -255,27 +245,14 @@ export default function Cart2() {
     )
 }
 
-
 const ReturnSize = (Option) => {
     const Size = {
-        Option1: "Standard Size (20.5x4.4in)",
-        Option2: "Standard 4x4 279mm X 203mm (11in X 8in)",
-        Option3: "229mm x 76mm (9in x 3in)",
-        Option4: "254mm x 76mm (10in x 3in)",
-        Option5: "305mm x 76mm (12in x 3in)",
-        Option6: "305mm x 152mm (12in x 6in)",
-        Option7: "330mm x 111mm (13in x 4.4in)",
-        Option8: "330mm x 165mm (13in x 6.5in)",
-        Option9: "16in x 4.5in (16in x 4.5in)",
-        Option10: "520mm x 121mm (20.5in x 4.75in)",
-        Option11: "520mm x 127mm (20.5in x 5in)",
-        Option12: "520mm x 140mm (20.5in x 5.5in)",
-        Option13: "520mm x 152mm (20.5in x 6in)",
-        Option14: "533mm x 152mm (21in x 6in)",
-        Option15: "559mm x 152mm (22in x 6in)",
-        Option16: "Rover 75 (635x175mm)",
-        Option17: "Range Rover Sport V1 (615x150mm)",
-        Option18: "Range Rover Sport V2 (560x165mm)",
+        Option1: 'Standard Size (20.5x4.4in)',
+        Option6: 'Standard UK Car Large Rear',
+        Option2: 'Short Plate [ 6 Letters ]',
+        Option3: 'Short Plate [ 5 Letters ]',
+        Option4: 'Standard UK Motorcycle',
+        Option5: 'Standard 4x4 Plate'
     }
     return Size[Option] || ""
 }

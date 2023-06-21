@@ -230,11 +230,12 @@
 {
     margin-right: 1rem;
     transition-duration: 1;
+    cursor: pointer;
 }
-#Componentx:hover
-{
+#Componentx:hover {
     color: red;
 }
+
 #Componenty
 {
     margin-right: 1rem;

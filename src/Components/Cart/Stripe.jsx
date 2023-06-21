@@ -33,20 +33,18 @@ export default function Page2(props) {
               RearOption: Global.Order.RearOption,
               PlateChoice: Global.Order.PlateChoice,
               PlateText: Global.Order.PlateText,
-              Layout: Global.Order.Layout,
-              Font: Global.Order.Font,
               FrontSize: Global.Order.FrontSize,
               RearSize: Global.Order.RearSize,
               Badge: Global.Order.Badge,
               BadgeBackground: Global.Order.BadgeBackground,
               Border: Global.Order.Border,
-              FooterText: Global.Order.FooterText,
               Vertical: Global.Order.Vertical,
               ShortHand: Global.Order.ShortHand,
-              FooterColor: Global.Order.FooterColor,
               Delivery: Global.Order.Delivery,
               Spare: Global.Order.Spare,
               OrderValue: Global.Order.Total,
+              FittingKit :  Global.Order.FittingKit ,     
+              Material :  Global.Order.Material      
             }),
           });
           const ResponseToJson = await response.json()

@@ -46,7 +46,7 @@ export default function ViewOrders() {
                 toast.error("Unable to Update")
             }
 
-
+            document.getElementById("Dropdown-A").value = ""
             console.log(responseJson)
         };
         UpdateStatus();
