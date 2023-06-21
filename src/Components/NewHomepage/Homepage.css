@@ -553,7 +553,7 @@ body{
 
     .Option2_Footer {
         font-size: 10px;
-        margin-bottom: -0.7rem;
+        margin-bottom: -0.5rem;
     }
 
     .Option2B_Top {
@@ -3971,6 +3971,9 @@ body{
     .Option10_Number {
         font-size: 30px;
     }
+    .Option10NEW_Number {
+        font-size: 30px;
+    }
 
     .Option11_Number {
         font-size: 30px;
@@ -4670,6 +4673,11 @@ body{
 @media (max-width: 400px) {
     .Option1_Footer {
         font-size: 7px;
+    }
+    .Option2_Footer {
+        font-size: 7px;
+        margin-top: -0.7rem !important;
+        color: red;
     }
 }
 
