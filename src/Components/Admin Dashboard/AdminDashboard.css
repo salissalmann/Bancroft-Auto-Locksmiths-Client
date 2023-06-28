@@ -169,6 +169,39 @@
   cursor: pointer;
   transition: all 0.2s ease-in-out;
 }
+#QuotesDiv
+{
+  display: grid !important;
+  grid-template-columns: 50% 50% !important;
+  border: 1px solid gray;
+
+}
+
+.QuotesCard {
+  padding: 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.QuotesCard h5 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.QuotesCard-Title {
+  margin-bottom: 0.5rem;
+}
+.Quote-D
+{
+  height: 7rem;
+  text-align: justify;
+}
+.QuoteBtn
+{
+  display: flex;
+  float:right;
+}
+
 @media (min-width: 768px) {
   .OrderContainer {
     padding: 4rem;
@@ -193,4 +226,12 @@
   {
     width: 100%;
   }
+}
+@media (max-width: 768px) {
+  #QuotesDiv
+  {
+    grid-template-columns: 100% !important;
+  
+  }
+  
 }

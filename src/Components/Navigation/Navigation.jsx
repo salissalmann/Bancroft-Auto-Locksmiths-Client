@@ -2,8 +2,6 @@ import React, { useState, useContext } from 'react'
 import './Navigation.css'
 import { useNavigate } from 'react-router-dom'
 import Context from "../../Context/Context"
-import ViewOrders from '../Dashboard/ViewOrders'
-import GiveFeedback from '../Dashboard/GiveFeedback'
 
 export default function Navigation() {
   const Global = useContext(Context)
@@ -11,7 +9,6 @@ export default function Navigation() {
   if (Global.User) {
     Username = `${Global.User.firstName}  ${Global.User.lastName}`
   }
-  const [Selected, setSelected] = useState('1')
 
   const Navigate = useNavigate()
 
@@ -61,13 +58,14 @@ export default function Navigation() {
           <div id="Component-2">
             <h6 onClick={() => { Navigate('/') }}>Home</h6>
             <h6 onClick={() => { Navigate('/contact') }}>Contact</h6>
+            <h6 onClick={() => { Navigate("/services")}}>Services</h6>        
             <h6 >|</h6>
             <h6 onClick={() => { Navigate('/login') }}>Login</h6>
             <h6 onClick={() => { Navigate('/createaccount') }}>Register</h6>
           </div>
-        </div>
-
-      </>
+          <button onClick={() => { Navigate('/requestquote') }} className='Request'>Request a Quote</button>
+          </div>
+        </>
     )
   }
 }

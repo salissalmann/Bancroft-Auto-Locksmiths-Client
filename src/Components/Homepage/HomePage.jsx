@@ -1012,88 +1012,8 @@ const FontFamily = [
   "'Comic Neue', cursive",
   "'Nunito', sans-serif"
 ];
-
-const GetStyles = (Option) => {
-  const styleOptions = {
-    Option1: "StandardFrame",
-    Option2: "StandardFrame2",
-    Option3: "StandardFrame3",
-    Option4: "StandardFrame4",
-    Option5: "StandardFrame5",
-    Option6: "StandardFrame6",
-    Option7: "StandardFrame7",
-    Option8: "StandardFrame8",
-  };
-
-  return styleOptions[Option] || ""; // Return the corresponding style option or an empty string if not found
-};
-
-const GetOptionStyles = (Option) =>{
-  const styleOptions = {
-    Option1: {
-      1: "StandardFrame-Badge",
-      2: "StandardFrame-BC",
-      3: "StandardFrame-BI",
-      4: "StandardFrame-BIT",
-      5: "StandardFrame-BPN",
-    },
-    Option2: {
-      1: "StandardFrame-Badge2",
-      2: "StandardFrame-BC2",
-      3: "StandardFrame-BI2",
-      4: "StandardFrame-BIT2",
-      5: "StandardFrame-BPN2",
-    },
-    Option3: {
-      1: "StandardFrame-Badge3",
-      2: "StandardFrame-BC3",
-      3: "StandardFrame-BI3",
-      4: "StandardFrame-BIT3",
-      5: "StandardFrame-BPN3",
-    },
-    Option4: {
-      1: "StandardFrame-Badge4",
-      2: "StandardFrame-BC4",
-      3: "StandardFrame-BI4",
-      4: "StandardFrame-BIT4",
-      5: "StandardFrame-BPN4",
-    },
-    Option5: {
-      1: "StandardFrame-Badge5",
-      2: "StandardFrame-BC5",
-      3: "StandardFrame-BI5",
-      4: "StandardFrame-BIT5",
-      5: "StandardFrame-BPN5",
-    },
-    Option6: {
-      1: "StandardFrame-Badge6",
-      2: "StandardFrame-BC6",
-      3: "StandardFrame-BI6",
-      4: "StandardFrame-BIT6",
-      5: "StandardFrame-BPN6",
-    },
-    Option7: {
-      1: "StandardFrame-Badge7",
-      2: "StandardFrame-BC7",
-      3: "StandardFrame-BI7",
-      4: "StandardFrame-BIT7",
-      5: "StandardFrame-BPN7",
-    },
-    Option8: {
-      1: "StandardFrame-Badge8",
-      2: "StandardFrame-BC8",
-      3: "StandardFrame-BI8",
-      4: "StandardFrame-BIT8",
-      5: "StandardFrame-BPN8",
-    },
-
-  };
-
-  return styleOptions[Option] || ""; // Return the corresponding style option or an empty string if not found
-}
   
     
-
 const Badges = [
     "ST_GEORGE-ENG",
     "ST_GEORGE-ENGLAND",

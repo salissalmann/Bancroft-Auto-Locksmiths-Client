@@ -63,9 +63,6 @@ export default function HomePage() {
             "Material": Material,       
             "Total": CalculatePrice()
         });
-        console.log(
-            Global.Order
-        )
         if (Global.isLoggedIn) {
             Navigate('/checkout')
         }
@@ -85,13 +82,13 @@ export default function HomePage() {
                 {(selectedState === 'standard' && PlateChoice === 'Front and Rear') &&
                     <div className="Bought">
                         <div><b>Plate Type:</b> Standard</div>
-                        <div><b>FrontSize:</b> {ReturnSize(FrontSize)}</div>
-                        <div><b>RearSize:</b> {ReturnSize(RearSize)}</div>
+                        <div><b>FrontSize:</b> {ReturnSize(FrontSize)} £9.99</div>
+                        <div><b>RearSize:</b> {ReturnSize(RearSize)} £9.99</div>
                         {(Border !== "transparent") &&
-                            <div><b>Border:</b> {Border}</div>
+                            <div><b>Border:</b> {Border} £21.99</div>
                         }
                         {Badge !== "" &&
-                            <div><b>Badge:</b> {Badge}</div>
+                            <div><b>Badge:</b> {Badge} £29.99</div>
                         }
                         {Badge !== "" && BadgeBackground === '#366CB7' &&
                             <div><b>Badge Type:</b> Normal</div>
@@ -105,12 +102,12 @@ export default function HomePage() {
                 {(selectedState === 'standard' && PlateChoice === 'Front Only') &&
                     <div className="Bought">
                         <div><b>Plate Type:</b> Standard [Front Only]</div>
-                        <div><b>FrontSize:</b> {ReturnSize(FrontSize)}</div>
+                        <div><b>FrontSize:</b> {ReturnSize(FrontSize)} £9.99</div>
                         {(Border !== "transparent") &&
-                            <div><b>Border:</b> {Border}</div>
+                            <div><b>Border:</b> {Border} £10.99</div>
                         }
                         {Badge !== "" &&
-                            <div><b>Badge:</b> {Badge}</div>
+                            <div><b>Badge:</b> {Badge} £14.99</div>
                         }
                         {Badge !== "" && BadgeBackground === '#366CB7' &&
                             <div><b>Badge Type:</b> Normal</div>
@@ -124,13 +121,12 @@ export default function HomePage() {
                 {(selectedState === 'standard' && PlateChoice === 'Rear Only') &&
                     <div className="Bought">
                         <div><b>Plate Type:</b> Standard [Rear Only]</div>
-                        <div><b>FrontSize:</b> {ReturnSize(FrontSize)}</div>
-                        <div><b>Layout:</b> {Layout}</div>
+                        <div><b>FrontSize:</b> {ReturnSize(FrontSize)} £9.99</div>
                         {(Border !== "transparent") &&
-                            <div><b>Border:</b> {Border}</div>
+                            <div><b>Border:</b> {Border} £10.99</div>
                         }
                         {Badge !== "" &&
-                            <div><b>Badge:</b> {Badge}</div>
+                            <div><b>Badge:</b> {Badge} £14.99</div>
                         }
                         {Badge !== "" && BadgeBackground === '#366CB7' &&
                             <div><b>Badge Type:</b> Normal</div>
@@ -144,10 +140,10 @@ export default function HomePage() {
                 {(selectedState !== 'standard') &&
                     <div className="Bought">
                         <div><b>Plate Type:</b>4D Plate</div>
-                        <div><b>FrontSize:</b> {ReturnSize(FrontSize)}</div>
-                        <div><b>RearSize:</b> {ReturnSize(RearSize)}</div>
+                        <div><b>FrontSize:</b> {ReturnSize(FrontSize)} £19.99</div>
+                        <div><b>RearSize:</b> {ReturnSize(RearSize)} £19.99</div>
                         {(Border !== "transparent") &&
-                            <div><b>Border:</b> {Border}</div>
+                            <div><b>Border:</b> {Border} £21.99</div>
                         }
                         <div><b>Material:</b> Standard ABS</div>
                     </div>
@@ -159,69 +155,85 @@ export default function HomePage() {
     const CalculatePrice = () => {
         let CPrice = 0
         if (selectedState === 'standard' && PlateChoice === 'Front and Rear') {
-            CPrice = CPrice + GetPrices(FrontSize)
-            CPrice = CPrice + GetPrices(RearSize)
-            if (Layout !== "Legal Plates") {
-                CPrice = CPrice + 2
-            }
+            CPrice = CPrice + 19.99
             if (Border !== "transparent") {
-                CPrice = CPrice + 3
+                CPrice = CPrice + 21.99
             }
             if (Badge !== "") {
-                CPrice = CPrice + 3
+                CPrice = CPrice + 29.99
             }
-            if (Font !== "'Montserrat', sans-serif") {
-                CPrice = CPrice + 3
+            if (Delivery === "DHL")
+            {
+                CPrice = CPrice + 6.99
+            }
+            if (Spare)
+            {
+                CPrice = CPrice + 15.00
+            }
+            if (FittingKit)
+            {
+                CPrice = CPrice + 3.99
             }
         }
         if (selectedState === 'standard' && PlateChoice === 'Front Only') {
-            CPrice = CPrice + GetPrices(FrontSize)
-            if (Layout !== "Legal Plates") {
-                CPrice = CPrice + 2
-            }
+            CPrice = CPrice + 9.99
             if (Border !== "transparent") {
-                CPrice = CPrice + 3
+                CPrice = CPrice + 10.99
             }
             if (Badge !== "") {
-                CPrice = CPrice + 3
+                CPrice = CPrice + 14.99
             }
-            if (Font !== "'Montserrat', sans-serif") {
-                CPrice = CPrice + 3
+            if (Delivery === "DHL")
+            {
+                CPrice = CPrice + 6.99
+            }
+            if (Spare)
+            {
+                CPrice = CPrice + 15.00
+            }
+            if (FittingKit)
+            {
+                CPrice = CPrice + 3.99
             }
         }
         if (selectedState === 'standard' && PlateChoice === 'Rear Only') {
-            CPrice = CPrice + GetPrices(RearSize)
-            if (Layout !== "Legal Plates") {
-                CPrice = CPrice + 2
-            }
+            CPrice = CPrice + 9.99
             if (Border !== "transparent") {
-                CPrice = CPrice + 3
+                CPrice = CPrice + 10.99
             }
             if (Badge !== "") {
-                CPrice = CPrice + 3
+                CPrice = CPrice + 14.99
             }
-            if (Font !== "'Montserrat', sans-serif") {
-                CPrice = CPrice + 3
+            if (Delivery === "DHL")
+            {
+                CPrice = CPrice + 6.99
+            }
+            if (Spare)
+            {
+                CPrice = CPrice + 15.00
+            }
+            if (FittingKit)
+            {
+                CPrice = CPrice + 3.99
             }
         }
         if (selectedState !== 'standard') {
-            CPrice = CPrice + GetPrices4D(FrontSize, RearSize)
+            CPrice = CPrice + 39.99
             if (Border !== "transparent") {
-                CPrice = CPrice + 3
+                CPrice = CPrice + 29.99
             }
-            if (Font !== "'Montserrat', sans-serif") {
-                CPrice = CPrice + 3
+            if (Delivery === "DHL")
+            {
+                CPrice = CPrice + 6.99
             }
-        }
-        if (Spare) {
-            CPrice = CPrice * 2;
-        }
-
-        if (Delivery === 'Urgent') {
-            CPrice = parseFloat(CPrice) + 9.99;
-        }
-        else if (Delivery === 'Normal') {
-            CPrice = parseFloat(CPrice) + 6.99;
+            if (Spare)
+            {
+                CPrice = CPrice + 35.00
+            }
+            if (FittingKit)
+            {
+                CPrice = CPrice + 3.99
+            }
         }
 
         return CPrice.toFixed(2)
@@ -365,6 +377,12 @@ export default function HomePage() {
         <>
             <Navigation />
             <Cover />
+
+            <div className="Banner"> 
+                <div>Need Replacement Keys? </div>
+                <div>Please feel free to reach out to us at 01908 222555 or simply request a quote.</div>
+            </div>
+
 
             <div className='container' id="Headline">
                 <span>You have arrived at the UK's leading number </span>

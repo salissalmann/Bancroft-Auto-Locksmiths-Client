@@ -25,7 +25,10 @@ export default function Contact() {
                             Or call us at:
                         </h6 >
                         <h6 className='Contact'>
-                            07572448224
+                            Phone: 07572448224
+                        </h6>
+                        <h6 className='Contact'>
+                            Office: 01908 222555
                         </h6>
                     </div>
 
@@ -45,7 +48,7 @@ export default function Contact() {
             </div>
 
 
-            <Footer/>
+            <Footer />
         </>
     )
 }

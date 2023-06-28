@@ -26,7 +26,8 @@ export default function Cart2() {
     const Global = useContext(Context)
     const [clientSecret, setClientSecret] = useState()
     useEffect(() => {
-        const stripePromise = loadStripe('pk_test_51NHrWICTjmF29wzpplrz6Pq1OP4maYNdDxt65l2qWpXKrSi6t4uJ2rJQMeaZ3SukRdOAmr7usoEOddPXJzlPpk7v00dwZ2ESnz')
+        const stripeApiKey = process.env.REACT_APP_STRIPE_API_KEY;
+        const stripePromise = loadStripe(stripeApiKey);
         setStripePromise(stripePromise)
     }, [])
     useEffect(() => {

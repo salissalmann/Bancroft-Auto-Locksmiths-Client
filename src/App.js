@@ -10,6 +10,8 @@ import AdminLogin from './Components/Admin/Admin-Login'
 import AdminDashboard from './Components/Admin Dashboard/Dashboard'
 import Contact from './Components/Contact/Contact'
 import Orders from "./Components/Orders/Orders";
+import Services from "./Components/Services/Services";
+import RequestQuote from './Components/Services/RequestQuote'
 
 function App() {
 
@@ -39,9 +41,11 @@ function App() {
                   </ProtectedRoute>
               }/>
               <Route exact path="/contact" element={<Contact/>}/>
-
+              <Route exact path="/services" element={<Services/>}/>
+              <Route exact path="/requestquote" element={<RequestQuote/>}/>
+              
               <Route exact  path="/order" element={<Orders/>}/>
- 
+                
 
            
             </Routes>

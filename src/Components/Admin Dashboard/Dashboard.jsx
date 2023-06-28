@@ -9,6 +9,7 @@ import DisputedOrders from './Disputed-Orders'
 import CancelledOrders from './Cancelled-Orders'
 import AllFeedback from './AllFeedbacks'
 import CreateAdmin from './CreateAdmin'
+import ViewQuotes from './ViewQuotes'
 export default function Dashboard() {
     const Global = useContext(Context)
     let Username = "Customer"
@@ -50,6 +51,10 @@ export default function Dashboard() {
                 <div id="Componentx" onClick={() => { setSelected('3') }}>
                     Add Admin
                 </div>
+                <div id="Componentx" onClick={() => { setSelected('4') }}>
+                    View Quotes
+                </div>
+
             </div>
 
             { Selected==='1' && 
@@ -128,6 +133,9 @@ export default function Dashboard() {
             }
             { Selected==='3' 
                 && <CreateAdmin/>
+            }
+            { Selected==='4' 
+                && <ViewQuotes/>
             }
 
             
