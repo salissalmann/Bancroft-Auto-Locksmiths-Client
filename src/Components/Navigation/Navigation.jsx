@@ -16,10 +16,10 @@ export default function Navigation() {
     return (
       <>
         <div id="NavbarPT">
-          <div id="NavigationPT1">
+          <div id="NavbarPT1">
             <h3><span>Bancroft Auto </span>Locksmiths</h3>
           </div>
-          <div id="NavigationPT2">
+          <div id="NavbarPT2">
             <div className='Username-Holder'>{Username}</div>
             <button className='Logout-Btn' onClick={() => {
               localStorage.removeItem('Token')
