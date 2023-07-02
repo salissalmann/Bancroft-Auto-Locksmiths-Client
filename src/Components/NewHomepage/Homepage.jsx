@@ -220,7 +220,7 @@ export default function HomePage() {
         if (selectedState !== 'standard') {
             CPrice = CPrice + 39.99
             if (Border !== "transparent") {
-                CPrice = CPrice + 29.99
+                CPrice = CPrice + 21.99
             }
             if (Delivery === "DHL")
             {
