@@ -18,11 +18,11 @@ export default function Dashboard() {
 
   return (
     <>
-      <div id="Navbar">
-        <div id="Component-1">
+      <div id="NavbarPT">
+        <div id="NavbarPT1">
           <h3><span>Bancroft Auto </span>Locksmiths</h3>
         </div>
-        <div id="Component-2">
+        <div id="NavbarPT2">
           <div className='Username-Holder'>{Username}</div>
           <button className='Logout-Btn' onClick={()=>{
             localStorage.removeItem('Token')

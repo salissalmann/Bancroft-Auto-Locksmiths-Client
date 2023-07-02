@@ -69,9 +69,9 @@ export default function Login() {
                     <h5 className='sidebar1-Title2'>Enter Personal Information</h5>
                     <form onSubmit={Submit}>
                         <div className="form">
-                            <div className='form-inner'>
-                                <input name="name" required  id="name" placeholder="First Name"  autoComplete='off' className="sidebar1-text1" label="Name" onChange={HandleFirstName}/>
-                                <input name="lname"  required  id="lname" placeholder="Last Name" autoComplete='off' className="sidebar1-text2" label="lName" onChange={HandleLastName}/>
+                            <div className='form-inner-2'>
+                                <input name="name" required  id="name" placeholder="First Name"  autoComplete='off' className="sidebar1-text1C" label="Name" onChange={HandleFirstName}/>
+                                <input name="lname"  required  id="lname" placeholder="Last Name" autoComplete='off' className="sidebar1-text2C" label="lName" onChange={HandleLastName}/>
                             </div>
 
                             <input name="phonenumber" required  id="phonenumber" placeholder="Phone Number" autoComplete='off' className="sidebar1-text" label="phonenumber" onChange={HandlePhone}/>

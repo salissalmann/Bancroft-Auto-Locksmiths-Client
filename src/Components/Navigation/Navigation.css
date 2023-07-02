@@ -74,6 +74,31 @@ body {
 
 @media (max-width: 768px) 
 {
+    #Navbar
+    {
+        grid-template-columns: 100%;
+    }
+    #Component-1
+    {
+        display: flex;
+        justify-content: center;
+        margin-left: 0%;
+        
+    }
+    #Component-2
+    {
+        display: flex;
+        margin-right: 0%;
+        justify-content: center;
+        margin-bottom: 1rem;
+    }
+    #Component-2 h6
+    {
+        font-size: 0.8rem;
+        margin-right: 1rem;
+        font-family: 'Nunito';
+        font-weight: 300;
+    }
 
 }
   
@@ -125,4 +150,48 @@ body {
     color: white;
     border: 1px solid red;
     transition: 0.5s;
+}
+#NavbarPT
+{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 70% 30%;
+    align-items: center;
+    color: white;
+    background-color: black;
+    border-bottom: 1px solid red;
+    padding: 1.5rem;
+
+}
+
+#NavbarPT1
+{
+    width: 100%;
+    align-items: center;
+    color: white;
+    margin-left: 2rem;
+    background-color: black;
+}
+#NavbarPT2
+{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    align-items: center;
+    color: white;
+    background-color: black;
+}
+
+@media (max-width: 768px) 
+{
+    #NavbarPT
+    {
+        grid-template-columns: 100%;
+    }
+    #NavbarPT1
+    {
+        display: flex;
+        justify-content: center;
+        margin-left: 0%;
+    }             
 }
